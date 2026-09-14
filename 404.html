@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FASD Compass — Page Not Found</title>
+<!-- GitHub Pages SPA redirect trick -->
+<script>
+  // Redirect to index with hash so the app can handle routing
+  const path = window.location.pathname;
+  const hash = path.replace(/^\/[^\/]*/, '');
+  window.location.replace('/' + (hash ? '#' + hash.replace('/','') : ''));
+</script>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background: #0d2340; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; margin: 0; text-align: center; padding: 24px;
+  }
+  .card { max-width: 320px; }
+  .icon { font-size: 48px; margin-bottom: 16px; }
+  h1 { font-size: 22px; margin-bottom: 10px; color: #22a898; }
+  p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 20px; }
+  a { display: inline-block; background: #22a898; color: #fff; text-decoration: none;
+      border-radius: 10px; padding: 12px 24px; font-weight: 700; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">🧭</div>
+  <h1>Redirecting…</h1>
+  <p>Taking you back to FASD Compass.</p>
+  <a href="/">Go to FASD Compass</a>
+</div>
+</body>
+</html>

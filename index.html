@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>FASD Compass — Understanding & Supporting Children with FASD</title>
+
+<!-- PWA & SEO Meta -->
+<meta name="description" content="FASD Compass — evidence-based guidance on Fetal Alcohol Spectrum Disorder for parents, teachers, clinicians and families. Based on SIGN 156 and NICE QS204."/>
+<meta name="keywords" content="FASD, fetal alcohol spectrum disorder, prenatal alcohol exposure, SIGN 156, NICE QS204, neurodevelopmental, children, diagnosis, support"/>
+<meta name="author" content="FASD Compass"/>
+<meta name="theme-color" content="#0d2340"/>
+
+<!-- Open Graph (for sharing on social media) -->
+<meta property="og:title" content="FASD Compass"/>
+<meta property="og:description" content="Evidence-based FASD guidance for parents, teachers, clinicians and families. Based on SIGN 156 and NICE QS204."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://fasdcompass.netlify.app/icon-512.png"/>
+
+<!-- Apple PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="FASD Compass"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d2340'/><text y='.9em' font-size='70' x='10'>🧭</text></svg>"/>
+
+<!-- PWA Manifest (inline via JS below) -->
+<link rel="manifest" href="manifest.json"/>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0d2340;
+  --teal: #1a7a6e;
+  --teal-light: #22a898;
+  --amber: #e8a020;
+  --amber-light: #f5c76a;
+  --coral: #e05c4b;
+  --sage: #5a8c7a;
+  --purple: #6b4fa0;
+  --cream: #fdf8f0;
+  --white: #ffffff;
+  --text: #1a2a3a;
+  --text-muted: #5a6e7e;
+  --border: #dde8e5;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 24px rgba(13,35,64,0.10);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.app-header {
+  background: var(--navy);
+  padding: 20px 18px 16px;
+  position: sticky; top: 0; z-index: 200;
+}
+.header-top {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 14px;
+}
+.app-logo { display: flex; align-items: center; gap: 10px; }
+.logo-mark {
+  width: 36px; height: 36px; background: var(--teal-light);
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center; font-size: 18px;
+}
+.app-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: #fff; }
+.app-tagline { font-size: 10px; color: var(--amber-light); letter-spacing: .6px; font-weight: 600; text-transform: uppercase; }
+.header-badge {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px; padding: 4px 11px; font-size: 10px; color: #b0d4d0; font-weight: 600;
+}
+.audience-scroll {
+  display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;
+}
+.audience-scroll::-webkit-scrollbar { display: none; }
+.aud-btn {
+  flex-shrink: 0; border: none; background: rgba(255,255,255,.12);
+  color: #9ab8ba; border-radius: 20px; padding: 6px 14px;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.aud-btn.active { background: var(--teal-light); color: #fff; }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px; background: #fff;
+  border-top: 1px solid var(--border);
+  display: flex; padding: 8px 0 14px; z-index: 300;
+  box-shadow: 0 -4px 20px rgba(13,35,64,.08);
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; cursor: pointer; padding: 4px 0; transition: all .18s;
+}
+.nav-icon { font-size: 20px; }
+.nav-label { font-size: 9px; font-weight: 700; color: var(--text-muted); letter-spacing: .3px; text-transform: uppercase; }
+.nav-item.active .nav-label { color: var(--teal); }
+.nav-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--teal);
+  display: none; margin-top: -2px;
+}
+.nav-item.active .nav-dot { display: block; }
+
+/* ── PAGES ── */
+.main { padding-bottom: 90px; }
+.page { display: none; animation: fadeUp .28s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+  margin: 14px 14px 0; border-radius: var(--radius);
+  padding: 22px 20px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 130px; height: 130px; background: rgba(255,255,255,.06); border-radius: 50%;
+}
+.hero-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--amber-light); margin-bottom: 6px; }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: #fff; line-height: 1.25; margin-bottom: 8px; }
+.hero-body { font-size: 13px; color: rgba(255,255,255,.78); line-height: 1.6; }
+
+/* ── SECTION ── */
+.section { padding: 18px 14px 0; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--navy); margin-bottom: 12px; }
+
+/* ── CARDS ── */
+.info-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 18px;
+  box-shadow: var(--shadow); margin-bottom: 12px; border-left: 4px solid var(--teal);
+}
+.info-card.amber { border-color: var(--amber); }
+.info-card.coral { border-color: var(--coral); }
+.info-card.sage  { border-color: var(--sage); }
+.info-card.navy  { border-color: var(--navy); }
+.info-card.purple{ border-color: var(--purple); }
+.ic-header { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+.ic-icon { font-size: 20px; }
+.ic-title { font-weight: 700; font-size: 14px; color: var(--navy); }
+.ic-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+/* ── QUICK GRID ── */
+.quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.quick-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 16px 14px;
+  box-shadow: var(--shadow); cursor: pointer; transition: transform .16s;
+  border: 1.5px solid transparent; position: relative; overflow: hidden;
+}
+.quick-card:active { transform: scale(.97); }
+.qc-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+.qc-label { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.qc-sub { font-size: 11px; color: var(--text-muted); }
+.qc-accent { position: absolute; bottom:0; right:0; width:46px; height:46px; border-radius: 50% 0 0 0; opacity:.12; }
+.qc-teal { border-color: rgba(26,122,110,.15); } .qc-teal .qc-accent { background: var(--teal); }
+.qc-amber { border-color: rgba(232,160,32,.2); } .qc-amber .qc-accent { background: var(--amber); }
+.qc-coral { border-color: rgba(224,92,75,.15); } .qc-coral .qc-accent { background: var(--coral); }
+.qc-sage  { border-color: rgba(90,140,122,.15); } .qc-sage .qc-accent { background: var(--sage); }
+.qc-purple{ border-color: rgba(107,79,160,.15); } .qc-purple .qc-accent { background: var(--purple); }
+.qc-navy  { border-color: rgba(13,35,64,.15); }  .qc-navy .qc-accent { background: var(--navy); }
+
+/* ── EXPANDABLE ── */
+.expand-item {
+  background: var(--card-bg); border-radius: var(--radius-sm);
+  margin-bottom: 9px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(13,35,64,.07);
+}
+.expand-trigger {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 16px; cursor: pointer; gap: 10px;
+}
+.et-left { display: flex; align-items: center; gap: 11px; }
+.et-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.et-dot.amber { background: var(--amber); }
+.et-dot.coral { background: var(--coral); }
+.et-dot.sage  { background: var(--sage); }
+.et-dot.navy  { background: var(--navy); }
+.et-dot.purple{ background: var(--purple); }
+.et-label { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+.et-arrow { font-size: 11px; color: var(--text-muted); transition: transform .2s; }
+.expand-item.open .et-arrow { transform: rotate(180deg); }
+.expand-body {
+  display: none; padding: 14px 16px 15px;
+  font-size: 13px; color: var(--text-muted); line-height: 1.7;
+  border-top: 1px solid var(--border);
+}
+.expand-item.open .expand-body { display: block; }
+.bullet-list { list-style: none; padding: 0; }
+.bullet-list li { padding: 4px 0 4px 16px; position: relative; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.bullet-list li::before { content: '•'; position: absolute; left: 3px; color: var(--teal); font-weight: 700; }
+
+/* ── STRATEGY CARD ── */
+.strategy-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 16px;
+  margin-bottom: 12px; box-shadow: var(--shadow); display: flex; gap: 13px; align-items: flex-start;
+}
+.sc-num {
+  width: 32px; height: 32px; border-radius: 9px; background: var(--teal);
+  color: #fff; font-size: 14px; font-weight: 700; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sc-num.amber { background: var(--amber); }
+.sc-num.coral { background: var(--coral); }
+.sc-num.sage  { background: var(--sage); }
+.sc-num.navy  { background: var(--navy); }
+.sc-title { font-weight: 700; font-size: 13.5px; color: var(--navy); margin-bottom: 4px; }
+.sc-body { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── ALERT / REFERRAL ── */
+.alert-box {
+  background: linear-gradient(135deg,#fff4e6,#fff9f0);
+  border: 1.5px solid var(--amber-light); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 12px; display: flex; gap: 11px;
+}
+.ab-icon { font-size: 22px; flex-shrink: 0; }
+.ab-title { font-weight: 700; font-size: 13.5px; color: #a06000; margin-bottom: 4px; }
+.ab-body { font-size: 12.5px; color: #7a5000; line-height: 1.6; }
+.referral-box { background: linear-gradient(135deg,var(--navy),#1a3a5c); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; }
+.rb-title { font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 8px; color: var(--amber-light); }
+.rb-body { font-size: 12.5px; color: rgba(255,255,255,.8); line-height: 1.65; margin-bottom: 13px; }
+.rb-btn {
+  display: inline-block; background: var(--teal-light); color: #fff;
+  border-radius: 9px; padding: 9px 18px; font-size: 12.5px; font-weight: 700;
+  cursor: pointer; border: none; font-family: 'DM Sans', sans-serif;
+}
+
+/* ── CHIPS ── */
+.chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 9px 0; }
+.chip { background: var(--teal); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 11.5px; font-weight: 600; }
+.chip.amber { background: var(--amber); }
+.chip.coral { background: var(--coral); }
+.chip.sage  { background: var(--sage); }
+.chip.navy  { background: var(--navy); }
+.chip.purple{ background: var(--purple); }
+
+/* ── EVIDENCE NOTE ── */
+.evidence-note {
+  background: #f0f7f5; border-radius: var(--radius-sm); padding: 11px 13px;
+  font-size: 11px; color: var(--sage); line-height: 1.5; margin-bottom: 11px;
+  display: flex; gap: 7px; align-items: flex-start;
+}
+
+/* ── CHILD CARDS ── */
+.child-card {
+  border-radius: var(--radius); padding: 20px; margin-bottom: 12px; text-align: center;
+}
+.child-card.warm { background: linear-gradient(135deg,#fff0e0,#fff8f0); border: 2px solid #f0c060; }
+.child-card.cool { background: linear-gradient(135deg,#e0f5f0,#f0faf8); border: 2px solid #80d0c0; }
+.child-emoji { font-size: 44px; margin-bottom: 10px; }
+.child-title { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--navy); margin-bottom: 7px; }
+.child-body { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+/* ══════════════════════════════════════════
+   PODCAST SECTION
+══════════════════════════════════════════ */
+.podcast-hero {
+  background: linear-gradient(135deg, #2d1b5e 0%, #0d2340 100%);
+  margin: 14px 14px 0; border-radius: var(--radius); padding: 22px 20px;
+  position: relative; overflow: hidden;
+}
+.podcast-hero::before {
+  content: ''; position: absolute; top: -40px; right: -20px;
+  width: 150px; height: 150px; background: rgba(107,79,160,.3); border-radius: 50%;
+}
+.podcast-wave {
+  display: flex; align-items: center; gap: 3px; margin: 12px 0 0;
+}
+.wave-bar {
+  width: 4px; background: var(--purple); border-radius: 2px; opacity: .7;
+  animation: wave 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(1){height:8px; animation-delay:0s;}
+.wave-bar:nth-child(2){height:16px; animation-delay:.1s;}
+.wave-bar:nth-child(3){height:24px; animation-delay:.2s;}
+.wave-bar:nth-child(4){height:14px; animation-delay:.3s;}
+.wave-bar:nth-child(5){height:20px; animation-delay:.4s;}
+.wave-bar:nth-child(6){height:10px; animation-delay:.5s;}
+.wave-bar:nth-child(7){height:18px; animation-delay:.3s;}
+.wave-bar:nth-child(8){height:12px; animation-delay:.2s;}
+@keyframes wave {
+  0%,100%{ transform: scaleY(1); opacity:.7; }
+  50%{ transform: scaleY(1.6); opacity:1; }
+}
+
+.podcast-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 16px;
+  margin-bottom: 12px; box-shadow: var(--shadow); overflow: hidden;
+  border: 1.5px solid rgba(107,79,160,.1);
+}
+.pc-top { display: flex; gap: 13px; align-items: flex-start; margin-bottom: 12px; }
+.pc-thumb {
+  width: 64px; height: 64px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 28px;
+}
+.pc-meta { flex: 1; }
+.pc-episode { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--purple); margin-bottom: 4px; }
+.pc-title { font-weight: 700; font-size: 14px; color: var(--navy); line-height: 1.3; margin-bottom: 5px; }
+.pc-guest { font-size: 11.5px; color: var(--text-muted); }
+.pc-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+.pc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.pc-tag {
+  background: rgba(107,79,160,.1); color: var(--purple);
+  border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600;
+}
+.pc-player { background: #f5f0fb; border-radius: 10px; padding: 12px; }
+.pc-progress-wrap { margin-bottom: 10px; }
+.pc-time-row { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+.pc-progress-bar { width: 100%; height: 5px; background: #ddd; border-radius: 3px; cursor: pointer; }
+.pc-progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--purple), var(--teal)); transition: width .3s; }
+.pc-controls { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.pc-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 20px; padding: 4px; transition: transform .15s;
+}
+.pc-btn:active { transform: scale(.9); }
+.pc-play-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--purple); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: transform .15s; box-shadow: 0 4px 14px rgba(107,79,160,.4);
+}
+.pc-play-btn:active { transform: scale(.94); }
+.pc-speed {
+  background: rgba(107,79,160,.12); border: none; border-radius: 6px;
+  padding: 3px 7px; font-size: 11px; font-weight: 700; color: var(--purple);
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+}
+.pc-duration-badge {
+  background: rgba(107,79,160,.1); color: var(--purple);
+  border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700;
+  display: inline-block; margin-bottom: 6px;
+}
+
+/* ══════════════════════════════════════════
+   QUIZ / SCREENING TOOL
+══════════════════════════════════════════ */
+.quiz-hero {
+  background: linear-gradient(135deg, #1a5c3a 0%, var(--navy) 100%);
+  margin: 14px 14px 0; border-radius: var(--radius); padding: 22px 20px;
+}
+.quiz-progress-wrap { margin: 16px 14px 0; }
+.quiz-progress-bar { width: 100%; height: 6px; background: var(--border); border-radius: 3px; }
+.quiz-progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); transition: width .4s ease; }
+.quiz-step-label { font-size: 11px; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
+.quiz-card {
+  background: var(--card-bg); border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow); margin: 14px 14px 0;
+}
+.quiz-q-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--teal); margin-bottom: 8px; }
+.quiz-q-text { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); line-height: 1.35; margin-bottom: 16px; }
+.quiz-q-sub { font-size: 12px; color: var(--text-muted); margin-top: -10px; margin-bottom: 14px; line-height: 1.5; }
+.quiz-options { display: flex; flex-direction: column; gap: 9px; }
+.quiz-opt {
+  border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 13px 16px;
+  font-size: 13.5px; color: var(--text); cursor: pointer; transition: all .18s;
+  background: #fff; display: flex; align-items: center; gap: 10px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; text-align: left;
+}
+.quiz-opt:hover { border-color: var(--teal); background: #f0faf8; }
+.quiz-opt.selected { border-color: var(--teal); background: #e8f8f5; color: var(--teal); }
+.quiz-opt.selected .opt-check { background: var(--teal); border-color: var(--teal); }
+.opt-check {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #fff; transition: all .15s;
+}
+.quiz-nav {
+  display: flex; gap: 10px; margin: 14px 14px 0;
+}
+.quiz-btn {
+  flex: 1; padding: 13px; border-radius: var(--radius-sm);
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 700; cursor: pointer; transition: all .18s;
+}
+.quiz-btn.primary { background: var(--teal); color: #fff; }
+.quiz-btn.primary:disabled { background: var(--border); color: var(--text-muted); }
+.quiz-btn.secondary { background: #fff; color: var(--text-muted); border: 2px solid var(--border); flex: 0 0 80px; }
+
+/* Results */
+.quiz-result { margin: 14px 14px 0; }
+.result-score-card {
+  border-radius: var(--radius); padding: 24px 20px; text-align: center; margin-bottom: 14px;
+}
+.result-score-card.low  { background: linear-gradient(135deg, #e8f8f0, #f0fdf8); border: 2px solid #80d0a0; }
+.result-score-card.mid  { background: linear-gradient(135deg, #fff8e0, #fffdf0); border: 2px solid var(--amber-light); }
+.result-score-card.high { background: linear-gradient(135deg, #fdeee8, #fff5f0); border: 2px solid #f0a080; }
+.rs-emoji { font-size: 50px; margin-bottom: 10px; }
+.rs-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; margin-bottom: 6px; }
+.rs-label.low  { color: #1a7a40; }
+.rs-label.mid  { color: #8a6000; }
+.rs-label.high { color: #c03a20; }
+.rs-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+.rs-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.result-breakdown { background: #fff; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom: 14px; }
+.rb-domain { display: flex; align-items: center; gap: 11px; margin-bottom: 11px; }
+.rb-domain:last-child { margin-bottom: 0; }
+.rbd-label { font-size: 12.5px; font-weight: 600; color: var(--navy); flex: 1; }
+.rbd-bar-wrap { flex: 2; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.rbd-bar { height: 100%; border-radius: 4px; }
+.rbd-bar.green  { background: #40b870; }
+.rbd-bar.amber  { background: var(--amber); }
+.rbd-bar.red    { background: var(--coral); }
+.quiz-disclaimer {
+  background: #f0f7f5; border-radius: var(--radius-sm); padding: 13px;
+  font-size: 11.5px; color: var(--sage); line-height: 1.5; margin-bottom: 12px;
+}
+
+/* ══════════════════════════════════════════
+   AI CHATBOT
+══════════════════════════════════════════ */
+.chat-page {
+  display: flex; flex-direction: column;
+  height: calc(100vh - 140px);
+  padding: 0;
+}
+.chat-header {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+  padding: 16px 16px 14px; margin: 14px 14px 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.chat-header-top { display: flex; align-items: center; gap: 11px; }
+.chat-avatar {
+  width: 42px; height: 42px; background: rgba(255,255,255,.2); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.chat-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: #fff; }
+.chat-status { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 1px; }
+.chat-online { display: inline-block; width: 7px; height: 7px; background: #4cd080; border-radius: 50%; margin-right: 5px; }
+
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 14px 14px 8px;
+  background: #f5f9f8; margin: 0 14px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 0;
+  max-height: calc(100vh - 320px);
+}
+.msg { display: flex; gap: 9px; align-items: flex-end; }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 30px; height: 30px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+  background: var(--teal-light);
+}
+.msg.user .msg-avatar { background: var(--navy); }
+.msg-bubble {
+  max-width: 78%; padding: 11px 14px; border-radius: 16px;
+  font-size: 13px; line-height: 1.6; color: var(--text);
+  background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border-bottom-left-radius: 4px;
+}
+.msg.user .msg-bubble {
+  background: var(--teal); color: #fff;
+  border-bottom-right-radius: 4px; border-bottom-left-radius: 16px;
+}
+.msg-time { font-size: 10px; color: var(--text-muted); margin-top: 3px; padding: 0 4px; }
+.msg.user .msg-time { text-align: right; }
+
+.typing-indicator { display: flex; align-items: center; gap: 5px; padding: 8px 14px; }
+.typing-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-light); animation: typing .8s infinite; }
+.typing-dot:nth-child(2) { animation-delay: .15s; }
+.typing-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes typing { 0%,60%,100%{ transform:translateY(0); } 30%{ transform:translateY(-6px); } }
+
+.chat-input-area {
+  background: #fff; border-radius: 0 0 var(--radius) var(--radius);
+  padding: 12px 14px; margin: 0 14px; border-top: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(13,35,64,.08);
+}
+.chat-input-row { display: flex; gap: 9px; align-items: flex-end; }
+.chat-input {
+  flex: 1; border: 1.5px solid var(--border); border-radius: 22px;
+  padding: 10px 16px; font-family: 'DM Sans', sans-serif; font-size: 13.5px;
+  color: var(--text); resize: none; max-height: 90px;
+  outline: none; transition: border-color .2s; line-height: 1.4;
+}
+.chat-input:focus { border-color: var(--teal-light); }
+.chat-send {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--teal);
+  border: none; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-size: 17px; transition: all .15s; flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(26,122,110,.4);
+}
+.chat-send:hover { background: var(--teal-light); transform: scale(1.05); }
+.chat-send:disabled { background: var(--border); box-shadow: none; }
+.chat-suggestions { display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; margin-bottom: 10px; }
+.chat-suggestions::-webkit-scrollbar { display: none; }
+.chat-sug {
+  flex-shrink: 0; background: #f0f9f7; border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 6px 13px; font-size: 12px; font-weight: 600;
+  color: var(--teal); cursor: pointer; white-space: nowrap; transition: all .15s;
+}
+.chat-sug:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.disclaimer-chip {
+  background: rgba(26,122,110,.08); border-radius: 8px; padding: 8px 12px;
+  font-size: 11px; color: var(--sage); line-height: 1.45; margin-top: 8px;
+}
+
+/* ══════════════════════════════════════════
+   RESOURCES PAGE
+══════════════════════════════════════════ */
+/* Inherits existing styles */
+
+/* ── MISC ── */
+.spacer { height: 20px; }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="app-header">
+  <div class="header-top">
+    <div class="app-logo">
+      <div class="logo-mark">🧭</div>
+      <div>
+        <div class="app-name">FASD Compass</div>
+        <div class="app-tagline">Understanding & Supporting Children</div>
+      </div>
+    </div>
+    <div class="header-badge">Evidence-Based</div>
+  </div>
+  <div class="audience-scroll" id="audienceBar">
+    <button class="aud-btn active" onclick="switchAudience('overview',this)">Overview</button>
+    <button class="aud-btn" onclick="switchAudience('parents',this)">Parents</button>
+    <button class="aud-btn" onclick="switchAudience('teachers',this)">Teachers</button>
+    <button class="aud-btn" onclick="switchAudience('clinicians',this)">Clinicians</button>
+    <button class="aud-btn" onclick="switchAudience('children',this)">For Children</button>
+  </div>
+</header>
+
+<!-- ─── MAIN ─── -->
+<main class="main" id="mainContent">
+
+<!-- ════════════════ OVERVIEW ════════════════ -->
+<div class="page active" id="page-overview">
+  <div class="hero">
+    <div class="hero-eyebrow">Fetal Alcohol Spectrum Disorder</div>
+    <div class="hero-title">Understand. Recognise. Support.</div>
+    <div class="hero-body">FASD is the leading preventable cause of neurodevelopmental disability. Early recognition and the right strategies make a lifelong difference.</div>
+  </div>
+  <div class="section">
+    <div class="section-title">What is FASD?</div>
+    <div class="info-card">
+      <div class="ic-header"><span class="ic-icon">🧠</span><span class="ic-title">Definition</span></div>
+      <div class="ic-body">FASD is a lifelong neurodevelopmental condition caused by prenatal alcohol exposure. It affects brain structure and function, leading to challenges across cognition, behaviour, communication, and daily living. FASD is categorised into two presentations based on the presence or absence of sentinel facial features — both are equally significant diagnoses.</div>
+    </div>
+    <div class="chip-row">
+      <span class="chip">FASD with Sentinel Facial Features</span>
+      <span class="chip amber">FASD without Sentinel Facial Features</span>
+    </div>
+    <p style="font-size:11.5px;color:var(--text-muted);margin-top:4px;line-height:1.5;">Both presentations are equally valid diagnoses of FASD. The absence of facial features does not mean a milder condition — neurodevelopmental impairment can be equally significant in both.</p>
+  </div>
+  <div class="section">
+    <div class="section-title">Key Facts</div>
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Prevalence (UK)</span></div><div class="ic-body">SIGN 156 estimates that approximately 3.2% of babies born in the UK are affected by FASD — three to four times the rate of autism. In Scotland alone, up to 172,000 people may be affected. FASD remains significantly underdiagnosed.</div></div>
+    <div class="info-card coral"><div class="ic-header"><span class="ic-icon">⚠️</span><span class="ic-title">No Safe Amount</span></div><div class="ic-body">There is no known safe level, safe type, or safe time during pregnancy to drink alcohol. This is the advice of the UK Chief Medical Officers and is the basis of NICE QS204 Statement 1.</div></div>
+    <div class="info-card sage"><div class="ic-header"><span class="ic-icon">✅</span><span class="ic-title">100% Preventable</span></div><div class="ic-body">FASD is entirely preventable. Not drinking alcohol during pregnancy eliminates the risk entirely.</div></div>
+    <div class="info-card navy"><div class="ic-header"><span class="ic-icon">📋</span><span class="ic-title">NICE QS204 — 5 Quality Statements</span></div><div class="ic-body">
+      <strong>QS1</strong> — Pregnant women are advised throughout pregnancy not to drink alcohol.<br><br>
+      <strong>QS2</strong> — Alcohol use is asked about and recorded throughout pregnancy.<br><br>
+      <strong>QS3</strong> — Children with probable PAE and significant difficulties are referred for assessment.<br><br>
+      <strong>QS4</strong> — Children with confirmed PAE or all 3 facial features have a neurodevelopmental assessment if there are clinical concerns.<br><br>
+      <strong>QS5</strong> — Children with a diagnosis of FASD have an individualised management plan.
+    </div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Quick Access</div>
+    <div class="quick-grid">
+      <div class="quick-card qc-teal" onclick="switchAudience('parents',document.querySelectorAll('.aud-btn')[1])"><span class="qc-icon">👨‍👩‍👧</span><div class="qc-label">Parent Guide</div><div class="qc-sub">Strategies & support</div><div class="qc-accent"></div></div>
+      <div class="quick-card qc-amber" onclick="switchAudience('teachers',document.querySelectorAll('.aud-btn')[2])"><span class="qc-icon">🏫</span><div class="qc-label">School Strategies</div><div class="qc-sub">Classroom support</div><div class="qc-accent"></div></div>
+      <div class="quick-card qc-coral" onclick="switchAudience('clinicians',document.querySelectorAll('.aud-btn')[3])"><span class="qc-icon">🩺</span><div class="qc-label">Clinical Guide</div><div class="qc-sub">Diagnosis & referral</div><div class="qc-accent"></div></div>
+      <div class="quick-card qc-purple" onclick="switchNav(document.querySelectorAll('.nav-item')[2],'quiz')"><span class="qc-icon">📋</span><div class="qc-label">Screening Tool</div><div class="qc-sub">Early detection quiz</div><div class="qc-accent"></div></div>
+      <div class="quick-card qc-sage" onclick="switchNav(document.querySelectorAll('.nav-item')[1],'podcast')"><span class="qc-icon">🎙️</span><div class="qc-label">Podcast</div><div class="qc-sub">Expert episodes</div><div class="qc-accent"></div></div>
+      <div class="quick-card qc-navy" onclick="switchNav(document.querySelectorAll('.nav-item')[4],'chat')"><span class="qc-icon">🤖</span><div class="qc-label">Ask FASD AI</div><div class="qc-sub">Get instant answers</div><div class="qc-accent"></div></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">Diagnostic Classifications</div>
+    <div class="evidence-note">📚 SIGN 156 (Scottish Intercollegiate Guidelines Network, 2019) — adopted by NICE QS204 (2022) for England & Wales. SNOMED CT codes implemented 2024.</div>
+
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">FASD with Sentinel Facial Features</div></div><div class="et-arrow">▼</div></div><div class="expand-body">
+      <p style="font-size:12px;color:var(--teal);font-weight:700;margin-bottom:8px;">SNOMED CT: 1894471000000108</p>
+      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;line-height:1.65;">Per SIGN 156: All <strong>three sentinel facial features</strong> must be present. These are highly specific to prenatal alcohol exposure and, when all three are present, confirmation of alcohol exposure through other means is <em>not</em> required.</p>
+      <p style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">The Three Sentinel Facial Features:</p>
+      <ul class="bullet-list">
+        <li><strong>Smooth philtrum</strong> — ranked 4 or 5 on the University of Washington Lip-Philtrum Guide</li>
+        <li><strong>Thin vermillion border (upper lip)</strong> — ranked 4 or 5 on the Lip-Philtrum Guide</li>
+        <li><strong>Short palpebral fissures</strong> — at or below the 3rd centile (≤3rd percentile for age)</li>
+      </ul>
+      <p style="font-size:12px;font-weight:700;color:var(--navy);margin:10px 0 6px;">Plus:</p>
+      <ul class="bullet-list">
+        <li>Prenatal alcohol exposure (confirmed, probable, or unknown — all three SFF alone may be sufficient)</li>
+        <li>Evidence of pervasive brain dysfunction (≥3 neurodevelopmental domains severely impaired) — or microcephaly in infants</li>
+      </ul>
+      <p style="font-size:11.5px;color:var(--sage);margin-top:10px;font-style:italic;">Note: Features such as flat midface, low nasal bridge, or short nose are associated features, not sentinel features. Only the three above are sentinel.</p>
+    </div></div>
+
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">FASD without Sentinel Facial Features</div></div><div class="et-arrow">▼</div></div><div class="expand-body">
+      <p style="font-size:12px;color:var(--amber);font-weight:700;margin-bottom:8px;">SNOMED CT: 1894461000000101</p>
+      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;line-height:1.65;">Per SIGN 156: This accounts for the <strong>majority</strong> of FASD presentations (approximately 90% of cases). Facial features are absent or fewer than three sentinel features are present.</p>
+      <p style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">Diagnostic Criteria (both required):</p>
+      <ul class="bullet-list">
+        <li><strong>Confirmed or probable prenatal alcohol exposure</strong> — reliable evidence of maternal alcohol use during pregnancy is essential where facial features are absent (SIGN 156, NICE QS204)</li>
+        <li><strong>Pervasive brain dysfunction</strong> — severe impairment in <strong>3 or more</strong> of the 10 SIGN 156 neurodevelopmental domains (see below)</li>
+      </ul>
+      <p style="font-size:11.5px;color:var(--coral);margin-top:10px;font-style:italic;">There is no 'mild' FASD — neurodevelopmental impairment in this presentation can be equally or more severe than in the facial-features presentation.</p>
+    </div></div>
+
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">The 10 SIGN 156 Neurodevelopmental Domains</div></div><div class="et-arrow">▼</div></div><div class="expand-body">
+      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;line-height:1.65;">Per SIGN 156: Severe impairment in <strong>3 or more</strong> of these domains = pervasive brain dysfunction. Each domain must be assessed by a qualified professional using standardised tools.</p>
+      <ul class="bullet-list">
+        <li><strong>Brain structure / Neuroanatomy / Neurophysiology</strong></li>
+        <li><strong>Motor skills</strong> (fine and gross motor, coordination)</li>
+        <li><strong>Cognition</strong> (intellectual ability, processing)</li>
+        <li><strong>Language</strong> (receptive and expressive)</li>
+        <li><strong>Academic achievement</strong></li>
+        <li><strong>Memory</strong> (especially working memory and short-term recall)</li>
+        <li><strong>Attention</strong> (including hyperactivity)</li>
+        <li><strong>Executive function</strong> (including impulse control, planning, flexibility)</li>
+        <li><strong>Affect regulation</strong> (emotional dysregulation)</li>
+        <li><strong>Adaptive behaviour, social skills, and social communication</strong></li>
+      </ul>
+    </div></div>
+
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot coral"></div><div class="et-label">At Increased Risk of FASD</div></div><div class="et-arrow">▼</div></div><div class="expand-body">
+      <p style="font-size:12px;color:var(--coral);font-weight:700;margin-bottom:8px;">SNOMED CT: 2078801000000102</p>
+      <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;line-height:1.65;">SIGN 156 and NICE QS204 recognise a third category for children who do not yet meet full diagnostic criteria but remain at increased risk:</p>
+      <ul class="bullet-list">
+        <li>Confirmed or probable PAE but insufficient evidence of neurodevelopmental impairment at this time (e.g. infant or young child where full assessment not yet possible)</li>
+        <li>Three sentinel facial features present but full neurodevelopmental assessment not yet completed</li>
+        <li>Should receive monitoring, support, and re-assessment as the child develops</li>
+      </ul>
+      <p style="font-size:11.5px;color:var(--sage);margin-top:10px;font-style:italic;">NICE QS204 states: support should not wait for a formal diagnosis — children at increased risk should receive early intervention.</p>
+    </div></div>
+
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">Brain & Neurodevelopmental Signs</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Memory difficulties (especially short-term and working memory)</li><li>Poor cause-and-effect reasoning</li><li>Difficulty with abstract concepts</li><li>Impulse control challenges</li><li>Attention and concentration difficulties</li><li>Language delays or processing difficulties</li><li>Inconsistent performance — 'good days and bad days'</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot coral"></div><div class="et-label">Behavioural Signs</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Difficulty understanding consequences</li><li>Emotional dysregulation / meltdowns</li><li>Confabulation (apparent lying — neurological, not intentional)</li><li>Difficulty with transitions and change</li><li>Social naivety / over-friendliness with strangers</li><li>Sleep disturbances</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">Physical Signs</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Growth restriction (height, weight, or head circumference)</li><li>Microcephaly (OFC ≤ 3rd centile) — particularly significant in infants</li><li>Sensory processing differences (over or under-responsive)</li><li>Poor fine and gross motor coordination</li><li>Feeding difficulties in infancy</li><li>Hearing or vision problems</li></ul></div></div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ PARENTS ════════════════ -->
+<div class="page" id="page-parents">
+  <div class="hero" style="background:linear-gradient(135deg,var(--teal),#1a3a5c);">
+    <div class="hero-eyebrow">For Parents & Carers</div>
+    <div class="hero-title">You're Not Alone — and It's Not Your Fault</div>
+    <div class="hero-body">Understanding your child's FASD brain helps you advocate, adapt, and build on their strengths every day.</div>
+  </div>
+  <div class="section">
+    <div class="section-title">Understanding Your Child</div>
+    <div class="info-card"><div class="ic-header"><span class="ic-icon">🧩</span><span class="ic-title">The FASD Brain</span></div><div class="ic-body">Children with FASD have a neurological difference — not a behavioural choice. Their brains process information differently. Behaviours that look like defiance are often genuine neurological challenges with memory, impulse control, and cause-and-effect thinking.</div></div>
+    <div class="alert-box"><div class="ab-icon">💡</div><div><div class="ab-title">Key Mindset Shift</div><div class="ab-body">"Can't, not won't" — Many FASD behaviours reflect neurological inability, not deliberate non-compliance. Consequences-based discipline alone rarely works.</div></div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Strategies for Home</div>
+    <div class="evidence-note">📚 Streissguth & Kanter (1997); Blackburn et al. (2010); FASD Network Guidelines</div>
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">Create Predictable Routines</div><div class="sc-body">Use consistent daily schedules with visual timetables. Give warnings before transitions: "5 more minutes, then bath time."</div></div></div>
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Use Visual Supports</div><div class="sc-body">Pair verbal instructions with pictures or written steps. A picture checklist for the morning routine reduces cognitive load significantly.</div></div></div>
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">Keep Instructions Simple</div><div class="sc-body">Give one instruction at a time. Use short, concrete language. Ask your child to repeat back what they heard.</div></div></div>
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Regulation Before Reasoning</div><div class="sc-body">When dysregulated, their thinking brain is offline. Help them calm first before reasoning or discussing consequences.</div></div></div>
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Celebrate Strengths</div><div class="sc-body">Many children with FASD are highly creative, caring, and artistic. Build on what they can do.</div></div></div>
+    <div class="strategy-card"><div class="sc-num">6</div><div><div class="sc-title">Seek Your Own Support</div><div class="sc-body">Caring for a child with FASD is demanding. Connect with FASD support groups and ensure your own wellbeing is supported.</div></div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">If You Are Concerned: What to Do</div>
+    <div class="evidence-note">📚 Based on SIGN 156 Section 2.1.4 (Referral) and NICE QS204 Statement 3</div>
+
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">Talk to Your GP or Health Visitor First</div><div class="sc-body">Share your concerns clearly. Mention any known or suspected prenatal alcohol exposure, developmental delays, or behavioural challenges that worry you. You don't need a confirmed history of alcohol use in pregnancy to ask for an assessment — <strong>probable or suspected PAE with significant difficulties is enough to trigger a referral</strong> (NICE QS204 Statement 3).</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Ask for a Referral to a Paediatrician</div><div class="sc-body">Your GP should refer your child to a community paediatrician or neurodevelopmental service. SIGN 156 is clear: <strong>referral should be made sensitively when there is evidence of significant physical, developmental or behavioural concerns and probable PAE</strong>. You should not have to prove the alcohol exposure before being referred.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">Request an FASD-Informed Assessment</div><div class="sc-body">Ask specifically that prenatal alcohol exposure is considered as a possible cause of your child's difficulties. SIGN 156 notes that PAE is frequently not considered, particularly in children already labelled with ADHD or ASD. A full FASD assessment involves a multidisciplinary team (paediatrician, psychologist, speech and language therapist, occupational therapist).</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Don't Wait for a Diagnosis to Ask for Support</div><div class="sc-body">NICE QS204 is explicit: <strong>support should not wait for a formal diagnosis</strong>. While waiting for assessment, ask the school to put interim strategies in place, request an Early Help Assessment, or contact your local FASD support group for peer support and practical guidance.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">After Diagnosis: Your Child's Management Plan</div><div class="sc-body">Per NICE QS5, every child diagnosed with FASD must have an <strong>individualised management plan</strong>. This should be developed with you and cover: therapy needs, school support, community resources, and regular review. Ask your paediatrician to share it with the school, health visitor, and any other professionals involved in your child's care.</div></div></div>
+
+    <div class="alert-box"><div class="ab-icon">📞</div><div><div class="ab-title">Who Else Can Help?</div><div class="ab-body">• <strong>National FASD</strong> helpline and resources: nationalfasd.org.uk<br>• FASD Scotland: fasdscotland.com<br>• Your child's school — ask for a SENCO (Special Educational Needs Coordinator) referral<br>• Social care and Early Help services if support at home is needed</div></div></div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ TEACHERS ════════════════ -->
+<div class="page" id="page-teachers">
+  <div class="hero" style="background:linear-gradient(135deg,#2a5a8c,var(--navy));">
+    <div class="hero-eyebrow">For Teachers & Schools</div>
+    <div class="hero-title">Every Child Can Learn — With the Right Environment</div>
+    <div class="hero-body">Children with FASD require adapted teaching approaches to thrive in the classroom.</div>
+  </div>
+  <div class="section">
+    <div class="section-title">Classroom Strategies</div>
+    <div class="evidence-note">📚 Pei et al. (2016); Blackburn & Whitehurst (2010)</div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">Environment & Seating</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Seat near the teacher and away from distractions</li><li>Reduce visual clutter in the workspace</li><li>Allow fidget tools and movement breaks</li><li>Provide a calm-down space they can access independently</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">Instructions & Communication</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Give one instruction at a time and check for understanding</li><li>Use concrete, literal language — avoid sarcasm and idioms</li><li>Pair verbal with visual cues</li><li>Allow extra processing time before expecting a response</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot coral"></div><div class="et-label">Routines & Transitions</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Use a consistent visual daily timetable on the desk</li><li>Give advance warnings before transitions</li><li>Prepare for changes in routine the day before</li><li>Use a "now and next" board for anxious learners</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">Assessment & Workload</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Break tasks into small, manageable chunks</li><li>Allow oral responses instead of written where possible</li><li>Extra time for tests and assessments</li><li>Avoid copying from the board — provide pre-printed notes</li></ul></div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot navy"></div><div class="et-label">Behaviour & Regulation</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Avoid punitive approaches — focus on scaffolding</li><li>Identify triggers and create a regulation plan with the family</li><li>Use a calm-down space, not exclusion as punishment</li><li>Confabulation (making up stories) is neurological, not lying</li></ul></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">If You Are Concerned: Steps for Schools</div>
+    <div class="evidence-note">📚 Based on SIGN 156 Section 2.1.4, NICE QS204 Statements 3–4, and GIRFEC principles</div>
+
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">Speak to the Child's Parent or Carer First</div><div class="sc-body">If you have concerns about a child's learning, behaviour, or development that might be linked to prenatal alcohol exposure, approach the family sensitively. Ask open questions about the child's history, health, and any known concerns. Do not make assumptions — many children with FASD are adopted or in foster care and birth history may not be known.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Involve the SENCO</div><div class="sc-body">Refer to your school's Special Educational Needs Coordinator (SENCO) as a first step. The SENCO can coordinate support, initiate an Education, Health and Care Plan (EHCP) or statutory assessment, liaise with external specialists, and ensure interim strategies are documented and reviewed.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">Make a Referral to Children's Services / Health</div><div class="sc-body">Where there are significant physical, developmental, or behavioural concerns alongside probable or known prenatal alcohol exposure, NICE QS204 Statement 3 requires referral for assessment. As a teacher, you can refer to the school nurse, health visitor, or raise concerns via the school's safeguarding lead to ensure a health referral is made. <strong>Do not wait for a diagnosis before putting support in place.</strong></div></div></div>
+
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Contribute to the MDT Assessment</div><div class="sc-body">Teachers and educational psychologists are valued members of the FASD assessment team (SIGN 156 Section 3.7). School reports, observations of the child's performance and behaviour across contexts, and information about learning progress are essential to the assessment process. Provide written information when requested and attend multi-agency meetings where possible.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Implement the Management Plan</div><div class="sc-body">After diagnosis, every child with FASD must have an individualised management plan (NICE QS5). Schools should be active participants in developing and implementing this. Ensure strategies are reviewed regularly, especially at key transitions (new class, new school, secondary transfer). SIGN 156 emphasises reassessment at all transition stages throughout the young person's life.</div></div></div>
+
+    <div class="alert-box"><div class="ab-icon">💡</div><div><div class="ab-title">Remember: Inconsistency is Neurological</div><div class="ab-body">SIGN 156 describes the FASD learner profile as one of pervasive and long-standing brain dysfunction. A child performing well one day and struggling the next is not being manipulative — this variability is a hallmark of FASD. Assessment must reflect the child's <em>typical</em> performance, not their best day.</div></div></div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ CLINICIANS ════════════════ -->
+<div class="page" id="page-clinicians">
+  <div class="hero" style="background:linear-gradient(135deg,#1a5c3a,#0d2340);">
+    <div class="hero-eyebrow">Clinicians, GPs & Nurses</div>
+    <div class="hero-title">Diagnosis Changes Lives — Don't Miss It</div>
+    <div class="hero-body">FASD remains significantly underdiagnosed in the UK. SIGN 156 and NICE QS204 provide the current national framework for assessment, diagnosis, and care.</div>
+  </div>
+  <div class="section">
+    <div class="section-title">NICE QS204 — Your Obligations</div>
+    <div class="evidence-note">📚 NICE Quality Standard QS204 (March 2022) applies in England & Wales. SIGN 156 (2019, revalidated 2022) applies in Scotland. Both use the same two-category diagnostic framework.</div>
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">QS1 — Advise Against Drinking in Pregnancy</div><div class="sc-body">All pregnant women should be advised at every antenatal contact that there is no safe level of alcohol in pregnancy. This should be verbal and written, based on UK CMO low-risk drinking guidelines.</div></div></div>
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">QS2 — Ask About and Record Alcohol Use</div><div class="sc-body">Alcohol use must be asked about and documented throughout pregnancy. Use validated tools (e.g. AUDIT-C). Record all responses — including nil consumption — in the patient record.</div></div></div>
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">QS3 — Refer for Assessment</div><div class="sc-body">Children and young people with <strong>probable prenatal alcohol exposure</strong> and significant physical, developmental, or behavioural difficulties should be referred for FASD assessment. Do not wait for confirmed exposure before referring.</div></div></div>
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">QS4 — Neurodevelopmental Assessment</div><div class="sc-body">Children with <strong>confirmed PAE</strong>, or <strong>all three sentinel facial features</strong>, must have a neurodevelopmental assessment if there are clinical concerns. Assessment should cover all 10 SIGN 156 domains.</div></div></div>
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">QS5 — Management Plan</div><div class="sc-body">Every child diagnosed with FASD must have an <strong>individualised management plan</strong> that addresses immediate and long-term needs, signposts to services, and is shared with the family, school, and relevant professionals.</div></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">SIGN 156 Diagnostic Framework</div>
+    <div class="evidence-note">📚 SIGN 156 (2019). Adopted by NICE QS204 as the underpinning diagnostic guideline for the UK.</div>
+
+    <div class="info-card">
+      <div class="ic-header"><span class="ic-icon">🔬</span><span class="ic-title">FASD with Sentinel Facial Features</span></div>
+      <div class="ic-body">
+        <span style="font-size:11px;background:rgba(26,122,110,0.1);color:var(--teal);border-radius:5px;padding:2px 7px;font-weight:700;">SNOMED CT: 1894471000000108</span><br><br>
+        <strong>Requires all three sentinel facial features:</strong><br>
+        • Smooth philtrum — rank 4–5, University of Washington Lip-Philtrum Guide<br>
+        • Thin vermillion border — rank 4–5, Lip-Philtrum Guide<br>
+        • Short palpebral fissures — ≤3rd centile for age<br><br>
+        <strong>Plus:</strong> Evidence of PAE (or unknown — all 3 SFF may suffice as proxy for PAE) <strong>and</strong> pervasive brain dysfunction (≥3 SIGN 156 domains severely impaired). In infants, microcephaly (OFC ≤3rd centile) may substitute for neurodevelopmental domain criteria.
+      </div>
+    </div>
+
+    <div class="info-card amber">
+      <div class="ic-header"><span class="ic-icon">🔬</span><span class="ic-title">FASD without Sentinel Facial Features</span></div>
+      <div class="ic-body">
+        <span style="font-size:11px;background:rgba(232,160,32,0.12);color:#8a6000;border-radius:5px;padding:2px 7px;font-weight:700;">SNOMED CT: 1894461000000101</span><br><br>
+        <strong>Previously termed:</strong> pFAS, ARND, ARBD, ND-PAE — all now superseded under SIGN 156/NICE QS204.<br><br>
+        <strong>Requires:</strong><br>
+        • <strong>Confirmed or probable PAE</strong> — reliable evidence is essential where facial features are absent (self-report, clinical records, alcohol treatment history, collateral history)<br>
+        • <strong>Pervasive brain dysfunction</strong> — severe impairment in ≥3 of the 10 SIGN 156 neurodevelopmental domains<br><br>
+        Fewer than 3 sentinel facial features are present. <strong>This is not a milder diagnosis.</strong>
+      </div>
+    </div>
+
+    <div class="info-card coral">
+      <div class="ic-header"><span class="ic-icon">⚠️</span><span class="ic-title">At Increased Risk of FASD</span></div>
+      <div class="ic-body">
+        <span style="font-size:11px;background:rgba(224,92,75,0.1);color:#a02a18;border-radius:5px;padding:2px 7px;font-weight:700;">SNOMED CT: 2078801000000102</span><br><br>
+        For children who do not yet meet full criteria — e.g. confirmed PAE but child too young for full neurodevelopmental assessment, or 3 SFF present but assessment not yet complete. Should receive early support and regular re-assessment. Per NICE QS204: support must not wait for a formal diagnosis.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">SIGN 156 — 10 Areas of Assessment</div>
+    <div class="evidence-note">📚 Extracted directly from SIGN 156 Section 3.4. Severe impairment = global score or major subdomain score ≥2 SDs below the mean on a standardised measure. Impairment in ≥3 areas = pervasive brain dysfunction. "Domain" is used in SIGN 156 as an area of assessment.</div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">1. Brain Structure / Neuroanatomy / Neurophysiology</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when:</p>
+        <ul class="bullet-list">
+          <li>Occipitofrontal head circumference (OFC) is &lt;3rd centile (<strong>microcephaly</strong>)</li>
+          <li>A seizure disorder has been diagnosed not due to known postnatal influences</li>
+          <li>Brain imaging shows convincing evidence of structural abnormalities associated with PAE (e.g. partial/complete agenesis of the corpus callosum, cerebellar hypoplasia) after other aetiologies excluded</li>
+        </ul>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">MRI is not required as standard. In infants and young children, microcephaly alone may be sufficient for diagnosis without full neurodevelopmental assessment.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">2. Motor Skills</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when a composite score below clinical cut-off is obtained on:</p>
+        <ul class="bullet-list">
+          <li>Fine motor skills</li>
+          <li>Gross motor skills</li>
+          <li>Graphomotor skills (writing, drawing)</li>
+          <li>Visual-motor integration</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">Tone, reflexes, balance, coordination, strength, and other neurological examination findings may be considered in combination with formal assessment.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot coral"></div><div class="et-label">3. Cognition</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when standardised tests show:</p>
+        <ul class="bullet-list">
+          <li>Composite IQ or cognitive score below clinical cut-off</li>
+          <li>A major subdomain score (verbal, nonverbal, or fluid reasoning) below cut-off</li>
+          <li>A large and unusual discrepancy among major subdomain scores (base rate ≤3% of population, with the lower score ≥1 SD below the mean)</li>
+        </ul>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">Children with FASD commonly have a spiky cognitive profile — strong in some areas, significantly impaired in others. Uneven profiles are characteristic and should not be dismissed.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">4. Language</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when:</p>
+        <ul class="bullet-list">
+          <li>Composite score on core language, receptive language, or expressive language is below clinical cut-off</li>
+          <li>Multiple subtest scores on higher-level language skills are below cut-off (e.g. narrative comprehension, complex language)</li>
+          <li>Large discrepancy between receptive and expressive language composites (base rate &lt;3%, lower score ≥1 SD below mean)</li>
+        </ul>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">Children may appear to understand but not follow through — this often reflects a gap between receptive and executive processing, not non-compliance.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot navy"></div><div class="et-label">5. Academic Achievement</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when standardised scores in reading, mathematics, or written expression are below clinical cut-off, or when there is a significant discrepancy between cognitive ability and achievement (base rate &lt;3%, achievement score ≥1 SD below mean).</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;">The clinical team must confirm the child has had consistent access to academic instruction before recording a deficit in this area.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">6. Memory</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when:</p>
+        <ul class="bullet-list">
+          <li>Composite score on overall memory, verbal memory, or visual memory is below clinical cut-off</li>
+          <li>Large discrepancy between verbal and non-verbal memory (base rate &lt;3%, lower score ≥1 SD below mean)</li>
+        </ul>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">Working memory deficits are assessed under Executive Function, not Memory. Children may appear to have learned a rule or skill and then "forgotten" it — this is characteristic of FASD memory impairment.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">7. Attention</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">In SIGN 156, attention is defined as <strong>sustained or selective attention and resistance to distractions</strong>. Inhibition, impulse control, and hyperactivity are assessed under Executive Function.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;"><strong>Direct assessment:</strong> Multiple subtest scores below cut-off on continuous processing tests or neuropsychological attention measures.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;"><strong>Indirect assessment:</strong> Converging evidence from clinical interview, questionnaire, file review, and direct clinical observation during testing.</p>
+        <p style="font-size:11.5px;color:var(--coral);margin-top:9px;font-style:italic;">FASD is frequently misdiagnosed as ADHD alone. Many children receive ADHD diagnoses and medication without recognition of the underlying PAE. Both conditions can coexist.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot coral"></div><div class="et-label">8. Executive Function (incl. Impulse Control & Hyperactivity)</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Executive function covers higher-level skills for organising and controlling thoughts and behaviours toward long-term goals. In SIGN 156 this includes:</p>
+        <ul class="bullet-list">
+          <li>Working memory</li>
+          <li>Inhibition and impulse control</li>
+          <li>Hyperactivity</li>
+          <li>Planning and problem solving</li>
+          <li>Shifting and cognitive flexibility</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;"><strong>Direct:</strong> Multiple neuropsychological subtest scores below cut-off. <strong>Indirect:</strong> Converging evidence from rating scales, clinical interview, file review, and direct observation.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">9. Affect Regulation</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is manifested by high levels of emotional expression causing significant clinical impairment, in the form of:</p>
+        <ul class="bullet-list">
+          <li>Anxiety disorders (panic, phobic, separation anxiety, generalised anxiety)</li>
+          <li>Depressive disorders</li>
+          <li>Oppositional defiant disorder or conduct disorder (frequent loss of temper, negativistic or vindictive behaviours)</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;font-weight:600;">Important SIGN 156 qualifier:</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;">Affect dysregulation should only be attributed to PAE if it is <strong>long-standing</strong>. It should NOT be attributed to PAE if it is clearly a response to adverse life events (e.g. multiple foster placements) or is situationally specific.</p>
+      </div>
+    </div>
+
+    <div class="expand-item" onclick="toggleExpand(this)">
+      <div class="expand-trigger"><div class="et-left"><div class="et-dot navy"></div><div class="et-label">10. Adaptive Behaviour, Social Skills & Social Communication</div></div><div class="et-arrow">▼</div></div>
+      <div class="expand-body">
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment assessed by:</p>
+        <ul class="bullet-list">
+          <li><strong>Direct (social communication):</strong> Score below cut-off on composite measure of social language, pragmatic language, or social communication skills</li>
+          <li><strong>Indirect (adaptive behaviour/social skills):</strong> Score below cut-off on global composite or major subdomain of a standardised caregiver rating scale or informant interview</li>
+        </ul>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">For children and most adolescents, standardised caregiver ratings should be used. Observations and ratings should be gathered across environments — parents report on home behaviour; teachers on school behaviour.</p>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">For adults without a consistent caregiver in the last 2 years, historical records and alternative interview methods may be used as a proxy.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">SIGN 156 Screening Triggers</div>
+    <div class="strategy-card"><div class="sc-num coral">!</div><div><div class="sc-title">Consider FASD Assessment When:</div><div class="sc-body">
+      • Child in foster, kinship, or adoptive care with unknown birth history<br>
+      • Known or probable prenatal alcohol exposure at any level<br>
+      • ADHD or ASD diagnosis not fully explaining the clinical picture, or not responding as expected<br>
+      • Multiple failed placements, school exclusions, or placement breakdowns<br>
+      • Unexplained learning difficulties with inconsistency in performance<br>
+      • Three sentinel facial features identified on examination<br>
+      • Comorbid mental health, conduct, or attachment disorder presentations<br>
+      • Social services involvement in early life
+    </div></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">SIGN 156 Assessment Pathway</div>
+    <div class="evidence-note">📚 SIGN 156 Sections 3.1–3.7. The diagnostic algorithm (Annex 2, SIGN 156) should be followed for all cases.</div>
+
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">Gather PAE History</div><div class="sc-body">Confirmation of PAE requires documentation that the biological mother consumed alcohol during the index pregnancy based on: <strong>reliable clinical observation, self-report, reports by a reliable source, medical records of positive blood alcohol concentrations, or alcohol treatment / social / legal / medical problems</strong> related to drinking during the pregnancy. Unsubstantiated information, lifestyle alone, or history in previous pregnancies cannot in isolation confirm PAE in the index pregnancy.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Medical Examination</div><div class="sc-body">Assess all three sentinel facial features using the <strong>University of Washington Lip-Philtrum Guides</strong>. Measure palpebral fissure length (≥2 SDs below the mean per SIGN 156). Plot OFC, height, and weight on <strong>UK-WHO growth charts</strong> (available from SIGN website). Take a full family, social, and medical history. Obtain a three-generation family tree where possible to identify inheritable disorders. <strong>Genetic causes must be considered and excluded before arriving at an FASD diagnosis.</strong></div></div></div>
+
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">Note Associated Features (Not Diagnostic)</div><div class="sc-body">The following should be <strong>recorded but do not contribute to confirming or refuting</strong> an FASD diagnosis (per Canadian Rec. 3.2 adopted by SIGN 156): mid-face hypoplasia, micrognathia, abnormal ear position/formation, high arched palate, epicanthal folds, limb abnormalities, palmar crease abnormalities, short upturned nose. Growth impairment and congenital anomalies should also be documented if present.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Neurodevelopmental Assessment (MDT)</div><div class="sc-body">SIGN 156 MDT must include: <strong>neonatologist / paediatrician / physician</strong> with FASD competency; <strong>child development specialist</strong> with skill set for physical and functional assessments (e.g. speech and language therapist, occupational therapist, clinical or educational psychologist). Additional input may include clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, and family therapists. Assess across all 10 areas of assessment. Direct standardised measures should be used whenever possible.</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Apply the Diagnostic Algorithm</div><div class="sc-body">Use the SIGN 156 Annex 2 diagnostic algorithm. For <strong>infants &lt;6 years</strong>: if all 3 SFF + microcephaly → FASD with SFF; if all 3 SFF without microcephaly → refer to clinical geneticist + 'At Risk' designation; if PAE confirmed but criteria not met → 'At Risk'. For <strong>older children</strong>: apply the full 10-domain assessment. Record SNOMED CT codes. Note: the diagnostic/descriptive criteria for FASD are the same for adults as for younger individuals (SIGN 156 Rec. 8.1).</div></div></div>
+
+    <div class="strategy-card"><div class="sc-num">6</div><div><div class="sc-title">Communicate and Develop Management Plan</div><div class="sc-body">Per NICE QS5 and SIGN 156 Section 4: Present findings to the family in writing and verbally. Use plain language appropriate to the child's age. The individualised management plan must address: basic and immediate needs, therapy services (SLT, OT, psychology), school adjustments, family support and psychoeducation, signposting to resources, and scheduled review. Reassessment at all transition points throughout the child's life.</div></div></div>
+
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">🔗</span><span class="ic-title">Comorbidities — Over 400 Associated Conditions</span></div><div class="ic-body">FASD is associated with over 400 co-occurring conditions across 18 ICD-10 chapters. Common comorbidities explicitly listed in SIGN 156 include ADHD, ASD features, and mood disorders. Also frequently seen: anxiety disorders, conduct disorder, attachment disorders, sleep disorders, substance misuse in adolescence/adulthood, and involvement in the judicial system. Treat the whole child and coordinate care across agencies.</div></div>
+
+    <div class="info-card navy"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Screening Tools for PAE in Pregnancy</span></div><div class="ic-body">Per SIGN 156 Recommendations 2.3 and 2.4: use validated tools — <strong>T-ACE, TWEAK, or AUDIT-C</strong> — to screen all pregnant women for alcohol consumption. Consider associated biomarkers (CDT, PEth) alongside questionnaires. Document dose, pattern, and frequency of alcohol use. PAE information (confirmed / confirmed absent / unknown) must remain accessible in the child's health records throughout childhood.</div></div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ FOR CHILDREN ════════════════ -->
+<div class="page" id="page-children">
+  <div style="padding:14px 14px 0;">
+    <div class="child-card warm"><div class="child-emoji">🌟</div><div class="child-title">You Are Amazing!</div><div class="child-body">Your brain works in its own special way. That's not bad — it just means you learn differently. And that's okay!</div></div>
+    <div class="child-card cool"><div class="child-emoji">🧠</div><div class="child-title">About Your Brain</div><div class="child-body">Before you were born, something called alcohol made it a little harder for some parts of your brain to grow the usual way. It wasn't your fault. It wasn't your mum's fault either.</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Things You Might Find Hard</div>
+    <div class="info-card"><div class="ic-header"><span class="ic-icon">😤</span><span class="ic-title">It's Okay to Find Things Tricky</span></div><div class="ic-body">Lots of kids with FASD find some things harder than others. You might find it hard to remember things, concentrate, or stay calm when things feel overwhelming. That's not your fault!</div></div>
+    <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">When Things Feel Too Much</div></div><div class="et-arrow">▼</div></div><div class="expand-body"><ul class="bullet-list"><li>Find a quiet spot and take slow, deep breaths</li><li>Squeeze something soft (a stress ball or cushion)</li><li>Tell a trusted adult how you're feeling</li><li>Listen to calming music with headphones</li><li>Draw or colour how you feel</li></ul></div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Your Superpowers 🦸</div>
+    <div class="strategy-card"><div class="sc-num" style="background:var(--amber);">💛</div><div><div class="sc-title">You Care About People</div><div class="sc-body">Many kids with FASD are very kind, loving, and loyal friends. That's a real superpower!</div></div></div>
+    <div class="strategy-card"><div class="sc-num amber">🎨</div><div><div class="sc-title">You're Creative</div><div class="sc-body">Lots of children with FASD are brilliant at art, music, drama, or building things. Your imagination is special.</div></div></div>
+    <div class="strategy-card"><div class="sc-num coral">⚡</div><div><div class="sc-title">You're Full of Energy</div><div class="sc-body">Your energy and enthusiasm make you exciting to be around! Learning how to use that energy well is part of your journey.</div></div></div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ PODCAST PAGE ════════════════ -->
+<div class="page" id="page-podcast">
+  <div class="podcast-hero">
+    <div class="hero-eyebrow">FASD Compass Podcast</div>
+    <div class="hero-title" style="color:#fff;">Expert Conversations That Matter</div>
+    <div class="hero-body">Clinicians, researchers, families, and advocates sharing what they know about FASD.</div>
+    <div class="podcast-wave">
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      <div class="wave-bar"></div><div class="wave-bar"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Latest Episodes</div>
+
+    <!-- Episode 1 -->
+    <div class="podcast-card">
+      <div class="pc-top">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#2d1b5e,#4a2a8c);">🧠</div>
+        <div class="pc-meta">
+          <div class="pc-episode">EP. 12 · Neurodevelopment</div>
+          <div class="pc-title">Why FASD Is Still Being Missed in 2024</div>
+          <div class="pc-guest">Dr. Sarah Munro — Paediatric Neurologist</div>
+        </div>
+      </div>
+      <div class="pc-duration-badge">38 min</div>
+      <div class="pc-desc">We explore the diagnostic gap, why FASD is so frequently misdiagnosed as ADHD or conduct disorder, and what clinicians can do differently in the consult room.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Diagnosis</span><span class="pc-tag">Clinicians</span><span class="pc-tag">Early ID</span>
+      </div>
+      <div class="pc-player">
+        <div class="pc-progress-wrap">
+          <div class="pc-time-row"><span id="t1-current">0:00</span><span>38:24</span></div>
+          <div class="pc-progress-bar" onclick="seekPodcast(1, event, this)">
+            <div class="pc-progress-fill" id="p1-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="pc-controls">
+          <button class="pc-btn" onclick="skipPodcast(1,-15)">⏪</button>
+          <button class="pc-play-btn" id="play1" onclick="togglePlay(1)">▶️</button>
+          <button class="pc-btn" onclick="skipPodcast(1,30)">⏩</button>
+          <button class="pc-speed" onclick="cycleSpeed(1)" id="speed1">1×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episode 2 -->
+    <div class="podcast-card">
+      <div class="pc-top">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#1a5c3a,#0d4a2a);">🏫</div>
+        <div class="pc-meta">
+          <div class="pc-episode">EP. 11 · Education</div>
+          <div class="pc-title">Building FASD-Informed Schools: A Teacher's Guide</div>
+          <div class="pc-guest">Bronwyn Clarke — Special Education Lead</div>
+        </div>
+      </div>
+      <div class="pc-duration-badge">44 min</div>
+      <div class="pc-desc">Practical classroom strategies that work, how to talk to parents about FASD, and why traditional discipline frameworks fail these children.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Education</span><span class="pc-tag">Teachers</span><span class="pc-tag">Strategies</span>
+      </div>
+      <div class="pc-player">
+        <div class="pc-progress-wrap">
+          <div class="pc-time-row"><span id="t2-current">0:00</span><span>44:10</span></div>
+          <div class="pc-progress-bar" onclick="seekPodcast(2, event, this)">
+            <div class="pc-progress-fill" id="p2-fill" style="width:22%"></div>
+          </div>
+        </div>
+        <div class="pc-controls">
+          <button class="pc-btn" onclick="skipPodcast(2,-15)">⏪</button>
+          <button class="pc-play-btn" id="play2" onclick="togglePlay(2)">▶️</button>
+          <button class="pc-btn" onclick="skipPodcast(2,30)">⏩</button>
+          <button class="pc-speed" onclick="cycleSpeed(2)" id="speed2">1×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episode 3 -->
+    <div class="podcast-card">
+      <div class="pc-top">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#c05a20,#8a3a10);">👨‍👩‍👧</div>
+        <div class="pc-meta">
+          <div class="pc-episode">EP. 10 · Family Stories</div>
+          <div class="pc-title">Raising a Child with FASD: One Family's Journey</div>
+          <div class="pc-guest">Mark & Lisa Adeyemi — Foster Carers</div>
+        </div>
+      </div>
+      <div class="pc-duration-badge">52 min</div>
+      <div class="pc-desc">A moving and honest conversation with foster carers who have raised three children with FASD. What they wish they'd known earlier, and how their family found its rhythm.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Family</span><span class="pc-tag">Foster Care</span><span class="pc-tag">Lived Experience</span>
+      </div>
+      <div class="pc-player">
+        <div class="pc-progress-wrap">
+          <div class="pc-time-row"><span id="t3-current">0:00</span><span>52:05</span></div>
+          <div class="pc-progress-bar" onclick="seekPodcast(3, event, this)">
+            <div class="pc-progress-fill" id="p3-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="pc-controls">
+          <button class="pc-btn" onclick="skipPodcast(3,-15)">⏪</button>
+          <button class="pc-play-btn" id="play3" onclick="togglePlay(3)">▶️</button>
+          <button class="pc-btn" onclick="skipPodcast(3,30)">⏩</button>
+          <button class="pc-speed" onclick="cycleSpeed(3)" id="speed3">1×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episode 4 -->
+    <div class="podcast-card">
+      <div class="pc-top">
+        <div class="pc-thumb" style="background:linear-gradient(135deg,#1a5a8c,#0d3060);">🔬</div>
+        <div class="pc-meta">
+          <div class="pc-episode">EP. 09 · Research</div>
+          <div class="pc-title">The Latest in FASD Research: What's Changing?</div>
+          <div class="pc-guest">Prof. James Osei — CanFASD Research Network</div>
+        </div>
+      </div>
+      <div class="pc-duration-badge">41 min</div>
+      <div class="pc-desc">An in-depth discussion on emerging neuroimaging findings, biomarkers for prenatal alcohol exposure, and what future diagnostic criteria might look like.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Research</span><span class="pc-tag">Neuroscience</span><span class="pc-tag">Future</span>
+      </div>
+      <div class="pc-player">
+        <div class="pc-progress-wrap">
+          <div class="pc-time-row"><span id="t4-current">0:00</span><span>41:30</span></div>
+          <div class="pc-progress-bar" onclick="seekPodcast(4, event, this)">
+            <div class="pc-progress-fill" id="p4-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="pc-controls">
+          <button class="pc-btn" onclick="skipPodcast(4,-15)">⏪</button>
+          <button class="pc-play-btn" id="play4" onclick="togglePlay(4)">▶️</button>
+          <button class="pc-btn" onclick="skipPodcast(4,30)">⏩</button>
+          <button class="pc-speed" onclick="cycleSpeed(4)" id="speed4">1×</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ QUIZ PAGE ════════════════ -->
+<div class="page" id="page-quiz">
+  <div class="quiz-hero">
+    <div class="hero-eyebrow">FASD Screening Tool</div>
+    <div class="hero-title">Early Detection Questionnaire</div>
+    <div class="hero-body">A brief evidence-informed checklist to help identify children who may benefit from further FASD assessment.</div>
+  </div>
+  <div id="quiz-body">
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div></div>
+      <div class="quiz-step-label" id="quizStepLabel">Question 1 of 10</div>
+    </div>
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-q-num" id="qNum">QUESTION 1 OF 10</div>
+      <div class="quiz-q-text" id="qText"></div>
+      <div class="quiz-q-sub" id="qSub"></div>
+      <div class="quiz-options" id="qOptions"></div>
+    </div>
+    <div class="quiz-nav">
+      <button class="quiz-btn secondary" id="quizBack" onclick="quizBack()">← Back</button>
+      <button class="quiz-btn primary" id="quizNext" onclick="quizNext()" disabled>Next →</button>
+    </div>
+  </div>
+  <div id="quiz-result" style="display:none;" class="quiz-result"></div>
+  <div class="spacer"></div>
+</div>
+
+<!-- ════════════════ CHAT PAGE ════════════════ -->
+<div class="page" id="page-chat">
+  <div class="chat-page">
+    <div class="chat-header">
+      <div class="chat-header-top">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <div class="chat-name">FASD Compass AI</div>
+          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204 · Works offline</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg">
+        <div class="msg-avatar">🤖</div>
+        <div>
+          <div class="msg-bubble">Hi! I'm the FASD Compass AI, here to answer your questions about Fetal Alcohol Spectrum Disorder. I can help parents, teachers, clinicians, or anyone wanting to learn more. What would you like to know?</div>
+          <div class="msg-time">Now</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:0 14px;">
+      <div class="disclaimer-chip">⚕️ This assistant provides general educational information based on SIGN 156 and NICE QS204. Always consult a qualified healthcare professional for decisions about individual children.</div>
+    </div>
+    <div class="chat-input-area">
+      <div class="chat-suggestions" id="chatSuggestions">
+        <div class="chat-sug" onclick="sendSuggestion(this)">What is FASD?</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">Signs in toddlers</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">School strategies</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">Helping meltdowns</div>
+      </div>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="chatInput" placeholder="Ask anything about FASD…" rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"
+          oninput="autoResize(this)"></textarea>
+        <button class="chat-send" id="chatSendBtn" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ RESOURCES PAGE ════════════════ -->
+<div class="page" id="page-resources">
+  <div class="hero" style="background:linear-gradient(135deg,#5a3a8c,#0d2340);">
+    <div class="hero-eyebrow">References & Resources</div>
+    <div class="hero-title">Evidence-Based Sources</div>
+    <div class="hero-body">All content in FASD Compass is based on peer-reviewed literature and current diagnostic guidelines.</div>
+  </div>
+  <div class="section">
+    <div class="section-title">Key Guidelines</div>
+    <div class="info-card"><div class="ic-header"><span class="ic-icon">📄</span><span class="ic-title">Primary UK Guidelines</span></div><div class="ic-body">
+      • <strong>SIGN 156</strong> — Scottish Intercollegiate Guidelines Network. <em>Children and Young People Exposed Prenatally to Alcohol</em>. Edinburgh: SIGN; 2019 (revalidated 2022). SIGN publication no. 156. ISBN 978-1-909103-67-2.<br><br>
+      • <strong>NICE QS204</strong> — National Institute for Health and Care Excellence. <em>Fetal Alcohol Spectrum Disorder</em>. Quality Standard QS204. Published March 2022. Applies in England & Wales.<br><br>
+      • <strong>SNOMED CT codes</strong> (implemented 2024): FASD with SFF (1894471000000108), FASD without SFF (1894461000000101), At increased risk (2078801000000102).<br><br>
+      • DHSC <em>Health Needs Assessment for FASD in England</em>. September 2021.
+    </div></div>
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">📚</span><span class="ic-title">Educational & Behavioural</span></div><div class="ic-body">• Pei, J. et al. (2016). Supporting students with FASD. <em>Canadian Journal of Special Education</em>.<br><br>• Blackburn, C. & Whitehurst, T. (2010). FASD: Emerging issues in awareness, prevention and intervention.<br><br>• Streissguth, A.P. & Kanter, J. (1997). The challenge of FASD in the 21st century.</div></div>
+    <div class="info-card sage"><div class="ic-header"><span class="ic-icon">🌐</span><span class="ic-title">Organisations</span></div><div class="ic-body">• FASD Support Network (UK)<br>• Canada FASD Research Network (CanFASD)<br>• National FASD<br>• FASD Hub Australia<br>• FASD Network of Southern Africa</div></div>
+    <div class="evidence-note">🔬 This app is for educational purposes only. Always seek professional clinical assessment for individual children.</div>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+</main>
+
+<!-- ─── BOTTOM NAV ─── -->
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="switchNav(this,'overview')">
+    <div class="nav-icon">🏠</div>
+    <div class="nav-label">Home</div>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" onclick="switchNav(this,'podcast')">
+    <div class="nav-icon">🎙️</div>
+    <div class="nav-label">Podcast</div>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" onclick="switchNav(this,'quiz')">
+    <div class="nav-icon">📋</div>
+    <div class="nav-label">Screen</div>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" onclick="switchNav(this,'chat')">
+    <div class="nav-icon">🤖</div>
+    <div class="nav-label">Ask AI</div>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" onclick="switchNav(this,'resources')">
+    <div class="nav-icon">📚</div>
+    <div class="nav-label">Resources</div>
+    <div class="nav-dot"></div>
+  </div>
+</nav>
+
+<script>
+// ─── NAVIGATION ───
+function switchAudience(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.aud-btn').forEach(b => b.classList.remove('active'));
+  const pageMap = {overview:'page-overview',parents:'page-parents',teachers:'page-teachers',clinicians:'page-clinicians',children:'page-children'};
+  const pg = document.getElementById(pageMap[id]);
+  if(pg) pg.classList.add('active');
+  if(btn) btn.classList.add('active');
+  // sync bottom nav to home
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item')[0].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function switchNav(navItem, section) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  navItem.classList.add('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.aud-btn').forEach(b => b.classList.remove('active'));
+  const pageMap = {overview:'page-overview',podcast:'page-podcast',quiz:'page-quiz',chat:'page-chat',resources:'page-resources'};
+  const pg = document.getElementById(pageMap[section] || 'page-overview');
+  if(pg) pg.classList.add('active');
+  if(section==='overview') document.querySelectorAll('.aud-btn')[0].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(section==='quiz') initQuiz();
+}
+
+function toggleExpand(el) { el.classList.toggle('open'); }
+
+// ─── PODCAST PLAYER ───
+const podState = {
+  1:{playing:false,progress:0,total:2304,speed:1},
+  2:{playing:false,progress:22,total:2650,speed:1},
+  3:{playing:false,progress:0,total:3125,speed:1},
+  4:{playing:false,progress:0,total:2490,speed:1}
+};
+const speeds = [1,1.25,1.5,2,0.75];
+let podTimers = {};
+
+function formatTime(secs) {
+  const m = Math.floor(secs/60);
+  const s = Math.floor(secs%60);
+  return `${m}:${s.toString().padStart(2,'0')}`;
+}
+
+function togglePlay(id) {
+  const s = podState[id];
+  // pause all others
+  [1,2,3,4].forEach(i => {
+    if(i!==id && podState[i].playing) {
+      podState[i].playing=false;
+      document.getElementById('play'+i).textContent='▶️';
+      clearInterval(podTimers[i]);
+    }
+  });
+  s.playing = !s.playing;
+  document.getElementById('play'+id).textContent = s.playing ? '⏸️' : '▶️';
+  if(s.playing) {
+    podTimers[id] = setInterval(()=>{
+      s.progress = Math.min(100, s.progress + (100/(s.total/s.speed)));
+      document.getElementById('p'+id+'-fill').style.width = s.progress+'%';
+      const elapsed = Math.floor((s.progress/100)*s.total);
+      document.getElementById('t'+id+'-current').textContent = formatTime(elapsed);
+      if(s.progress>=100){ clearInterval(podTimers[id]); s.playing=false; document.getElementById('play'+id).textContent='▶️'; }
+    }, 1000);
+  } else {
+    clearInterval(podTimers[id]);
+  }
+}
+
+function skipPodcast(id, secs) {
+  const s = podState[id];
+  const currentSec = (s.progress/100)*s.total;
+  const newSec = Math.max(0, Math.min(s.total, currentSec+secs));
+  s.progress = (newSec/s.total)*100;
+  document.getElementById('p'+id+'-fill').style.width=s.progress+'%';
+  document.getElementById('t'+id+'-current').textContent=formatTime(newSec);
+}
+
+function seekPodcast(id, e, bar) {
+  const rect = bar.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const pct = Math.max(0, Math.min(100, (x/rect.width)*100));
+  podState[id].progress = pct;
+  document.getElementById('p'+id+'-fill').style.width=pct+'%';
+  document.getElementById('t'+id+'-current').textContent=formatTime((pct/100)*podState[id].total);
+}
+
+function cycleSpeed(id) {
+  const s = podState[id];
+  const idx = speeds.indexOf(s.speed);
+  s.speed = speeds[(idx+1)%speeds.length];
+  document.getElementById('speed'+id).textContent = s.speed+'×';
+}
+
+// ─── QUIZ ───
+const quizQuestions = [
+  {
+    num:1, domain:"Background History",
+    text:"Is there known or suspected prenatal alcohol exposure for this child?",
+    sub:"This includes any alcohol use during pregnancy, even in the first trimester.",
+    opts:[{t:"Yes — confirmed",w:3},{t:"Possibly / uncertain",w:2},{t:"No known exposure",w:0},{t:"Unknown (e.g. adopted/foster)",w:2}]
+  },
+  {
+    num:2, domain:"Learning & Memory",
+    text:"Does the child have significant difficulty remembering instructions or information, even when recently taught?",
+    sub:"For example, forgetting a rule they were told 10 minutes ago.",
+    opts:[{t:"Yes, consistently",w:3},{t:"Sometimes",w:1},{t:"Rarely or never",w:0}]
+  },
+  {
+    num:3, domain:"Behaviour",
+    text:"Does the child struggle with impulse control — acting before thinking, or not learning from consequences?",
+    sub:"This is different from typical childhood impulsivity.",
+    opts:[{t:"Yes, significantly",w:3},{t:"Somewhat",w:1},{t:"Not particularly",w:0}]
+  },
+  {
+    num:4, domain:"Attention",
+    text:"Does the child have marked difficulties with sustained attention, even for activities they enjoy?",
+    opts:[{t:"Yes, major difficulty",w:3},{t:"Mild to moderate",w:1},{t:"Age-appropriate attention",w:0}]
+  },
+  {
+    num:5, domain:"Communication",
+    text:"Does the child have language or communication difficulties — including understanding spoken language?",
+    sub:"May include seeming to understand but not following through, or taking things very literally.",
+    opts:[{t:"Yes, notable difficulties",w:3},{t:"Mild concerns",w:1},{t:"Communication is on track",w:0}]
+  },
+  {
+    num:6, domain:"Social Skills",
+    text:"Does the child struggle with age-appropriate social understanding — e.g. being overly friendly with strangers, or not reading social cues?",
+    opts:[{t:"Yes, significantly",w:3},{t:"Some difficulty",w:1},{t:"Socially on track",w:0}]
+  },
+  {
+    num:7, domain:"Emotion Regulation",
+    text:"Does the child have significant emotional outbursts or meltdowns that seem disproportionate to the situation?",
+    opts:[{t:"Yes, frequently",w:3},{t:"Occasionally",w:1},{t:"Rarely",w:0}]
+  },
+  {
+    num:8, domain:"Motor Development",
+    text:"Has the child shown any difficulties with coordination, fine motor tasks (e.g. writing, cutting), or gross motor skills?",
+    opts:[{t:"Yes, significant delay",w:3},{t:"Mild difficulties",w:1},{t:"No concerns",w:0}]
+  },
+  {
+    num:9, domain:"School & Daily Living",
+    text:"Is the child significantly below academic expectations, or struggling with age-appropriate daily living skills (e.g. dressing, organisation)?",
+    opts:[{t:"Yes, significant gap",w:3},{t:"Mild gap",w:1},{t:"On track",w:0}]
+  },
+  {
+    num:10, domain:"Physical Features",
+    text:"Has anyone noted any of the following: growth restriction, small head size, or any unusual facial features?",
+    sub:"Facial features are only present in a subset of FASD presentations.",
+    opts:[{t:"Yes — one or more noted",w:3},{t:"Uncertain",w:1},{t:"None identified",w:0}]
+  }
+];
+
+let quizAnswers = [];
+let currentQ = 0;
+
+function initQuiz() {
+  quizAnswers = new Array(quizQuestions.length).fill(null);
+  currentQ = 0;
+  document.getElementById('quiz-body').style.display='block';
+  document.getElementById('quiz-result').style.display='none';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = quizQuestions[currentQ];
+  const pct = (currentQ/quizQuestions.length)*100;
+  document.getElementById('quizProgressFill').style.width = pct+'%';
+  document.getElementById('quizStepLabel').textContent = `Question ${currentQ+1} of ${quizQuestions.length}`;
+  document.getElementById('qNum').textContent = `QUESTION ${q.num} OF ${quizQuestions.length} · ${q.domain.toUpperCase()}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qSub').textContent = q.sub || '';
+  document.getElementById('qSub').style.display = q.sub ? 'block' : 'none';
+  const optEl = document.getElementById('qOptions');
+  optEl.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt' + (quizAnswers[currentQ]===i?' selected':'');
+    btn.innerHTML = `<div class="opt-check">${quizAnswers[currentQ]===i?'✓':''}</div>${opt.t}`;
+    btn.onclick = () => selectOpt(i);
+    optEl.appendChild(btn);
+  });
+  document.getElementById('quizNext').disabled = quizAnswers[currentQ]===null;
+  document.getElementById('quizBack').style.visibility = currentQ===0?'hidden':'visible';
+}
+
+function selectOpt(i) {
+  quizAnswers[currentQ] = i;
+  document.querySelectorAll('.quiz-opt').forEach((b,idx)=>{
+    b.classList.toggle('selected', idx===i);
+    b.querySelector('.opt-check').textContent = idx===i?'✓':'';
+  });
+  document.getElementById('quizNext').disabled = false;
+}
+
+function quizNext() {
+  if(quizAnswers[currentQ]===null) return;
+  if(currentQ < quizQuestions.length-1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showQuizResults();
+  }
+}
+
+function quizBack() {
+  if(currentQ>0){ currentQ--; renderQuestion(); }
+}
+
+function showQuizResults() {
+  let totalScore = 0;
+  const domainScores = [];
+  quizQuestions.forEach((q,i) => {
+    const ans = quizAnswers[i];
+    const weight = ans !== null ? q.opts[ans].w : 0;
+    totalScore += weight;
+    domainScores.push({domain: q.domain, weight});
+  });
+  const maxScore = 30;
+  const pct = (totalScore/maxScore)*100;
+
+  let level, emoji, label, title, body, colorClass;
+  if(pct < 30) {
+    level='low'; emoji='🟢'; label='Low Concern'; colorClass='low';
+    title='Low Indicators at This Time';
+    body='Responses suggest limited indicators of FASD at this time. Continue monitoring development. If concerns arise, consider reassessment.';
+  } else if(pct < 60) {
+    level='mid'; emoji='🟡'; label='Moderate Concern'; colorClass='mid';
+    title='Some Indicators Present';
+    body='Responses indicate some areas of concern that warrant further monitoring. Consider discussing with a GP, paediatrician, or early intervention service, particularly if prenatal alcohol exposure is known or suspected.';
+  } else {
+    level='high'; emoji='🔴'; label='High Concern'; colorClass='high';
+    title='Significant Indicators — Seek Assessment';
+    body='Responses suggest significant indicators across multiple domains associated with FASD. A multidisciplinary assessment is strongly recommended. Please discuss with a paediatrician or specialist FASD diagnostic service as soon as possible.';
+  }
+
+  document.getElementById('quiz-body').style.display='none';
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.style.display='block';
+
+  const domainHTML = domainScores.map(d => {
+    const pctD = (d.weight/3)*100;
+    const color = pctD<34?'green':pctD<67?'amber':'red';
+    return `<div class="rb-domain">
+      <div class="rbd-label">${d.domain}</div>
+      <div class="rbd-bar-wrap"><div class="rbd-bar ${color}" style="width:${pctD}%"></div></div>
+    </div>`;
+  }).join('');
+
+  resultEl.innerHTML = `
+    <div class="result-score-card ${colorClass}">
+      <div class="rs-emoji">${emoji}</div>
+      <div class="rs-label ${colorClass}">${label}</div>
+      <div class="rs-title">${title}</div>
+      <div class="rs-body">${body}</div>
+    </div>
+    <div class="result-breakdown">
+      <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:12px;">Domain Breakdown</div>
+      ${domainHTML}
+    </div>
+    <div class="quiz-disclaimer">⚕️ This screening tool is not a diagnostic instrument. It is designed to help identify children who may benefit from a comprehensive FASD assessment. A formal diagnosis requires a multidisciplinary team evaluation. Results should be discussed with a qualified healthcare professional.</div>
+    <div style="display:flex;gap:10px;margin-bottom:14px;">
+      <button class="quiz-btn primary" onclick="initQuiz()" style="flex:1;">Retake Quiz</button>
+      <button class="quiz-btn primary" style="background:var(--navy);flex:1;" onclick="switchNav(document.querySelectorAll('.nav-item')[3],'chat')">Ask the AI →</button>
+    </div>
+  `;
+}
+
+// ─── CHATBOT ───
+const SYSTEM_PROMPT = `You are the FASD Compass AI — a warm, expert, and evidence-based assistant specialising in Fetal Alcohol Spectrum Disorder (FASD). You support parents, carers, teachers, clinicians, GPs, nurses, and community members with accurate, compassionate information.
+
+Your knowledge is grounded in the current UK national guidelines:
+- SIGN 156: Scottish Intercollegiate Guidelines Network, "Children and Young People Exposed Prenatally to Alcohol" (2019, revalidated 2022) — the primary UK clinical guideline
+- NICE QS204: NICE Quality Standard for FASD (March 2022) — applies in England & Wales
+
+═══════════════════════════════════════
+DIAGNOSTIC CLASSIFICATIONS (SIGN 156)
+═══════════════════════════════════════
+
+TWO DIAGNOSTIC CATEGORIES:
+
+1. FASD WITH SENTINEL FACIAL FEATURES (SNOMED CT: 1894471000000108)
+All 3 sentinel features must be simultaneously present:
+- Smooth philtrum — ranked 4 or 5 on UW Lip-Philtrum Guide
+- Thin vermillion border (upper lip) — ranked 4 or 5 on UW Lip-Philtrum Guide
+- Short palpebral fissures — ≥2 SDs below the mean (SIGN 156 removes percentile threshold due to lack of UK norms)
+PLUS: PAE confirmed or unknown (all 3 SFF have such high specificity to PAE that confirmation is not required when all 3 are present)
+PLUS: evidence of severe impairment in ≥3 of the 10 areas of assessment, OR in infants/young children, microcephaly (OFC <3rd centile or ≥2 SDs below mean)
+Note: Genetic causes must be considered and excluded before diagnosis.
+
+2. FASD WITHOUT SENTINEL FACIAL FEATURES (SNOMED CT: 1894461000000101)
+- Fewer than 3 sentinel facial features present
+- REQUIRES confirmed PAE (reliable evidence essential when facial features are absent)
+- REQUIRES severe impairment in ≥3 of the 10 SIGN 156 areas of assessment
+- Previously called pFAS, ARND, ARBD, ND-PAE — all superseded
+- NOT a milder diagnosis
+
+3. AT INCREASED RISK OF FASD (SNOMED CT: 2078801000000102)
+- Confirmed PAE but CNS criteria not yet met, or assessment incomplete (child too young)
+- Should never be applied when PAE is confirmed absent
+- Must receive early support and re-assessment
+
+ASSOCIATED FEATURES (NOT DIAGNOSTIC — per SIGN 156 Rec. 3.2):
+Mid-face hypoplasia, micrognathia, abnormal ear position, high arched palate, epicanthal folds, limb abnormalities, palmar crease abnormalities, short upturned nose. Should be recorded but do not confirm or refute FASD diagnosis.
+
+═══════════════════════════════════════
+SIGN 156 — 10 AREAS OF ASSESSMENT
+═══════════════════════════════════════
+Severe impairment = global or major subdomain score ≥2 SDs below the mean. ≥3 areas severely impaired = pervasive brain dysfunction.
+
+1. BRAIN STRUCTURE/NEUROANATOMY/NEUROPHYSIOLOGY: OFC <3rd centile; seizure disorder not due to postnatal causes; structural brain abnormalities on imaging (e.g. corpus callosum agenesis, cerebellar hypoplasia) after other aetiologies excluded.
+
+2. MOTOR SKILLS: Composite below cut-off on fine motor, gross motor, graphomotor, or visual-motor integration. Tone, reflexes, balance, coordination may be considered alongside formal assessment.
+
+3. COGNITION: Composite IQ/cognitive score below cut-off; major subdomain (verbal, nonverbal, fluid reasoning) below cut-off; or unusual discrepancy among major subdomains (base rate ≤3%, lower score ≥1 SD below mean).
+
+4. LANGUAGE: Composite on core/receptive/expressive language below cut-off; multiple subtest scores on higher-level language below cut-off; or large receptive-expressive discrepancy (base rate <3%, lower score ≥1 SD below mean).
+
+5. ACADEMIC ACHIEVEMENT: Standardised reading/maths/written expression below cut-off, or significant discrepancy between cognition and achievement (base rate <3%, achievement ≥1 SD below mean). Requires confirmation of consistent access to academic instruction.
+
+6. MEMORY: Composite on overall/verbal/visual memory below cut-off; or large verbal-nonverbal memory discrepancy (base rate <3%, lower ≥1 SD below mean). NB: working memory is assessed under Executive Function.
+
+7. ATTENTION: Defined as sustained/selective attention and resistance to distractions (NOT impulse control/hyperactivity — those are Executive Function). Direct: multiple subtest scores below cut-off on continuous processing tests. Indirect: converging evidence from interview, questionnaire, file review, direct observation.
+
+8. EXECUTIVE FUNCTION (incl. impulse control and hyperactivity): Working memory, inhibition/impulse control, hyperactivity, planning and problem solving, shifting/cognitive flexibility. Direct: neuropsychological subtests below cut-off. Indirect: rating scales + clinical interview + file review + observation.
+
+9. AFFECT REGULATION: Manifested by long-standing high levels of emotional expression causing significant clinical impairment: anxiety disorders (panic, phobic, separation anxiety, GAD), depressive disorders, oppositional defiant disorder, conduct disorder. IMPORTANT: must be long-standing and not solely attributable to adverse life events (e.g. multiple foster placements) or situationally specific.
+
+10. ADAPTIVE BEHAVIOUR, SOCIAL SKILLS & SOCIAL COMMUNICATION: Direct: below cut-off on social language/pragmatic/social communication composite. Indirect: below cut-off on caregiver-rated global composite or major subdomain of standardised scale. Observations should be gathered across environments (home + school).
+
+═══════════════════════════════════════
+NICE QS204 — 5 QUALITY STATEMENTS
+═══════════════════════════════════════
+QS1: Advise pregnant women not to drink at every antenatal contact (UK CMO guidance)
+QS2: Ask about and record alcohol use throughout pregnancy (use AUDIT-C, T-ACE, or TWEAK; consider CDT/PEth biomarkers)
+QS3: Refer children with probable PAE and significant physical/developmental/behavioural difficulties for assessment — do not wait for confirmed PAE
+QS4: Children with confirmed PAE or all 3 sentinel facial features have a neurodevelopmental assessment if clinical concerns
+QS5: Children with a diagnosis of FASD have an individualised management plan
+
+═══════════════════════════════════════
+ASSESSMENT PATHWAY (SIGN 156)
+═══════════════════════════════════════
+MDT MUST INCLUDE:
+- Neonatologist/paediatrician/physician with FASD competency
+- Child development specialist (SLT, OT, clinical psychologist, educational psychologist)
+Additional input: clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, family therapists
+
+STEPS:
+1. Gather PAE history (self-report, clinical records, alcohol treatment history, collateral)
+2. Medical examination: sentinel features (UW Lip-Philtrum Guides), palpebral fissure length, OFC/height/weight on UK-WHO growth charts, family/social/medical history, consider genetics
+3. Note associated features (not diagnostic)
+4. Full neurodevelopmental assessment across all 10 areas
+5. Apply SIGN 156 diagnostic algorithm (Annex 2)
+6. Formulate diagnosis/descriptor + SNOMED CT code
+7. Communicate findings + develop individualised management plan
+8. Reassess at all transition points
+
+FOR PARENTS CONCERNED:
+- Talk to GP or health visitor first
+- Probable PAE + significant difficulties = sufficient for referral (do not need confirmed PAE)
+- Ask specifically for FASD to be considered
+- Support should not wait for diagnosis
+- Contact National FASD (nationalfasd.org.uk) for peer support
+
+FOR TEACHERS CONCERNED:
+- Speak to parents sensitively
+- Refer to SENCO
+- School nurse or safeguarding lead can initiate health referral
+- Teachers are valued MDT members — provide school reports and observations
+- Implement interim support strategies while awaiting assessment
+
+═══════════════════════════════════════
+COMMUNICATION STYLE
+═══════════════════════════════════════
+- Warm, non-judgmental, empathetic; tailor language to audience
+- Plain language for families; clinical language for professionals
+- Mobile-friendly: short paragraphs, bullet points
+- Always recommend professional assessment for specific children
+- Never diagnose individual children
+- Cite SIGN 156 or NICE QS204 where relevant`;
+
+// ─── SELF-CONTAINED FAQ CHATBOT (no API key needed) ───
+// Comprehensive knowledge base drawn from SIGN 156 and NICE QS204
+
+const FAQ_KB = [
+  // WHAT IS FASD
+  { tags:['what','fasd','is','fetal','alcohol','spectrum','disorder','define','mean'],
+    answer:"**What is FASD?**\n\nFetal Alcohol Spectrum Disorder (FASD) is a lifelong neurodevelopmental condition caused by exposure to alcohol before birth. It affects brain structure and function, leading to challenges across cognition, memory, attention, language, behaviour, and daily living.\n\nFASD is categorised into two presentations (SIGN 156, NICE QS204):\n• **FASD with sentinel facial features** — all three characteristic facial features present\n• **FASD without sentinel facial features** — the majority of cases; no visible facial features but significant brain impairment\n\nFASD is the leading preventable cause of neurodevelopmental disability. It is estimated to affect approximately 3.2% of babies born in the UK — around three to four times the rate of autism." },
+
+  // PREVALENCE
+  { tags:['common','prevalence','how many','rate','uk','scotland'],
+    answer:"**How common is FASD?**\n\nFASD affects approximately 3.2% of babies born in the UK, making it more common than autism spectrum disorder. In Scotland alone, up to 172,000 people may be affected.\n\nDespite this, FASD remains significantly underdiagnosed. Between 2010–2015, only 41 cases of FAS were identified in Scotland in children under six — far below what population data would predict.\n\nUnder-diagnosis occurs because:\n• PAE is frequently not considered as a cause of neurodevelopmental difficulties\n• Most children with FASD have no visible facial features\n• Healthcare professionals may lack confidence in making the diagnosis\n• FASD is often misdiagnosed as ADHD, ASD, or conduct disorder\n\n*(SIGN 156, 2019)*" },
+
+  // SENTINEL FACIAL FEATURES
+  { tags:['facial','face','features','sentinel','philtrum','lip','palpebral','fissure','eye'],
+    answer:"**What are the sentinel facial features of FASD?**\n\nThree specific facial features have such high specificity to prenatal alcohol exposure that, when all three are present simultaneously, confirmation of alcohol exposure is not required for diagnosis.\n\nThe three sentinel features (assessed using the University of Washington Lip-Philtrum Guides):\n• **Smooth philtrum** — ranked 4 or 5 on the UW Lip-Philtrum Guide\n• **Thin vermillion border (upper lip)** — ranked 4 or 5 on the UW Lip-Philtrum Guide\n• **Short palpebral fissures** — ≥2 standard deviations below the mean\n\n**Important:** Around 90% of people with FASD do NOT have visible facial features. The absence of facial features does not mean the diagnosis is milder or less significant.\n\nAssociated features (mid-face hypoplasia, epicanthal folds, etc.) should be recorded but do NOT contribute to confirming or refuting an FASD diagnosis. *(SIGN 156, Rec. 3.2)*" },
+
+  // DIAGNOSIS
+  { tags:['diagnos','criteria','how','assess','test'],
+    answer:"**How is FASD diagnosed?**\n\nFASD diagnosis requires a multidisciplinary team assessment. Per SIGN 156, a diagnosis is made when:\n\n**FASD with sentinel facial features:**\n• All 3 sentinel facial features present simultaneously\n• PAE confirmed or unknown\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas of assessment\n• (In infants: microcephaly may substitute for the domain criteria)\n\n**FASD without sentinel facial features:**\n• Confirmed prenatal alcohol exposure (reliable evidence essential)\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas\n\nSevere impairment = a global score or major subdomain score ≥2 standard deviations below the mean on a standardised measure.\n\nGenetic causes must be considered and excluded before diagnosis." },
+
+  // 10 DOMAINS
+  { tags:['domain','area','assessment','10','ten','neuro','brain'],
+    answer:"**The 10 SIGN 156 Neurodevelopmental Areas of Assessment**\n\nSevere impairment in 3 or more of these areas = pervasive brain dysfunction:\n\n1. **Brain structure / Neuroanatomy / Neurophysiology** (e.g. microcephaly, corpus callosum agenesis)\n2. **Motor skills** (fine/gross motor, coordination, graphomotor)\n3. **Cognition** (IQ, processing, reasoning)\n4. **Language** (receptive and expressive)\n5. **Academic achievement** (reading, maths, writing)\n6. **Memory** (verbal and visual memory)\n7. **Attention** (sustained/selective attention — NOT impulse control)\n8. **Executive function** (impulse control, hyperactivity, working memory, planning, flexibility)\n9. **Affect regulation** (long-standing emotional dysregulation, anxiety, mood disorders)\n10. **Adaptive behaviour, social skills & social communication**\n\nNote: Affect regulation impairment must be long-standing and not solely attributable to adverse life events (e.g. multiple foster placements). *(SIGN 156, Section 3.4)*" },
+
+  // PAE CONFIRMATION
+  { tags:['alcohol','pregnancy','exposure','pae','confirm','history','drinking'],
+    answer:"**How is prenatal alcohol exposure confirmed?**\n\nPer SIGN 156 Recommendation 2.2, confirmation of PAE requires documentation that the biological mother consumed alcohol during the pregnancy based on:\n• Reliable clinical observation\n• Self-report or reports by a reliable source\n• Medical records documenting positive blood alcohol concentrations\n• Alcohol treatment or other social, legal, or medical problems related to drinking during the pregnancy\n\nUnsubstantiated information, lifestyle alone, other drug use, or history of alcohol in previous pregnancies **cannot in isolation** confirm PAE in the index pregnancy.\n\n**Key point:** When all three sentinel facial features are present, PAE confirmation is NOT required — the features alone have sufficient specificity.\n\nWhere facial features are absent, reliable PAE evidence is essential for the FASD without SFF diagnosis.\n\nFor screening in pregnancy, SIGN 156 recommends: **T-ACE, TWEAK, or AUDIT-C** tools, with consideration of biomarkers (CDT, PEth)." },
+
+  // NICE QS204
+  { tags:['nice','qs204','quality','standard','england','wales','statement'],
+    answer:"**NICE QS204 — The Five Quality Statements**\n\nNICE Quality Standard QS204 (March 2022) applies in England and Wales and sets out what high-quality FASD care looks like:\n\n**QS1** — Pregnant women are advised throughout pregnancy not to drink alcohol (UK CMO guidance)\n\n**QS2** — Alcohol use is asked about and recorded throughout pregnancy\n\n**QS3** — Children with probable prenatal alcohol exposure and significant physical, developmental, or behavioural difficulties are **referred for assessment**\n\n**QS4** — Children with confirmed PAE or all 3 sentinel facial features have a **neurodevelopmental assessment** if there are clinical concerns\n\n**QS5** — Children with a diagnosis of FASD have an **individualised management plan**\n\nImportant: NICE QS204 is based on and adopts the SIGN 156 diagnostic framework. Support should not wait for a formal diagnosis." },
+
+  // PARENTS CONCERNED
+  { tags:['parent','carer','worried','concerned','suspect','think my child','what do i','help','refer','gp'],
+    answer:"**What should parents do if they are concerned?**\n\n**Step 1 — Talk to your GP or health visitor.** Share your concerns clearly. You do not need confirmed alcohol exposure — probable PAE with significant difficulties is enough to request a referral (NICE QS3).\n\n**Step 2 — Ask for a referral to a paediatrician.** Request specifically that prenatal alcohol exposure is considered as a possible cause of your child's difficulties.\n\n**Step 3 — Request an FASD-informed MDT assessment.** This involves a paediatrician, psychologist, speech and language therapist, and occupational therapist.\n\n**Step 4 — Don't wait for diagnosis to ask for support.** Schools can put interim strategies in place while assessment is pending. NICE QS204 is clear: support must not wait for a formal diagnosis.\n\n**Step 5 — Contact National FASD** (nationalfasd.org.uk) for peer support, guidance, and signposting to local services.\n\nYou are not alone. An early diagnosis is one of the most protective factors for long-term outcomes." },
+
+  // TEACHERS CONCERNED
+  { tags:['teacher','school','senco','educator','classroom','concern','refer'],
+    answer:"**What should teachers do if they are concerned?**\n\n**Step 1** — Speak sensitively to the child's parent or carer. Ask open questions about history, health, and any known concerns.\n\n**Step 2** — Refer to the school's **SENCO** (Special Educational Needs Coordinator). They can coordinate support, initiate an EHCP assessment, and liaise with external specialists.\n\n**Step 3** — Where there are significant concerns with probable PAE, a health referral should be made via the school nurse, health visitor, or safeguarding lead (NICE QS3).\n\n**Step 4** — Implement interim classroom strategies now — do not wait for a diagnosis. Key strategies include: one instruction at a time, visual timetables, movement breaks, seating near the teacher, no copying from the board, calm-down space, and avoiding punitive responses to regulation difficulties.\n\n**Step 5** — Teachers are valued members of the MDT (SIGN 156, Section 3.7). Provide written school reports and behaviour observations when requested.\n\n**Remember:** Inconsistency in performance is neurological, not deliberate. A child performing well one day and struggling the next is a hallmark of FASD." },
+
+  // HOME STRATEGIES
+  { tags:['strateg','home','parent','tip','manage','help child','routine','visual'],
+    answer:"**Home strategies for children with FASD**\n\n1. **Predictable routines** — Use consistent daily schedules with visual timetables. Give warnings before transitions: 'Five more minutes, then bath time.'\n\n2. **Visual supports** — Pair all verbal instructions with pictures or written steps. A picture checklist for morning routine reduces cognitive load significantly.\n\n3. **One instruction at a time** — Use short, concrete language. Ask your child to repeat back what they heard to confirm understanding.\n\n4. **Regulation before reasoning** — When your child is dysregulated, their thinking brain is offline. Help them calm first (quiet space, sensory tool, deep breathing) before reasoning or consequences.\n\n5. **'Can't, not won't'** — Many FASD behaviours reflect neurological inability, not deliberate non-compliance. Consequences-based discipline alone rarely works.\n\n6. **Celebrate strengths** — Many children with FASD are creative, kind, and artistic. Build on what they can do.\n\n7. **Seek your own support** — Connect with FASD support groups. Caring for a child with FASD is demanding — your wellbeing matters too." },
+
+  // SCHOOL STRATEGIES
+  { tags:['classroom','school strateg','teach','learn','sitting','support','inclusion','sen'],
+    answer:"**Classroom strategies for children with FASD (SIGN 156 based)**\n\n**Environment:** Seat near the teacher and away from distractions. Reduce visual clutter. Allow fidget tools and movement breaks. Provide an accessible calm-down space.\n\n**Instructions:** Give one instruction at a time and check for understanding. Use concrete, literal language — avoid sarcasm, idioms, and implied expectations. Pair verbal with visual cues. Allow extra processing time.\n\n**Routines:** Use a visual daily timetable on the desk. Give advance warnings before transitions. Prepare the child for changes in routine the day before.\n\n**Workload:** Break tasks into small chunks. Allow oral responses instead of written where possible. Extra time for tests. Provide pre-printed notes — avoid copying from the board.\n\n**Behaviour:** Avoid punitive approaches. Confabulation (apparent lying) is neurological, not intentional. Identify triggers and create a regulation plan with the family. Use calm-down spaces, not exclusion.\n\n**Collaboration:** Maintain regular, brief, positive communication with parents. Share what worked, not just what didn't." },
+
+  // MELTDOWNS
+  { tags:['meltdown','outburst','tantrum','emotional','dysregulat','angry','behaviour','explode'],
+    answer:"**Understanding and managing emotional meltdowns in FASD**\n\nEmotional dysregulation in FASD is neurological — it reflects impaired affect regulation across multiple brain systems, not deliberate behaviour. It is listed as one of the 10 SIGN 156 neurodevelopmental areas of assessment.\n\n**Why meltdowns happen:**\n• The brain's regulation systems were affected by prenatal alcohol\n• Transitions, unexpected changes, sensory overload, fatigue, or frustration are common triggers\n• The child's 'window of tolerance' is often much narrower than typical\n\n**What helps:**\n• Identify and reduce triggers where possible\n• Give transition warnings well in advance\n• Create a calm, predictable environment\n• Have a designated calm-down space the child can access independently\n• After the child has calmed — not during — briefly and calmly acknowledge what happened\n• Never try to reason during a meltdown — the thinking brain is offline\n\n**Remember:** Consequences-based approaches alone rarely work for FASD. Proactive environment design is more effective than reactive discipline." },
+
+  // MANAGEMENT PLAN
+  { tags:['management','plan','after diagnosis','support','services','what next'],
+    answer:"**What happens after an FASD diagnosis?**\n\nPer NICE QS5 and SIGN 156 Section 4, every child diagnosed with FASD must have an **individualised management plan** covering:\n\n• Immediate and longer-term therapy needs (SLT, OT, psychology, CAMHS)\n• School adjustments and EHCP/IEP coordination\n• Family psychoeducation and support\n• Signposting to local and national resources\n• Regular review schedule\n• Reassessment at all transition stages (new class, secondary school, adulthood)\n\n**Ask your paediatrician to:**\n• Share the plan with school, health visitor, and all involved professionals\n• Schedule a review within a specified timeframe\n• Link your family to FASD support organisations\n\nFASD is a lifelong condition. The management plan should evolve as your child grows. SIGN 156 emphasises that reassessment and care plan revision are particularly important at transition stages.\n\nContact **National FASD** (nationalfasd.org.uk) for resources after diagnosis." },
+
+  // COOCCURRING
+  { tags:['adhd','autism','asd','comorbid','anxiety','mental health','condition','together','also'],
+    answer:"**FASD and co-occurring conditions**\n\nFASD is associated with over 400 co-occurring conditions across 18 ICD-10 chapters. Over 90% of individuals with FASD have at least one co-occurring condition.\n\nMost commonly seen alongside FASD:\n• **ADHD** — frequently the first diagnosis given; medication response may be atypical\n• **Autism spectrum features** — social communication difficulties overlap\n• **Anxiety disorders** — extremely common\n• **Depression** — particularly in adolescence and adulthood\n• **Sleep disorders**\n• **Attachment disorders** — especially in children in care\n• **Conduct disorder / ODD**\n• **Substance misuse** in adolescence/adulthood\n\n**Important:** A child with ADHD that is not responding as expected to medication, or whose presentation is broader than ADHD alone, should be assessed for FASD. The two conditions can and do coexist, but FASD requires its own specific support strategies.\n\nTreat the whole child. Comorbid conditions need their own diagnosis and management plan alongside FASD." },
+
+  // PREVENTION
+  { tags:['prevent','safe','drink','alcohol','pregnancy','safe amount','no safe'],
+    answer:"**Preventing FASD**\n\nFASD is entirely preventable. The UK Chief Medical Officers' guidance is clear:\n\n*'If you are pregnant or think you could become pregnant, the safest approach is not to drink alcohol at all, to keep risks to your baby to a minimum.'*\n\nThere is **no known safe level, safe type, or safe time** during pregnancy to drink alcohol. The developing brain is vulnerable throughout all trimesters.\n\nIf you find out you are pregnant after drinking during early pregnancy:\n• Stop drinking now\n• In most cases, the risk to the baby is likely to be low from small amounts\n• Talk to your GP or midwife if you are worried\n\nFor clinicians: SIGN 156 recommends screening all pregnant women using **T-ACE, TWEAK, or AUDIT-C** tools. Women drinking above the low-risk guideline should be offered brief interventions.\n\n*(UK CMO Low Risk Drinking Guidelines; SIGN 156)*" },
+
+  // AT RISK
+  { tags:['at risk','not sure','young baby','infant','too young','incomplete'],
+    answer:"**'At risk for neurodevelopmental disorder and FASD' — what does this mean?**\n\nThis designation (SNOMED CT: 2078801000000102) is used for children who:\n• Have confirmed prenatal alcohol exposure\n• Do not yet meet the full CNS criteria for an FASD diagnosis (e.g. too young for complete assessment)\n• Show some indication of neurodevelopmental concern\n\nIt is **not a diagnosis** — it is a formal designation ensuring the child is monitored and supported while awaiting a more comprehensive assessment as they grow.\n\nPer SIGN 156, this designation:\n• Should never be used when PAE is confirmed absent\n• Should be recorded and available to all professionals involved in developmental surveillance\n• Should prompt referral to a clinical geneticist if all 3 sentinel features are present but no microcephaly\n• Should lead to re-assessment when the child is older\n\nNICE QS204 is explicit: **support must not wait for a formal diagnosis.** Children designated 'at risk' should receive early intervention and monitoring." },
+
+  // FOSTER / ADOPTION
+  { tags:['foster','adopt','care','kinship','looked after','unknown history','birth mother'],
+    answer:"**FASD in children in foster care, kinship care, or adoption**\n\nChildren in care are at significantly higher risk of FASD:\n• Birth history and PAE history may be unknown\n• SIGN 156 specifically lists 'child in foster/kinship/adoptive care with unknown birth history' as a key screening trigger\n• Multiple placement breakdowns and school exclusions are common secondary consequences of undiagnosed FASD\n\n**What to do:**\n• Unknown birth history alone is sufficient reason to consider FASD in a child with developmental or behavioural difficulties\n• Request a referral for FASD assessment — you do not need a confirmed alcohol history\n• All 3 sentinel facial features present = PAE confirmation not required\n• Significant difficulties + probable PAE = sufficient for NICE QS3 referral\n\n**Carers:** Many foster and adoptive carers carry the family history of the birth mother and are uniquely placed to provide PAE information. Your input is invaluable to the MDT assessment.\n\nContact **National FASD** (nationalfasd.org.uk) for carer-specific resources and support groups." },
+];
+
+function findAnswer(query) {
+  const q = query.toLowerCase();
+  let best = null, bestScore = 0;
+  FAQ_KB.forEach(item => {
+    let score = 0;
+    item.tags.forEach(tag => { if(q.includes(tag)) score += tag.length; });
+    if(score > bestScore) { bestScore = score; best = item; }
+  });
+  if(bestScore > 0) return best.answer;
+  // Fallback
+  return "That's a great question. I don't have a specific answer for that in my knowledge base, but here's where to find help:\n\n• **For general FASD information:** The content throughout this app covers most topics in depth — browse the Overview, Clinicians, Parents, and Teachers tabs\n• **For personal support:** Contact **National FASD** at nationalfasd.org.uk or call their helpline\n• **For clinical questions:** Your GP, paediatrician, or neurodevelopmental service can provide advice specific to your child\n• **For diagnosis:** A referral to a specialist FASD MDT is the most important step\n\nIs there something more specific I can try to help with?";
+}
+
+let chatHistory = [];
+let chatLoading = false;
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 90)+'px';
+}
+
+function sendSuggestion(el) {
+  document.getElementById('chatInput').value = el.textContent;
+  sendMessage();
+}
+
+function sendMessage() {
+  if(chatLoading) return;
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+
+  input.value='';
+  input.style.height='auto';
+  chatLoading=true;
+
+  appendMsg('user', text);
+  showTyping();
+
+  // Simulate brief thinking delay for natural feel
+  setTimeout(() => {
+    removeTyping();
+    const reply = findAnswer(text);
+    appendMsg('bot', reply);
+    chatLoading=false;
+  }, 600 + Math.random()*400);
+}
+
+
+function appendMsg(role, text) {
+  const msgs = document.getElementById('chatMessages');
+  const isUser = role==='user';
+  const div = document.createElement('div');
+  div.className = 'msg'+(isUser?' user':'');
+  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  // Convert markdown-style bold and bullets to HTML
+  let html = text
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/^• /gm,'• ')
+    .replace(/\n/g,'<br>');
+  div.innerHTML = `
+    <div class="msg-avatar">${isUser?'👤':'🤖'}</div>
+    <div>
+      <div class="msg-bubble">${html}</div>
+      <div class="msg-time">${now}</div>
+    </div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className='msg';div.id='typingIndicator';
+  div.innerHTML=`<div class="msg-avatar">🤖</div><div class="msg-bubble" style="padding:8px 14px;"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if(t) t.remove();
+}
+
+// Init quiz on first load in case user lands there
+document.addEventListener('DOMContentLoaded', ()=>{ initQuiz(); });
+// ─── Hash-based deep linking (for manifest shortcuts) ───
+function handleHashRoute() {
+  const hash = window.location.hash.replace('#','');
+  const routeMap = {
+    'quiz':      () => switchNav(document.querySelectorAll('.nav-item')[2], 'quiz'),
+    'chat':      () => switchNav(document.querySelectorAll('.nav-item')[3], 'chat'),
+    'podcast':   () => switchNav(document.querySelectorAll('.nav-item')[1], 'podcast'),
+    'resources': () => switchNav(document.querySelectorAll('.nav-item')[4], 'resources'),
+    'parents':   () => switchAudience('parents', document.querySelectorAll('.aud-btn')[1]),
+    'teachers':  () => switchAudience('teachers', document.querySelectorAll('.aud-btn')[2]),
+    'clinicians':() => switchAudience('clinicians', document.querySelectorAll('.aud-btn')[3]),
+    'children':  () => switchAudience('children', document.querySelectorAll('.aud-btn')[4]),
+  };
+  if (hash && routeMap[hash]) {
+    setTimeout(routeMap[hash], 50);
+  }
+}
+window.addEventListener('hashchange', handleHashRoute);
+
+document.addEventListener('DOMContentLoaded', () => { initQuiz(); handleHashRoute(); });
+
+// ─── Service Worker Registration ───
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => {
+        console.log('FASD Compass SW registered:', reg.scope);
+        // Check for updates every 60 seconds
+        setInterval(() => reg.update(), 60000);
+      })
+      .catch(err => console.warn('SW registration failed:', err));
+  });
+}
+
+
+
+// ─── Install prompt banner ───
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('installBanner');
+  if(banner) banner.style.display = 'flex';
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('installBtn');
+  if(btn) btn.addEventListener('click', async () => {
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('installBanner').style.display = 'none';
+  });
+  document.getElementById('installDismiss')?.addEventListener('click', () => {
+    document.getElementById('installBanner').style.display = 'none';
+  });
+});
+</script>
+
+<!-- Install App Banner -->
+<div id="installBanner" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:452px;background:var(--navy);color:#fff;border-radius:14px;padding:13px 16px;z-index:400;align-items:center;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">
+  <span style="font-size:22px;">🧭</span>
+  <div style="flex:1;">
+    <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen — works offline</div>
+  </div>
+  <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
+  <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
+</div>
+
+</body>
+</html>
