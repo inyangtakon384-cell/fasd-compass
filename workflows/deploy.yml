@@ -1,0 +1,59 @@
+name: Deploy FASD Compass
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+# Permissions for GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+
+  # ── JOB 1: Deploy to GitHub Pages (backup) ──
+  deploy-github-pages:
+    name: Deploy → GitHub Pages (backup)
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ── JOB 2: Deploy to Cloudflare Pages (primary) ──
+  deploy-cloudflare:
+    name: Deploy → Cloudflare Pages (primary)
+    runs-on: ubuntu-latest
+    # Only runs if you have added CLOUDFLARE_API_TOKEN secret
+    # Safe to leave in — skips gracefully if secret not set
+    if: ${{ vars.CLOUDFLARE_ENABLED == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=fasd-compass --branch=main
