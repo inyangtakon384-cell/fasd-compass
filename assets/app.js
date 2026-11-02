@@ -5,70 +5,58 @@ function switchNav(navItem, section) { window.location.href = ROUTES[section] ||
 
 function toggleExpand(el) { el.classList.toggle('open'); }
 
-// ─── PODCAST PLAYER ───
-const podState = {
-  1:{playing:false,progress:0,total:2304,speed:1},
-  2:{playing:false,progress:22,total:2650,speed:1},
-  3:{playing:false,progress:0,total:3125,speed:1},
-  4:{playing:false,progress:0,total:2490,speed:1}
-};
+// ─── PODCAST PLAYER (real audio) ───
 const speeds = [1,1.25,1.5,2,0.75];
-let podTimers = {};
-
 function formatTime(secs) {
-  const m = Math.floor(secs/60);
-  const s = Math.floor(secs%60);
-  return `${m}:${s.toString().padStart(2,'0')}`;
+  secs = Math.max(0, Math.floor(secs || 0));
+  return `${Math.floor(secs/60)}:${(secs%60).toString().padStart(2,'0')}`;
 }
-
-function togglePlay(id) {
-  const s = podState[id];
-  // pause all others
-  [1,2,3,4].forEach(i => {
-    if(i!==id && podState[i].playing) {
-      podState[i].playing=false;
-      document.getElementById('play'+i).textContent='▶️';
-      clearInterval(podTimers[i]);
-    }
+function podAudio(id) { return document.getElementById('audio'+id); }
+function podUpdate(id) {
+  const a = podAudio(id); if (!a) return;
+  const pct = a.duration ? (a.currentTime / a.duration) * 100 : 0;
+  document.getElementById('p'+id+'-fill').style.width = pct + '%';
+  document.getElementById('t'+id+'-current').textContent = formatTime(a.currentTime);
+  const bar = document.getElementById('p'+id+'-fill').parentElement;
+  if (bar) bar.setAttribute('aria-valuenow', Math.round(pct));
+}
+function podSetButton(id, playing) {
+  const btn = document.getElementById('play'+id); if (!btn) return;
+  btn.textContent = playing ? '⏸️' : '▶️';
+  btn.setAttribute('aria-label', playing ? 'Pause episode' : 'Play episode');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('audio[id^="audio"]').forEach(a => {
+    const id = a.id.replace('audio','');
+    a.addEventListener('timeupdate', () => podUpdate(id));
+    a.addEventListener('play', () => podSetButton(id, true));
+    a.addEventListener('pause', () => podSetButton(id, false));
+    a.addEventListener('ended', () => podSetButton(id, false));
   });
-  s.playing = !s.playing;
-  document.getElementById('play'+id).textContent = s.playing ? '⏸️' : '▶️';
-  if(s.playing) {
-    podTimers[id] = setInterval(()=>{
-      s.progress = Math.min(100, s.progress + (100/(s.total/s.speed)));
-      document.getElementById('p'+id+'-fill').style.width = s.progress+'%';
-      const elapsed = Math.floor((s.progress/100)*s.total);
-      document.getElementById('t'+id+'-current').textContent = formatTime(elapsed);
-      if(s.progress>=100){ clearInterval(podTimers[id]); s.playing=false; document.getElementById('play'+id).textContent='▶️'; }
-    }, 1000);
-  } else {
-    clearInterval(podTimers[id]);
-  }
+});
+function togglePlay(id) {
+  const a = podAudio(id); if (!a) return;
+  document.querySelectorAll('audio[id^="audio"]').forEach(o => { if (o !== a && !o.paused) o.pause(); });
+  if (a.paused) { a.play().catch(() => podSetButton(id, false)); } else { a.pause(); }
 }
-
 function skipPodcast(id, secs) {
-  const s = podState[id];
-  const currentSec = (s.progress/100)*s.total;
-  const newSec = Math.max(0, Math.min(s.total, currentSec+secs));
-  s.progress = (newSec/s.total)*100;
-  document.getElementById('p'+id+'-fill').style.width=s.progress+'%';
-  document.getElementById('t'+id+'-current').textContent=formatTime(newSec);
+  const a = podAudio(id); if (!a) return;
+  const max = a.duration || Infinity;
+  a.currentTime = Math.max(0, Math.min(max, a.currentTime + secs));
+  podUpdate(id);
 }
-
 function seekPodcast(id, e, bar) {
+  const a = podAudio(id); if (!a) return;
   const rect = bar.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const pct = Math.max(0, Math.min(100, (x/rect.width)*100));
-  podState[id].progress = pct;
-  document.getElementById('p'+id+'-fill').style.width=pct+'%';
-  document.getElementById('t'+id+'-current').textContent=formatTime((pct/100)*podState[id].total);
+  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  const go = () => { a.currentTime = pct * a.duration; podUpdate(id); };
+  if (a.duration) go(); else { a.addEventListener('loadedmetadata', go, { once: true }); a.load(); }
 }
-
 function cycleSpeed(id) {
-  const s = podState[id];
-  const idx = speeds.indexOf(s.speed);
-  s.speed = speeds[(idx+1)%speeds.length];
-  document.getElementById('speed'+id).textContent = s.speed+'×';
+  const a = podAudio(id); if (!a) return;
+  const next = speeds[(speeds.indexOf(a.playbackRate) + 1) % speeds.length] || 1;
+  a.playbackRate = next;
+  document.getElementById('speed'+id).textContent = next + '×';
 }
 
 // ─── QUIZ ───
