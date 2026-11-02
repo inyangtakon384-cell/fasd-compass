@@ -160,6 +160,8 @@ body {
   border: 1.5px solid transparent; position: relative; overflow: hidden;
 }
 .quick-card:active { transform: scale(.97); }
+a.quick-card { display: block; text-decoration: none; color: inherit; }
+.qc-wide { grid-column: 1 / -1; }
 .qc-icon { font-size: 26px; margin-bottom: 8px; display: block; }
 .qc-label { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
 .qc-sub { font-size: 11px; color: var(--text-muted); }
@@ -583,6 +585,7 @@ body {
       <div class="quick-card qc-purple" onclick="switchNav(document.querySelectorAll('.nav-item')[2],'quiz')"><span class="qc-icon">📋</span><div class="qc-label">Screening Tool</div><div class="qc-sub">Early detection quiz</div><div class="qc-accent"></div></div>
       <div class="quick-card qc-sage" onclick="switchNav(document.querySelectorAll('.nav-item')[1],'podcast')"><span class="qc-icon">🎙️</span><div class="qc-label">Podcast</div><div class="qc-sub">Expert episodes</div><div class="qc-accent"></div></div>
       <div class="quick-card qc-navy" onclick="switchNav(document.querySelectorAll('.nav-item')[4],'chat')"><span class="qc-icon">🤖</span><div class="qc-label">Ask FASD AI</div><div class="qc-sub">Get instant answers</div><div class="qc-accent"></div></div>
+      <a class="quick-card qc-coral qc-wide" href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer" aria-label="Watch Early Intervention Matters on YouTube (opens in a new tab)"><span class="qc-icon">▶️</span><div class="qc-label">Watch on YouTube</div><div class="qc-sub">Early Intervention Matters with Dr Inyang Takon</div><div class="qc-accent"></div></a>
     </div>
   </div>
   <div class="section">
