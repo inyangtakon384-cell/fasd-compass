@@ -3,5 +3,4 @@
 # www → apex (canonical URL)
 https://www.myfasdguide.org/* https://myfasdguide.org/:splat 301!
 
-# SPA fallback — all routes serve index.html
-/*  /index.html  200
+# Each page now has its own folder, so no SPA fallback is needed.

@@ -1,18 +1,19 @@
 // FASD Compass Service Worker
 // Strategies: Cache-first for app shell, network-first for external resources
 
-const APP_VERSION = 'fasd-compass-gh-v1.0.1';
+const APP_VERSION = 'fasd-compass-gh-v1.1.0';
 const STATIC_CACHE = `${APP_VERSION}-static`;
 const DYNAMIC_CACHE = `${APP_VERSION}-dynamic`;
 const FONT_CACHE = `${APP_VERSION}-fonts`;
 
 // Files to cache on install (app shell)
 const STATIC_ASSETS = [
-  '/index.html',
+  '/',
+  '/assets/styles.css?v=1.1.0',
+  '/assets/app.js?v=1.1.0',
   '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/offline.html'
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 // External resources to cache when fetched
@@ -55,8 +56,14 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // App shell & static assets: cache-first
-  if (url.pathname.match(/\.(html|json|png|jpg|svg|ico|woff2?)$/)) {
+  // Pages: network-first so visitors always get the latest content
+  if (request.mode === 'navigate' || url.pathname.endsWith('.html')) {
+    event.respondWith(networkFirstWithOfflineFallback(request));
+    return;
+  }
+
+  // Static assets: cache-first
+  if (url.pathname.match(/\.(json|png|jpg|svg|ico|woff2?)$/)) {
     event.respondWith(cacheFirst(request, STATIC_CACHE));
     return;
   }
@@ -99,7 +106,7 @@ async function networkFirstWithOfflineFallback(request) {
   } catch {
     const cached = await caches.match(request);
     if (cached) return cached;
-    return caches.match('/offline.html') || new Response(
+    return (await caches.match('/')) || new Response(
       '<h1>Offline</h1><p>Please check your connection.</p>',
       { headers: { 'Content-Type': 'text/html' } }
     );

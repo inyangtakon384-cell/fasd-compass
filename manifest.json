@@ -2,7 +2,7 @@
   "name": "FASD Compass",
   "short_name": "FASD Compass",
   "description": "Evidence-based FASD guidance for parents, teachers, clinicians and families. Based on SIGN 156 and NICE QS204.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

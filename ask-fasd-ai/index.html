@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Ask FASD Compass AI: Your FASD Questions Answered</title>
+<meta name="description" content="Ask questions about FASD and get general answers based on SIGN 156 and NICE QS204. Educational information only."/>
+<link rel="canonical" href="https://fasdcompass.co.uk/ask-fasd-ai/"/>
+<meta name="author" content="Dr Inyang Takon"/>
+<meta name="theme-color" content="#0d2340"/>
+<meta property="og:site_name" content="FASD Compass"/>
+<meta property="og:title" content="Ask FASD Compass AI: Your FASD Questions Answered"/>
+<meta property="og:description" content="Ask questions about FASD and get general answers based on SIGN 156 and NICE QS204. Educational information only."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://fasdcompass.co.uk/ask-fasd-ai/"/>
+<meta property="og:image" content="https://fasdcompass.co.uk/icon-512.png"/>
+<meta property="og:locale" content="en_GB"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="FASD Compass"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="apple-touch-icon" href="/icon-192.png"/>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/styles.css?v=1.1.0"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "MedicalWebPage",
+   "@id": "https://fasdcompass.co.uk/ask-fasd-ai/",
+   "url": "https://fasdcompass.co.uk/ask-fasd-ai/",
+   "name": "Ask FASD Compass AI: Your FASD Questions Answered",
+   "description": "Ask questions about FASD and get general answers based on SIGN 156 and NICE QS204. Educational information only.",
+   "inLanguage": "en-GB",
+   "isPartOf": {
+    "@id": "https://fasdcompass.co.uk/#website"
+   },
+   "about": {
+    "@type": "MedicalCondition",
+    "name": "Fetal Alcohol Spectrum Disorder",
+    "alternateName": "FASD"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr Inyang Takon",
+    "jobTitle": "Consultant Neurodevelopmental Paediatrician"
+   },
+   "lastReviewed": "2026-11-02"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://fasdcompass.co.uk/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Ask FASD AI",
+     "item": "https://fasdcompass.co.uk/ask-fasd-ai/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="app-header">
+  <div class="header-top">
+    <a class="app-logo" href="/" aria-label="FASD Compass home">
+      <div class="logo-mark" aria-hidden="true">🧭</div>
+      <div>
+        <div class="app-name">FASD Compass</div>
+        <div class="app-tagline">Understanding & Supporting Children</div>
+      </div>
+    </a>
+    <div class="header-badge">Evidence-Based</div>
+  </div>
+  <nav class="audience-scroll" id="audienceBar" aria-label="Sections">
+    <a class="aud-btn" href="/">Overview</a>
+    <a class="aud-btn" href="/parents/">Parents</a>
+    <a class="aud-btn" href="/teachers/">Teachers</a>
+    <a class="aud-btn" href="/clinicians/">Clinicians</a>
+    <a class="aud-btn" href="/for-children/">For Children</a>
+    <a class="aud-btn" href="/about/">About</a>
+  </nav>
+</header>
+
+<!-- ─── MAIN ─── -->
+<main class="main" id="mainContent">
+
+<div class="page active" id="page-chat">
+  <div class="chat-page">
+    <div class="chat-header">
+      <div class="chat-header-top">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <h1 class="chat-name">FASD Compass AI</h1>
+          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204 · Works offline</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg">
+        <div class="msg-avatar">🤖</div>
+        <div>
+          <div class="msg-bubble">Hi! I'm the FASD Compass AI, here to answer your questions about Fetal Alcohol Spectrum Disorder. I can help parents, teachers, clinicians, or anyone wanting to learn more. What would you like to know?</div>
+          <div class="msg-time">Now</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:0 14px;">
+      <div class="disclaimer-chip">⚕️ This assistant provides general educational information based on SIGN 156 and NICE QS204. Always consult a qualified healthcare professional for decisions about individual children.</div>
+    </div>
+    <div class="chat-input-area">
+      <div class="chat-suggestions" id="chatSuggestions">
+        <div class="chat-sug" onclick="sendSuggestion(this)">What is FASD?</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">Signs in toddlers</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">School strategies</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</div>
+        <div class="chat-sug" onclick="sendSuggestion(this)">Helping meltdowns</div>
+      </div>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="chatInput" placeholder="Ask anything about FASD…" rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"
+          oninput="autoResize(this)"></textarea>
+        <button class="chat-send" id="chatSendBtn" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="sf-title">FASD Compass</div>
+  <div>Evidence-based information on Fetal Alcohol Spectrum Disorder, based on SIGN 156 and NICE QS204. Clinical lead: Dr Inyang Takon, Consultant Neurodevelopmental Paediatrician.</div>
+  <nav aria-label="Site pages">
+    <ul class="sf-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/parents/">Parents and carers</a></li>
+      <li><a href="/teachers/">Teachers and schools</a></li>
+      <li><a href="/clinicians/">Clinicians</a></li>
+      <li><a href="/for-children/">For children</a></li>
+      <li><a href="/screening-tool/">Screening tool</a></li>
+      <li><a href="/ask-fasd-ai/">Ask FASD AI</a></li>
+      <li><a href="/podcast/">Podcast</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+  </nav>
+  <div>Watch <a href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer">Early Intervention Matters on YouTube</a> · Contact <a href="mailto:eim@drtakon.com">eim@drtakon.com</a></div>
+  <div class="sf-small" style="margin-top:10px;">For education only. FASD Compass does not diagnose FASD or replace advice from a qualified professional. © 2026 FASD Compass.</div>
+</footer>
+<div class="spacer"></div>
+
+</main>
+
+<!-- ─── BOTTOM NAV ─── -->
+<nav class="bottom-nav" aria-label="Main">
+  <a class="nav-item" href="/">
+    <div class="nav-icon" aria-hidden="true">🏠</div>
+    <div class="nav-label">Home</div>
+    <div class="nav-dot"></div>
+  </a>
+  <a class="nav-item" href="/podcast/">
+    <div class="nav-icon" aria-hidden="true">🎙️</div>
+    <div class="nav-label">Podcast</div>
+    <div class="nav-dot"></div>
+  </a>
+  <a class="nav-item" href="/screening-tool/">
+    <div class="nav-icon" aria-hidden="true">📋</div>
+    <div class="nav-label">Screen</div>
+    <div class="nav-dot"></div>
+  </a>
+  <a class="nav-item active" href="/ask-fasd-ai/" aria-current="page">
+    <div class="nav-icon" aria-hidden="true">🤖</div>
+    <div class="nav-label">Ask AI</div>
+    <div class="nav-dot"></div>
+  </a>
+  <a class="nav-item" href="/resources/">
+    <div class="nav-icon" aria-hidden="true">📚</div>
+    <div class="nav-label">Resources</div>
+    <div class="nav-dot"></div>
+  </a>
+</nav>
+
+<!-- Install App Banner -->
+<div id="installBanner" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:452px;background:var(--navy);color:#fff;border-radius:14px;padding:13px 16px;z-index:400;align-items:center;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">
+  <span style="font-size:22px;">🧭</span>
+  <div style="flex:1;">
+    <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen — works offline</div>
+  </div>
+  <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
+  <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
+</div>
+
+<script src="/assets/app.js?v=1.1.0"></script>
+</body>
+</html>
