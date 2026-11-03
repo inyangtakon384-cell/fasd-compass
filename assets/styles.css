@@ -1047,3 +1047,30 @@ details.mod > summary:focus-visible { outline: 3px solid var(--teal); outline-of
 .mod-h { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--teal); margin: 10px 0 4px; }
 @media (max-width: 600px) { .mod-body { padding-left: 16px; } }
 @media print { details.mod { box-shadow: none; border: 1px solid #ccd; break-inside: avoid; } details.mod > summary::after { display: none; } }
+
+/* ── Ask FASD AI: audience choice, topic options, live AI (v1.2.8) ── */
+.ask-aud { margin-top: 12px; }
+.ask-aud-legend { font-size: 12px; color: rgba(255,255,255,.85); margin-bottom: 6px; font-weight: 600; }
+.ask-aud-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.ask-aud-btn {
+  background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.55);
+  border-radius: 20px; padding: 7px 13px; font-size: 12.5px; font-weight: 600; cursor: pointer; min-height: 36px;
+}
+.ask-aud-btn:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+.ask-aud-btn[aria-pressed="true"] { background: #fff; color: var(--navy); border-color: #fff; }
+.ask-aud-btn:focus-visible, .chat-live-btn:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; }
+.ask-aud-note { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.chat-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chat-options .chat-sug { white-space: normal; text-align: left; }
+.chat-live-btn {
+  display: block; margin-top: 10px; background: #fff; color: var(--navy); border: 1.5px solid var(--navy);
+  border-radius: 8px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+}
+.chat-live-btn:disabled { opacity: .7; cursor: default; }
+.msg-label { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+@media (max-width: 600px) {
+  .chat-page { height: auto; min-height: calc(100vh - 140px); }
+  .chat-messages { min-height: 360px; max-height: 65vh; }
+  .ask-aud { margin-top: 10px; }
+  .ask-aud-btn { font-size: 12px; padding: 6px 10px; min-height: 34px; }
+}

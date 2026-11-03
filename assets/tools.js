@@ -1,4 +1,4 @@
-/* FASD Compass family tools (v1.2.7)
+/* FASD Compass family tools (v1.2.8)
    Everything stays on this device. Nothing is sent to a server. */
 (function () {
   'use strict';
