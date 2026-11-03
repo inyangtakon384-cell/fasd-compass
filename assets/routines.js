@@ -1,4 +1,4 @@
-/* FASD Compass Visual Routine Builder (v1.2.6)
+/* FASD Compass Visual Routine Builder (v1.2.7)
    Everything stays on this device. Nothing is sent to a server. */
 (function () {
   'use strict';
