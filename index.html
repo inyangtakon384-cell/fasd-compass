@@ -2,6 +2,8 @@
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>FASD Compass | Fetal Alcohol Spectrum Disorder Guide (UK)</title>
 <meta name="description" content="Clear, evidence-based information on Fetal Alcohol Spectrum Disorder (FASD) for parents, schools and clinicians. Based on SIGN 156 and NICE QS204."/>
@@ -23,9 +25,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/styles.css?v=1.2.2"/>
 <script type="application/ld+json">
 {
@@ -101,7 +100,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Fetal Alcohol Spectrum Disorder</div>
     <h1 class="hero-title">Understand. Recognise. Support.</h1>
-    <div class="hero-body">FASD is the leading preventable cause of neurodevelopmental disability. Early recognition and the right strategies make a lifelong difference.</div>
+    <div class="hero-body">FASD is one of the most common neurodevelopmental conditions in the UK, and it is often missed. Early recognition and the right strategies make a lifelong difference.</div>
   </div>
   <div class="section">
     <h2 class="section-title">What is FASD?</h2>
@@ -117,7 +116,7 @@
   </div>
   <div class="section">
     <h2 class="section-title">Key Facts</h2>
-    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Prevalence (UK)</span></div><div class="ic-body">SIGN 156 estimates that approximately 3.2% of babies born in the UK are affected by FASD. In Scotland alone, up to 172,000 people may be affected. FASD remains significantly underdiagnosed.</div></div>
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Prevalence (UK)</span></div><div class="ic-body">Estimates suggest around 3.2% of people in the UK may have FASD (<a href="https://www.sign.ac.uk/guidelines/children-and-young-people-exposed-prenatally-to-alcohol/" target="_blank" rel="noopener">SIGN</a>). In Scotland alone, up to 172,000 people may be affected (<a href="https://www.sign.ac.uk/guidelines/children-and-young-people-exposed-prenatally-to-alcohol/" target="_blank" rel="noopener">SIGN</a>). FASD is often missed or misdiagnosed.</div></div>
     <div class="info-card coral"><div class="ic-header"><span class="ic-icon">⚠️</span><span class="ic-title">No Safe Amount</span></div><div class="ic-body">There is no known safe level, safe type, or safe time during pregnancy to drink alcohol. This is the advice of the UK Chief Medical Officers and is the basis of NICE QS204 Statement 1.</div></div>
     <div class="info-card sage"><div class="ic-header"><span class="ic-icon">🤝</span><span class="ic-title">Support, Not Blame</span></div><div class="ic-body">Many people drink alcohol before they know they are pregnant, and many were never told the risks. FASD is nobody’s fault. What matters is recognising it early and getting the right support for the child and family.</div></div>
     <div class="info-card navy"><div class="ic-header"><span class="ic-icon">📋</span><span class="ic-title">NICE QS204 — 5 Quality Statements</span></div><div class="ic-body">
@@ -142,7 +141,7 @@
   </div>
   <div class="section">
     <h2 class="section-title">Diagnostic Classifications</h2>
-    <div class="evidence-note">📚 SIGN 156 (Scottish Intercollegiate Guidelines Network, 2019) — adopted by NICE QS204 (2022) for England & Wales. SNOMED CT codes implemented 2024.</div>
+    <div class="evidence-note">📚 SIGN 156 (Scottish Intercollegiate Guidelines Network, 2019, revalidated 2022). SIGN currently notes that some recommendations may be out of date. NICE QS204 (2022) is a quality standard for England. SNOMED CT codes implemented 2024.</div>
 
     <div class="expand-item" onclick="toggleExpand(this)"><div class="expand-trigger"><div class="et-left"><div class="et-dot"></div><div class="et-label">FASD with Sentinel Facial Features</div></div><div class="et-arrow">▼</div></div><div class="expand-body">
       <p style="font-size:12px;color:var(--teal);font-weight:700;margin-bottom:8px;">SNOMED CT: 1894471000000108</p>
@@ -229,6 +228,7 @@
     </ul>
   </nav>
   <div>Watch <a href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer">Early Intervention Matters on YouTube</a> · Contact <a href="mailto:eim@drtakon.com">eim@drtakon.com</a></div>
+  <div class="sf-help"><a class="sf-urgent" href="/urgent-help/">Need help now?</a> · <a href="mailto:eim@drtakon.com?subject=Report%20an%20error%20on%20FASD%20Compass">Report an error</a> · <a href="/privacy/">Privacy</a> · <a href="/accessibility/">Accessibility</a> · <a href="/evidence/">Evidence and sources</a> · <a href="/editorial-policy/">Editorial policy</a></div>
   <div class="sf-small" style="margin-top:10px;">For education only. FASD Compass does not diagnose FASD or replace advice from a qualified professional. © 2026 FASD Compass.</div>
 </footer>
 <div class="spacer"></div>
@@ -269,7 +269,7 @@
   <span style="font-size:22px;">🧭</span>
   <div style="flex:1;">
     <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
-    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add FASD Compass to your home screen</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen. Pages you have opened work offline.</div>
   </div>
   <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>

@@ -2,6 +2,8 @@
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>FASD Diagnosis and Assessment: SIGN 156 and NICE QS204 | FASD Compass</title>
 <meta name="description" content="Clinical guide to FASD for GPs, nurses and paediatricians: NICE QS204 statements, SIGN 156 diagnostic criteria, the 10 assessment areas and SNOMED CT codes."/>
@@ -22,9 +24,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/styles.css?v=1.2.2"/>
 <script type="application/ld+json">
 {
@@ -107,13 +106,14 @@
     <div class="hero-body">FASD remains significantly underdiagnosed in the UK. SIGN 156 and NICE QS204 provide the current national framework for assessment, diagnosis, and care.</div>
   </div>
   <div class="section">
-    <h2 class="section-title">NICE QS204 — Your Obligations</h2>
-    <div class="evidence-note">📚 NICE Quality Standard QS204 (March 2022) applies in England & Wales. SIGN 156 (2019, revalidated 2022) applies in Scotland. Both use the same two-category diagnostic framework.</div>
-    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">QS1 — Advise Against Drinking in Pregnancy</div><div class="sc-body">All pregnant women should be advised at every antenatal contact that there is no safe level of alcohol in pregnancy. This should be verbal and written, based on UK CMO low-risk drinking guidelines.</div></div></div>
-    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">QS2 — Ask About and Record Alcohol Use</div><div class="sc-body">Alcohol use must be asked about and documented throughout pregnancy. Use validated tools (e.g. AUDIT-C). Record all responses — including nil consumption — in the patient record.</div></div></div>
-    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">QS3 — Refer for Assessment</div><div class="sc-body">Children and young people with <strong>probable prenatal alcohol exposure</strong> and significant physical, developmental, or behavioural difficulties should be referred for FASD assessment. Do not wait for confirmed exposure before referring.</div></div></div>
-    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">QS4 — Neurodevelopmental Assessment</div><div class="sc-body">Children with <strong>confirmed PAE</strong>, or <strong>all three sentinel facial features</strong>, must have a neurodevelopmental assessment if there are clinical concerns. Assessment should cover all 10 SIGN 156 domains.</div></div></div>
-    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">QS5 — Management Plan</div><div class="sc-body">Every child diagnosed with FASD must have an <strong>individualised management plan</strong> that addresses immediate and long-term needs, signposts to services, and is shared with the family, school, and relevant professionals.</div></div></div>
+    <h2 class="section-title">NICE QS204: Key Standards for Clinical Practice</h2>
+    <div class="evidence-note">📚 <a href="https://www.nice.org.uk/guidance/qs204/chapter/Quality-statements" target="_blank" rel="noopener">NICE Quality Standard QS204</a> (March 2022) is a quality standard for England. Wales, Scotland and Northern Ireland have their own arrangements. Quality standards describe high-quality care. They are not legal duties. The statements below use NICE’s own wording. <a href="https://www.sign.ac.uk/guidelines/children-and-young-people-exposed-prenatally-to-alcohol/" target="_blank" rel="noopener">SIGN 156</a> (2019, revalidated 2022) is the Scottish guideline. SIGN currently notes that some recommendations may be out of date.</div>
+    <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">QS1: Advice not to drink in pregnancy</div><div class="sc-body">“Pregnant women are given advice throughout pregnancy not to drink alcohol.”</div></div></div>
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">QS2: Asking about and recording alcohol use</div><div class="sc-body">“Pregnant women are asked about their alcohol use throughout their pregnancy and this is recorded.”<br><br>Separately, SIGN 156 recommends validated tools such as T-ACE, TWEAK or AUDIT-C (see below).</div></div></div>
+    <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">QS3: Referral for assessment</div><div class="sc-body">“Children and young people with <strong>probable prenatal alcohol exposure</strong> and significant physical, developmental or behavioural difficulties are referred for assessment.”</div></div></div>
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">QS4: Neurodevelopmental assessment</div><div class="sc-body">“Children and young people with <strong>confirmed prenatal alcohol exposure</strong> or <strong>all 3 facial features</strong> associated with prenatal alcohol exposure have a neurodevelopmental assessment if there are clinical concerns.”</div></div></div>
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">QS5: Management plan</div><div class="sc-body">“Children and young people with a diagnosis of fetal alcohol spectrum disorder (FASD) have a <strong>management plan</strong> to address their needs.”</div></div></div>
+    <div class="evidence-note">Source: <a href="https://www.nice.org.uk/guidance/qs204/chapter/Quality-statements" target="_blank" rel="noopener">NICE QS204 quality statements</a>.</div>
   </div>
 
   <div class="section">
@@ -148,7 +148,7 @@
       <div class="ic-header"><span class="ic-icon">⚠️</span><span class="ic-title">At Increased Risk of FASD</span></div>
       <div class="ic-body">
         <span style="font-size:11px;background:rgba(224,92,75,0.1);color:#a02a18;border-radius:5px;padding:2px 7px;font-weight:700;">SNOMED CT: 2078801000000102</span><br><br>
-        For children who do not yet meet full criteria — e.g. confirmed PAE but child too young for full neurodevelopmental assessment, or 3 SFF present but assessment not yet complete. Should receive early support and regular re-assessment. Per NICE QS204: support must not wait for a formal diagnosis.
+        For children who do not yet meet full criteria — e.g. confirmed PAE but child too young for full neurodevelopmental assessment, or 3 SFF present but assessment not yet complete. Should receive early support and regular re-assessment. Support should be based on need and should not wait for a diagnosis.
       </div>
     </div>
   </div>
@@ -309,17 +309,17 @@
 
     <div class="strategy-card"><div class="sc-num">1</div><div><div class="sc-title">Gather PAE History</div><div class="sc-body">Confirmation of PAE requires documentation that the biological mother consumed alcohol during the index pregnancy based on: <strong>reliable clinical observation, self-report, reports by a reliable source, medical records of positive blood alcohol concentrations, or alcohol treatment / social / legal / medical problems</strong> related to drinking during the pregnancy. Unsubstantiated information, lifestyle alone, or history in previous pregnancies cannot in isolation confirm PAE in the index pregnancy.</div></div></div>
 
-    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Medical Examination</div><div class="sc-body">Assess all three sentinel facial features using the <strong>University of Washington Lip-Philtrum Guides</strong>. Measure palpebral fissure length (≥2 SDs below the mean per SIGN 156). Plot OFC, height, and weight on <strong>UK-WHO growth charts</strong> (available from SIGN website). Take a full family, social, and medical history. Obtain a three-generation family tree where possible to identify inheritable disorders. <strong>Genetic causes must be considered and excluded before arriving at an FASD diagnosis.</strong></div></div></div>
+    <div class="strategy-card"><div class="sc-num amber">2</div><div><div class="sc-title">Medical Examination</div><div class="sc-body">Assess all three sentinel facial features using the <strong>University of Washington Lip-Philtrum Guides</strong>. Measure palpebral fissure length (≥2 SDs below the mean per SIGN 156). Plot OFC, height, and weight on <strong>UK-WHO growth charts</strong> (available from SIGN website). Take a full family, social, and medical history. Obtain a three-generation family tree where possible to identify inheritable disorders. <strong>Other causes, including genetic conditions, should be considered as part of the assessment.</strong></div></div></div>
 
     <div class="strategy-card"><div class="sc-num coral">3</div><div><div class="sc-title">Note Associated Features (Not Diagnostic)</div><div class="sc-body">The following should be <strong>recorded but do not contribute to confirming or refuting</strong> an FASD diagnosis (per Canadian Rec. 3.2 adopted by SIGN 156): mid-face hypoplasia, micrognathia, abnormal ear position/formation, high arched palate, epicanthal folds, limb abnormalities, palmar crease abnormalities, short upturned nose. Growth impairment and congenital anomalies should also be documented if present.</div></div></div>
 
-    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Neurodevelopmental Assessment (MDT)</div><div class="sc-body">SIGN 156 MDT must include: <strong>neonatologist / paediatrician / physician</strong> with FASD competency; <strong>child development specialist</strong> with skill set for physical and functional assessments (e.g. speech and language therapist, occupational therapist, clinical or educational psychologist). Additional input may include clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, and family therapists. Assess across all 10 areas of assessment. Direct standardised measures should be used whenever possible.</div></div></div>
+    <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Neurodevelopmental Assessment (MDT)</div><div class="sc-body">SIGN 156 MDT must include: <strong>neonatologist / paediatrician / physician</strong> with FASD competency; <strong>child development specialist</strong> with skill set for physical and functional assessments (e.g. speech and language therapist, occupational therapist, clinical or educational psychologist). Additional input may include clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, and family therapists. Assess across all 10 areas of brain function described in SIGN 156. Direct standardised measures should be used whenever possible.</div></div></div>
 
     <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Apply the Diagnostic Algorithm</div><div class="sc-body">Use the SIGN 156 Annex 2 diagnostic algorithm. For <strong>infants &lt;6 years</strong>: if all 3 SFF + microcephaly → FASD with SFF; if all 3 SFF without microcephaly → refer to clinical geneticist + 'At Risk' designation; if PAE confirmed but criteria not met → 'At Risk'. If PAE is confirmed absent, FASD and 'At Risk' are not used. For <strong>older children</strong>: apply the full 10-domain assessment. Record SNOMED CT codes. Note: the diagnostic/descriptive criteria for FASD are the same for adults as for younger individuals (SIGN 156 Rec. 8.1).</div></div></div>
 
     <div class="strategy-card"><div class="sc-num">6</div><div><div class="sc-title">Communicate and Develop Management Plan</div><div class="sc-body">Per NICE QS5 and SIGN 156 Section 4: Present findings to the family in writing and verbally. Use plain language appropriate to the child's age. The individualised management plan must address: basic and immediate needs, therapy services (SLT, OT, psychology), school adjustments, family support and psychoeducation, signposting to resources, and scheduled review. Reassessment at all transition points throughout the child's life.</div></div></div>
 
-    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">🔗</span><span class="ic-title">Comorbidities — Over 400 Associated Conditions</span></div><div class="ic-body">FASD is associated with over 400 co-occurring conditions across 18 ICD-10 chapters. Common comorbidities explicitly listed in SIGN 156 include ADHD, ASD features, and mood disorders. Also frequently seen: anxiety disorders, conduct disorder, attachment disorders, sleep disorders, substance misuse in adolescence/adulthood, and involvement in the judicial system. Treat the whole child and coordinate care across agencies.</div></div>
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">🔗</span><span class="ic-title">Comorbidities: over 400 associated conditions</span></div><div class="ic-body">A systematic review identified 428 conditions that co-occur with FASD, across 18 of the 22 ICD-10 chapters (<a href="https://doi.org/10.1016/S0140-6736(15)01345-8" target="_blank" rel="noopener">Popova et al., The Lancet, 2016</a>). Common comorbidities explicitly listed in SIGN 156 include ADHD, ASD features, and mood disorders. Also frequently seen: anxiety disorders, conduct disorder, attachment disorders, sleep disorders, substance misuse in adolescence/adulthood, and involvement in the judicial system. Treat the whole child and coordinate care across agencies.</div></div>
 
     <div class="info-card navy"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Screening Tools for PAE in Pregnancy</span></div><div class="ic-body">Per SIGN 156 Recommendations 2.3 and 2.4: use validated tools — <strong>T-ACE, TWEAK, or AUDIT-C</strong> — to screen all pregnant women for alcohol consumption. Consider associated biomarkers (CDT, PEth) alongside questionnaires. Document dose, pattern, and frequency of alcohol use. PAE information (confirmed / confirmed absent / unknown) must remain accessible in the child's health records throughout childhood.</div></div>
   </div>
@@ -374,6 +374,7 @@
     </ul>
   </nav>
   <div>Watch <a href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer">Early Intervention Matters on YouTube</a> · Contact <a href="mailto:eim@drtakon.com">eim@drtakon.com</a></div>
+  <div class="sf-help"><a class="sf-urgent" href="/urgent-help/">Need help now?</a> · <a href="mailto:eim@drtakon.com?subject=Report%20an%20error%20on%20FASD%20Compass">Report an error</a> · <a href="/privacy/">Privacy</a> · <a href="/accessibility/">Accessibility</a> · <a href="/evidence/">Evidence and sources</a> · <a href="/editorial-policy/">Editorial policy</a></div>
   <div class="sf-small" style="margin-top:10px;">For education only. FASD Compass does not diagnose FASD or replace advice from a qualified professional. © 2026 FASD Compass.</div>
 </footer>
 <div class="spacer"></div>
@@ -414,7 +415,7 @@
   <span style="font-size:22px;">🧭</span>
   <div style="flex:1;">
     <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
-    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add FASD Compass to your home screen</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen. Pages you have opened work offline.</div>
   </div>
   <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>

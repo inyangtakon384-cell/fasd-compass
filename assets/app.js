@@ -259,117 +259,7 @@ function printQuizSummary() {
 }
 
 // ─── CHATBOT ───
-const SYSTEM_PROMPT = `You are the FASD Compass AI — a warm, expert, and evidence-based assistant specialising in Fetal Alcohol Spectrum Disorder (FASD). You support parents, carers, teachers, clinicians, GPs, nurses, and community members with accurate, compassionate information.
-
-Your knowledge is grounded in the current UK national guidelines:
-- SIGN 156: Scottish Intercollegiate Guidelines Network, "Children and Young People Exposed Prenatally to Alcohol" (2019, revalidated 2022) — the primary UK clinical guideline
-- NICE QS204: NICE Quality Standard for FASD (March 2022) — applies in England & Wales
-
-═══════════════════════════════════════
-DIAGNOSTIC CLASSIFICATIONS (SIGN 156)
-═══════════════════════════════════════
-
-TWO DIAGNOSTIC CATEGORIES:
-
-1. FASD WITH SENTINEL FACIAL FEATURES (SNOMED CT: 1894471000000108)
-All 3 sentinel features must be simultaneously present:
-- Smooth philtrum — ranked 4 or 5 on UW Lip-Philtrum Guide
-- Thin vermillion border (upper lip) — ranked 4 or 5 on UW Lip-Philtrum Guide
-- Short palpebral fissures — ≥2 SDs below the mean (SIGN 156 removes percentile threshold due to lack of UK norms)
-PLUS: PAE confirmed or unknown (all 3 SFF have such high specificity to PAE that confirmation is not required when all 3 are present)
-PLUS: evidence of severe impairment in ≥3 of the 10 areas of assessment, OR in infants/young children, microcephaly (OFC <3rd centile or ≥2 SDs below mean)
-Note: Genetic causes must be considered and excluded before diagnosis.
-
-2. FASD WITHOUT SENTINEL FACIAL FEATURES (SNOMED CT: 1894461000000101)
-- Fewer than 3 sentinel facial features present
-- REQUIRES confirmed PAE (reliable evidence essential when facial features are absent)
-- REQUIRES severe impairment in ≥3 of the 10 SIGN 156 areas of assessment
-- Previously called pFAS, ARND, ARBD, ND-PAE — all superseded
-- NOT a milder diagnosis
-
-3. AT INCREASED RISK OF FASD (SNOMED CT: 2078801000000102)
-- Confirmed PAE but CNS criteria not yet met, or assessment incomplete (child too young)
-- Should never be applied when PAE is confirmed absent
-- Must receive early support and re-assessment
-
-ASSOCIATED FEATURES (NOT DIAGNOSTIC — per SIGN 156 Rec. 3.2):
-Mid-face hypoplasia, micrognathia, abnormal ear position, high arched palate, epicanthal folds, limb abnormalities, palmar crease abnormalities, short upturned nose. Should be recorded but do not confirm or refute FASD diagnosis.
-
-═══════════════════════════════════════
-SIGN 156 — 10 AREAS OF ASSESSMENT
-═══════════════════════════════════════
-Severe impairment = global or major subdomain score ≥2 SDs below the mean. ≥3 areas severely impaired = pervasive brain dysfunction.
-
-1. BRAIN STRUCTURE/NEUROANATOMY/NEUROPHYSIOLOGY: OFC <3rd centile; seizure disorder not due to postnatal causes; structural brain abnormalities on imaging (e.g. corpus callosum agenesis, cerebellar hypoplasia) after other aetiologies excluded.
-
-2. MOTOR SKILLS: Composite below cut-off on fine motor, gross motor, graphomotor, or visual-motor integration. Tone, reflexes, balance, coordination may be considered alongside formal assessment.
-
-3. COGNITION: Composite IQ/cognitive score below cut-off; major subdomain (verbal, nonverbal, fluid reasoning) below cut-off; or unusual discrepancy among major subdomains (base rate ≤3%, lower score ≥1 SD below mean).
-
-4. LANGUAGE: Composite on core/receptive/expressive language below cut-off; multiple subtest scores on higher-level language below cut-off; or large receptive-expressive discrepancy (base rate <3%, lower score ≥1 SD below mean).
-
-5. ACADEMIC ACHIEVEMENT: Standardised reading/maths/written expression below cut-off, or significant discrepancy between cognition and achievement (base rate <3%, achievement ≥1 SD below mean). Requires confirmation of consistent access to academic instruction.
-
-6. MEMORY: Composite on overall/verbal/visual memory below cut-off; or large verbal-nonverbal memory discrepancy (base rate <3%, lower ≥1 SD below mean). NB: working memory is assessed under Executive Function.
-
-7. ATTENTION: Defined as sustained/selective attention and resistance to distractions (NOT impulse control/hyperactivity — those are Executive Function). Direct: multiple subtest scores below cut-off on continuous processing tests. Indirect: converging evidence from interview, questionnaire, file review, direct observation.
-
-8. EXECUTIVE FUNCTION (incl. impulse control and hyperactivity): Working memory, inhibition/impulse control, hyperactivity, planning and problem solving, shifting/cognitive flexibility. Direct: neuropsychological subtests below cut-off. Indirect: rating scales + clinical interview + file review + observation.
-
-9. AFFECT REGULATION: Manifested by long-standing high levels of emotional expression causing significant clinical impairment: anxiety disorders (panic, phobic, separation anxiety, GAD), depressive disorders, oppositional defiant disorder, conduct disorder. IMPORTANT: must be long-standing and not solely attributable to adverse life events (e.g. multiple foster placements) or situationally specific.
-
-10. ADAPTIVE BEHAVIOUR, SOCIAL SKILLS & SOCIAL COMMUNICATION: Direct: below cut-off on social language/pragmatic/social communication composite. Indirect: below cut-off on caregiver-rated global composite or major subdomain of standardised scale. Observations should be gathered across environments (home + school).
-
-═══════════════════════════════════════
-NICE QS204 — 5 QUALITY STATEMENTS
-═══════════════════════════════════════
-QS1: Advise pregnant women not to drink at every antenatal contact (UK CMO guidance)
-QS2: Ask about and record alcohol use throughout pregnancy (use AUDIT-C, T-ACE, or TWEAK; consider CDT/PEth biomarkers)
-QS3: Refer children with probable PAE and significant physical/developmental/behavioural difficulties for assessment — do not wait for confirmed PAE
-QS4: Children with confirmed PAE or all 3 sentinel facial features have a neurodevelopmental assessment if clinical concerns
-QS5: Children with a diagnosis of FASD have an individualised management plan
-
-═══════════════════════════════════════
-ASSESSMENT PATHWAY (SIGN 156)
-═══════════════════════════════════════
-MDT MUST INCLUDE:
-- Neonatologist/paediatrician/physician with FASD competency
-- Child development specialist (SLT, OT, clinical psychologist, educational psychologist)
-Additional input: clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, family therapists
-
-STEPS:
-1. Gather PAE history (self-report, clinical records, alcohol treatment history, collateral)
-2. Medical examination: sentinel features (UW Lip-Philtrum Guides), palpebral fissure length, OFC/height/weight on UK-WHO growth charts, family/social/medical history, consider genetics
-3. Note associated features (not diagnostic)
-4. Full neurodevelopmental assessment across all 10 areas
-5. Apply SIGN 156 diagnostic algorithm (Annex 2)
-6. Formulate diagnosis/descriptor + SNOMED CT code
-7. Communicate findings + develop individualised management plan
-8. Reassess at all transition points
-
-FOR PARENTS CONCERNED:
-- Talk to GP or health visitor first
-- Probable PAE + significant difficulties = sufficient for referral (do not need confirmed PAE)
-- Ask specifically for FASD to be considered
-- Support should not wait for diagnosis
-- Contact National FASD (nationalfasd.org.uk) for peer support
-
-FOR TEACHERS CONCERNED:
-- Speak to parents sensitively
-- Refer to SENCO
-- School nurse or safeguarding lead can initiate health referral
-- Teachers are valued MDT members — provide school reports and observations
-- Implement interim support strategies while awaiting assessment
-
-═══════════════════════════════════════
-COMMUNICATION STYLE
-═══════════════════════════════════════
-- Warm, non-judgmental, empathetic; tailor language to audience
-- Plain language for families; clinical language for professionals
-- Mobile-friendly: short paragraphs, bullet points
-- Always recommend professional assessment for specific children
-- Never diagnose individual children
-- Cite SIGN 156 or NICE QS204 where relevant`;
+// (Unused SYSTEM_PROMPT removed in v1.2.3. The assistant uses the pre-written answers below.)
 
 // ─── SELF-CONTAINED FAQ CHATBOT (no API key needed) ───
 // Comprehensive knowledge base drawn from SIGN 156 and NICE QS204
@@ -393,11 +283,11 @@ const FAQ_KB = [
   },
   // WHAT IS FASD
   { tags:['what is fasd','what does fasd','fasd mean','about fasd','fetal alcohol spectrum','define','meaning of fasd'],
-    answer:"**What is FASD?**\n\nFetal Alcohol Spectrum Disorder (FASD) is a lifelong neurodevelopmental condition caused by exposure to alcohol before birth. It affects brain structure and function, leading to challenges across cognition, memory, attention, language, behaviour, and daily living.\n\nFASD is categorised into two presentations (SIGN 156, NICE QS204):\n• **FASD with sentinel facial features** — all three characteristic facial features present\n• **FASD without sentinel facial features** — the majority of cases; no visible facial features but significant brain impairment\n\nFASD is the leading preventable cause of neurodevelopmental disability. It is estimated to affect approximately 3.2% of babies born in the UK." },
+    answer:"**What is FASD?**\n\nFetal Alcohol Spectrum Disorder (FASD) is a lifelong neurodevelopmental condition caused by exposure to alcohol before birth. It affects brain structure and function, leading to challenges across cognition, memory, attention, language, behaviour, and daily living.\n\nFASD is categorised into two presentations (SIGN 156, NICE QS204):\n• **FASD with sentinel facial features** — all three characteristic facial features present\n• **FASD without sentinel facial features** — the majority of cases; no visible facial features but significant brain impairment\n\nFASD is one of the most common neurodevelopmental conditions in the UK, and it is often missed. Estimates suggest around 3.2% of people in the UK may have FASD (SIGN 156)." },
 
   // PREVALENCE
   { tags:['how common','prevalence','how many','scotland','affected by fasd'],
-    answer:"**How common is FASD?**\n\nFASD affects approximately 3.2% of babies born in the UK, making it more common than autism spectrum disorder. In Scotland alone, up to 172,000 people may be affected.\n\nDespite this, FASD remains significantly underdiagnosed. Between 2010–2015, only 41 cases of FAS were identified in Scotland in children under six — far below what population data would predict.\n\nUnder-diagnosis occurs because:\n• PAE is frequently not considered as a cause of neurodevelopmental difficulties\n• Most children with FASD have no visible facial features\n• Healthcare professionals may lack confidence in making the diagnosis\n• FASD is often misdiagnosed as ADHD, ASD, or conduct disorder\n\n*(SIGN 156, 2019)*" },
+    answer:"**How common is FASD?**\n\nEstimates suggest around 3.2% of people in the UK may have FASD. In Scotland alone, up to 172,000 people may be affected.\n\nDespite this, FASD remains significantly underdiagnosed. Between 2010–2015, only 41 cases of FAS were identified in Scotland in children under six — far below what population data would predict.\n\nUnder-diagnosis occurs because:\n• PAE is frequently not considered as a cause of neurodevelopmental difficulties\n• Most children with FASD have no visible facial features\n• Healthcare professionals may lack confidence in making the diagnosis\n• FASD is often misdiagnosed as ADHD, ASD, or conduct disorder\n\n*(SIGN 156, 2019)*" },
 
   // SENTINEL FACIAL FEATURES
   { tags:['facial','face','features','sentinel','philtrum','lip','palpebral','fissure','eye'],
@@ -405,7 +295,7 @@ const FAQ_KB = [
 
   // DIAGNOSIS
   { tags:['diagnos','criteria','how','assess','test'],
-    answer:"**How is FASD diagnosed?**\n\nFASD diagnosis requires a multidisciplinary team assessment. Per SIGN 156, a diagnosis is made when:\n\n**FASD with sentinel facial features:**\n• All 3 sentinel facial features present simultaneously\n• PAE confirmed or unknown\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas of assessment\n• (In infants: microcephaly may substitute for the domain criteria)\n\n**FASD without sentinel facial features:**\n• Confirmed prenatal alcohol exposure (reliable evidence essential)\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas\n\nSevere impairment = a global score or major subdomain score ≥2 standard deviations below the mean on a standardised measure.\n\nGenetic causes must be considered and excluded before diagnosis." },
+    answer:"**How is FASD diagnosed?**\n\nFASD diagnosis requires a multidisciplinary team assessment. Per SIGN 156, a diagnosis is made when:\n\n**FASD with sentinel facial features:**\n• All 3 sentinel facial features present simultaneously\n• PAE confirmed or unknown\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas of assessment\n• (In infants: microcephaly may substitute for the domain criteria)\n\n**FASD without sentinel facial features:**\n• Confirmed prenatal alcohol exposure (reliable evidence essential)\n• Severe impairment in ≥3 of the 10 neurodevelopmental areas\n\nSevere impairment = a global score or major subdomain score ≥2 standard deviations below the mean on a standardised measure.\n\nOther causes, including genetic conditions, should be considered as part of the assessment." },
 
   // 10 DOMAINS
   { tags:['domain','area','assessment','10','ten','neuro','brain'],
@@ -417,15 +307,15 @@ const FAQ_KB = [
 
   // NICE QS204
   { tags:['nice','qs204','quality','standard','england','wales','statement'],
-    answer:"**NICE QS204 — The Five Quality Statements**\n\nNICE Quality Standard QS204 (March 2022) applies in England and Wales and sets out what high-quality FASD care looks like:\n\n**QS1** — Pregnant women are advised throughout pregnancy not to drink alcohol (UK CMO guidance)\n\n**QS2** — Alcohol use is asked about and recorded throughout pregnancy\n\n**QS3** — Children with probable prenatal alcohol exposure and significant physical, developmental, or behavioural difficulties are **referred for assessment**\n\n**QS4** — Children with confirmed PAE or all 3 sentinel facial features have a **neurodevelopmental assessment** if there are clinical concerns\n\n**QS5** — Children with a diagnosis of FASD have an **individualised management plan**\n\nImportant: NICE QS204 is based on and adopts the SIGN 156 diagnostic framework. Support should not wait for a formal diagnosis." },
+    answer:"**NICE QS204 — The Five Quality Statements**\n\nNICE Quality Standard QS204 (March 2022) is a quality standard for England. Wales, Scotland and Northern Ireland have their own arrangements. It sets out what high-quality FASD care looks like:\n\n**QS1** — Pregnant women are advised throughout pregnancy not to drink alcohol (UK CMO guidance)\n\n**QS2** — Alcohol use is asked about and recorded throughout pregnancy\n\n**QS3** — Children with probable prenatal alcohol exposure and significant physical, developmental, or behavioural difficulties are **referred for assessment**\n\n**QS4** — Children with confirmed PAE or all 3 sentinel facial features have a **neurodevelopmental assessment** if there are clinical concerns\n\n**QS5** — Children with a diagnosis of FASD have a **management plan** to address their needs\n\nSupport should be based on need and should not wait for a diagnosis." },
 
   // PARENTS CONCERNED
   { tags:['parent','carer','worried','concerned','suspect','think my child','refer','gp','my gp','doctor','discuss','referral'],
-    answer:"**What should parents do if they are concerned?**\n\n**Step 1 — Talk to your GP or health visitor.** Share your concerns clearly. You do not need confirmed alcohol exposure — probable PAE with significant difficulties is enough to request a referral (NICE QS3).\n\n**Step 2 — Ask for a referral to a paediatrician.** Request specifically that prenatal alcohol exposure is considered as a possible cause of your child's difficulties.\n\n**Step 3 — Request an FASD-informed MDT assessment.** This involves a paediatrician, psychologist, speech and language therapist, and occupational therapist.\n\n**Step 4 — Don't wait for diagnosis to ask for support.** Schools can put interim strategies in place while assessment is pending. NICE QS204 is clear: support must not wait for a formal diagnosis.\n\n**Step 5 — Contact National FASD** (nationalfasd.org.uk) for peer support, guidance, and signposting to local services.\n\nYou are not alone. An early diagnosis is one of the most protective factors for long-term outcomes." },
+    answer:"**What should parents do if they are concerned?**\n\n**Step 1 — Talk to your GP or health visitor.** Share your concerns clearly. You do not need confirmed alcohol exposure — probable PAE with significant difficulties is enough to request a referral (NICE QS3).\n\n**Step 2 — Ask for a referral to a paediatrician.** Request specifically that prenatal alcohol exposure is considered as a possible cause of your child's difficulties.\n\n**Step 3 — Request an FASD-informed MDT assessment.** This involves a paediatrician, psychologist, speech and language therapist, and occupational therapist.\n\n**Step 4 — Don't wait for diagnosis to ask for support.** Schools can put interim strategies in place while assessment is pending. Support should be based on need and should not wait for a diagnosis.\n\n**Step 5 — Contact National FASD** (nationalfasd.org.uk) for peer support, guidance, and signposting to local services.\n\nYou are not alone. An early diagnosis is one of the most protective factors for long-term outcomes." },
 
   // TEACHERS CONCERNED
   { tags:['teacher','school','senco','educator','classroom','concern','refer'],
-    answer:"**What should teachers do if they are concerned?**\n\n**Step 1** — Speak sensitively to the child's parent or carer. Ask open questions about history, health, and any known concerns.\n\n**Step 2** — Refer to the school's **SENCO** (Special Educational Needs Coordinator). They can coordinate support, initiate an EHCP assessment, and liaise with external specialists.\n\n**Step 3** — Where there are significant concerns with probable PAE, a health referral should be made via the school nurse, health visitor, or safeguarding lead (NICE QS3).\n\n**Step 4** — Implement interim classroom strategies now — do not wait for a diagnosis. Key strategies include: one instruction at a time, visual timetables, movement breaks, seating near the teacher, no copying from the board, calm-down space, and avoiding punitive responses to regulation difficulties.\n\n**Step 5** — Teachers are valued members of the MDT (SIGN 156, Section 3.7). Provide written school reports and behaviour observations when requested.\n\n**Remember:** Inconsistency in performance is neurological, not deliberate. A child performing well one day and struggling the next is a hallmark of FASD." },
+    answer:"**What should teachers do if they are concerned?**\n\n**Step 1** — Speak sensitively to the child's parent or carer. Ask open questions about history, health, and any known concerns.\n\n**Step 2** — Refer to the school's **SENCO** (Special Educational Needs Coordinator). They can coordinate support, initiate an EHCP assessment, and liaise with external specialists.\n\n**Step 3** — Where there are significant concerns with probable PAE, a health referral should be made via the school nurse, health visitor, or safeguarding lead (NICE QS3).\n\n**Step 4** — Implement interim classroom strategies now — do not wait for a diagnosis. Key strategies include: one instruction at a time, visual timetables, movement breaks, seating near the teacher, no copying from the board, calm-down space, and avoiding punitive responses to regulation difficulties.\n\n**Step 5** — Teachers are valued members of the MDT (SIGN 156, Section 3.7). Provide written school reports and behaviour observations when requested.\n\n**Remember:** Inconsistency in performance is neurological, not deliberate. A child performing well one day and struggling the next is common in FASD." },
 
   // HOME STRATEGIES
   { tags:['strateg','home','parent','tip','manage','help child','routine','visual'],
@@ -441,7 +331,7 @@ const FAQ_KB = [
 
   // MANAGEMENT PLAN
   { tags:['management','plan','after diagnosis','support','services','what next'],
-    answer:"**What happens after an FASD diagnosis?**\n\nPer NICE QS5 and SIGN 156 Section 4, every child diagnosed with FASD must have an **individualised management plan** covering:\n\n• Immediate and longer-term therapy needs (SLT, OT, psychology, CAMHS)\n• School adjustments and EHCP/IEP coordination\n• Family psychoeducation and support\n• Signposting to local and national resources\n• Regular review schedule\n• Reassessment at all transition stages (new class, secondary school, adulthood)\n\n**Ask your paediatrician to:**\n• Share the plan with school, health visitor, and all involved professionals\n• Schedule a review within a specified timeframe\n• Link your family to FASD support organisations\n\nFASD is a lifelong condition. The management plan should evolve as your child grows. SIGN 156 emphasises that reassessment and care plan revision are particularly important at transition stages.\n\nContact **National FASD** (nationalfasd.org.uk) for resources after diagnosis." },
+    answer:"**What happens after an FASD diagnosis?**\n\nNICE QS204 Statement 5 says children with a diagnosis of FASD have a **management plan** to address their needs. SIGN 156 describes what it can cover:\n\n• Immediate and longer-term therapy needs (SLT, OT, psychology, CAMHS)\n• School adjustments and EHCP/IEP coordination\n• Family psychoeducation and support\n• Signposting to local and national resources\n• Regular review schedule\n• Reassessment at all transition stages (new class, secondary school, adulthood)\n\n**Ask your paediatrician to:**\n• Share the plan with school, health visitor, and all involved professionals\n• Schedule a review within a specified timeframe\n• Link your family to FASD support organisations\n\nFASD is a lifelong condition. The management plan should evolve as your child grows. SIGN 156 emphasises that reassessment and care plan revision are particularly important at transition stages.\n\nContact **National FASD** (nationalfasd.org.uk) for resources after diagnosis." },
 
   // COOCCURRING
   { tags:['adhd','autism','asd','comorbid','anxiety','mental health','condition','together','also'],
@@ -453,7 +343,7 @@ const FAQ_KB = [
 
   // AT RISK
   { tags:['at risk','young baby','infant','too young','incomplete'],
-    answer:"**'At risk for neurodevelopmental disorder and FASD' — what does this mean?**\n\nThis designation (SNOMED CT: 2078801000000102) is used for children who:\n• Have confirmed prenatal alcohol exposure\n• Do not yet meet the full CNS criteria for an FASD diagnosis (e.g. too young for complete assessment)\n• Show some indication of neurodevelopmental concern\n\nIt is **not a diagnosis** — it is a formal designation ensuring the child is monitored and supported while awaiting a more comprehensive assessment as they grow.\n\nPer SIGN 156, this designation:\n• Should never be used when PAE is confirmed absent\n• Should be recorded and available to all professionals involved in developmental surveillance\n• Should prompt referral to a clinical geneticist if all 3 sentinel features are present but no microcephaly\n• Should lead to re-assessment when the child is older\n\nNICE QS204 is explicit: **support must not wait for a formal diagnosis.** Children designated 'at risk' should receive early intervention and monitoring." },
+    answer:"**'At risk for neurodevelopmental disorder and FASD' — what does this mean?**\n\nThis designation (SNOMED CT: 2078801000000102) is used for children who:\n• Have confirmed prenatal alcohol exposure\n• Do not yet meet the full CNS criteria for an FASD diagnosis (e.g. too young for complete assessment)\n• Show some indication of neurodevelopmental concern\n\nIt is **not a diagnosis** — it is a formal designation ensuring the child is monitored and supported while awaiting a more comprehensive assessment as they grow.\n\nPer SIGN 156, this designation:\n• Should never be used when PAE is confirmed absent\n• Should be recorded and available to all professionals involved in developmental surveillance\n• Should prompt referral to a clinical geneticist if all 3 sentinel features are present but no microcephaly\n• Should lead to re-assessment when the child is older\n\n**Support should be based on need and should not wait for a diagnosis.** Children designated 'at risk' should receive early intervention and monitoring." },
 
   // FOSTER / ADOPTION
   { tags:['foster','adopt','care','kinship','looked after','unknown history','birth mother'],
