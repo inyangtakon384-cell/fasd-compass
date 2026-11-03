@@ -165,11 +165,16 @@ function selectOpt(i) {
 function quizNext() {
   if (quizAnswers[currentQ] === null) return;
   if (currentQ < quizQuestions.length - 1) { currentQ++; renderQuestion(); }
-  else showQuizResults();
+  else { showQuizResults(); return; }
+  focusQuestion();
+}
+function focusQuestion() {
+  const t = document.getElementById('qText'); if (!t) return;
+  t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true });
   const card = document.getElementById('quizCard'); if (card) card.scrollIntoView({ block: 'nearest' });
 }
 
-function quizBack() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+function quizBack() { if (currentQ > 0) { currentQ--; renderQuestion(); focusQuestion(); } }
 
 const STATUS_LABEL = { concern: 'Concern reported', none: 'No concern reported', unsure: 'Not sure or insufficient information' };
 const PAE_TEXT = {
@@ -220,37 +225,79 @@ function showQuizResults() {
       ${tips ? `<h3 class="cs-h">Things you can try now</h3><ul class="bullet-list">${tips}</ul>` : ''}
       <h3 class="cs-h">Support at school</h3>
       <p>Your child does not need a diagnosis to get support at school. Support should be based on their needs. Talk to the class teacher or SENCO, and use the <a href="/school-toolkit/">School Advocacy Toolkit</a>.</p>
-      <div class="cs-actions">
-        <button type="button" class="quiz-btn primary" onclick="printQuizSummary()">🖨️ Print or save summary for your GP (PDF)</button>
-        <button type="button" class="quiz-btn secondary" onclick="initQuiz()">Start again</button>
+      <h3 class="cs-h" id="csSummaryH">Summary for your GP or paediatrician</h3>
+      <p>Download a one-page summary to take to an appointment. You can add a few optional details first. Please do not include your child’s name or anything that could identify them.</p>
+      <div class="cs-extras">
+        <div class="cs-field"><label for="csWho">Completed by (optional)</label><select id="csWho"><option value="">Parent or carer</option><option>Birth parent</option><option>Adoptive parent</option><option>Foster carer</option><option>Kinship carer or special guardian</option><option>Other carer</option></select></div>
+        <div class="cs-field"><label for="csAge">Child’s age range (optional)</label><select id="csAge"><option value="">Not given</option><option>Under 2</option><option>2 to 4</option><option>5 to 11</option><option>12 to 17</option><option>18 or over</option></select></div>
+        <div class="cs-field cs-wide"><label for="csStrengths">What your child is good at or enjoys (optional)</label><textarea id="csStrengths" rows="2" maxlength="400"></textarea></div>
+        <div class="cs-field cs-wide"><label for="csNotes">Anything else you want the professional to know (optional)</label><textarea id="csNotes" rows="2" maxlength="400"></textarea></div>
       </div>
+      <div class="cs-actions">
+        <button type="button" class="quiz-btn primary" onclick="downloadQuizPDF()">⬇️ Download summary (PDF)</button>
+        <button type="button" class="quiz-btn secondary" onclick="printQuizSummary()">🖨️ Print summary</button>
+      </div>
+      <p class="cs-small" id="csMsg" role="status" aria-live="polite"></p>
+      <div class="cs-actions"><button type="button" class="quiz-btn secondary" onclick="initQuiz()">Start again</button></div>
       <p class="cs-small">Nothing you entered is saved or sent anywhere. It is cleared when you leave this page. If you need help urgently, see <a href="/urgent-help/">urgent help</a>.</p>
     </div>`;
+  const h = resultEl.querySelector('.cs-title'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
   resultEl.scrollIntoView({ block: 'start' });
 }
 
-function printQuizSummary() {
-  const d = quizSummaryData();
-  const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-  const rows = d.areas.map(a => `<tr><td>${escHTML(a.domain)}</td><td>${STATUS_LABEL[a.status]}</td><td>${escHTML(a.note)}</td></tr>`).join('');
+const SUMMARY_DISCLAIMER = 'This is not a diagnosis or a validated screening result. It cannot confirm or rule out FASD. It records what a parent or carer has noticed, to support a conversation with a professional.';
+const PAE_LINE = { confirmed: 'Confirmed prenatal alcohol exposure', possible: 'Possible exposure, not confirmed', none: 'Reliable information indicating no alcohol exposure', unknown: 'Unknown or unavailable information', declined: 'Not shared' };
+
+function summaryExtras() {
+  const v = id => { const el = document.getElementById(id); return el ? String(el.value || '').trim() : ''; };
+  return { completedBy: v('csWho'), ageRange: v('csAge'), strengths: redactSummary(v('csStrengths')), notes: redactSummary(v('csNotes')) };
+}
+function redactSummary(t) { return (typeof redactPII === 'function' && t) ? redactPII(t).text : t; }
+
+function clinicianSummary() {
+  const d = quizSummaryData(), x = summaryExtras();
   const qs = [
     'Could these difficulties be assessed by a paediatrician or neurodevelopmental team?',
     'What could explain these difficulties, and should other causes such as hearing, vision or sleep be checked?'
   ];
   if (d.pae === 'confirmed' || d.pae === 'possible') qs.push('Can the information about alcohol in the pregnancy be recorded in my child’s notes, and should FASD be considered?');
   qs.push('What support can we get while we wait?', 'Could you share information with my child’s school or nursery?');
-  const paeLine = { confirmed: 'Confirmed prenatal alcohol exposure', possible: 'Possible exposure, not confirmed', none: 'Reliable information indicating no alcohol exposure', unknown: 'Unknown or unavailable information', declined: 'Not shared' }[d.pae];
+  return {
+    date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+    completedBy: x.completedBy || 'Parent or carer', ageRange: x.ageRange, strengths: x.strengths, notes: x.notes,
+    disclaimer: SUMMARY_DISCLAIMER,
+    areas: d.areas.map(a => ({ domain: a.domain, status: STATUS_LABEL[a.status], note: redactSummary(a.note), concern: a.status === 'concern' })),
+    pae: PAE_LINE[d.pae],
+    concerns: d.concerns.length ? d.concerns.map(a => a.domain).join(', ') : 'None reported in these areas, but the parent or carer would like to talk about their child’s development.',
+    questions: qs,
+    footer: 'From fasdcompass.co.uk, the FASD Developmental Concerns and Assessment Guide. Educational information only. Clinical lead: Dr Inyang Takon, Consultant Neurodevelopmental Paediatrician.'
+  };
+}
+
+function downloadQuizPDF() {
+  const s = clinicianSummary();
+  if (!window.FASDSummaryPDF) { printQuizSummary(); return; }
+  const iso = new Date().toISOString().slice(0, 10);
+  window.FASDSummaryPDF.download(s, `developmental-concerns-summary-${iso}.pdf`);
+  const m = document.getElementById('csMsg'); if (m) m.textContent = 'Your PDF has been downloaded. It is saved only on this device.';
+}
+
+function printQuizSummary() {
+  const s = clinicianSummary();
+  const rows = s.areas.map(a => `<tr><td>${escHTML(a.domain)}</td><td>${a.concern ? '<strong>' + a.status + '</strong>' : a.status}</td><td>${escHTML(a.note)}</td></tr>`).join('');
   let area = document.getElementById('print-area');
   if (!area) { area = document.createElement('div'); area.id = 'print-area'; document.body.appendChild(area); }
   area.innerHTML = `<div class="plan-doc cs-print">
     <div class="plan-head"><div class="plan-eyebrow">FASD Compass · Developmental concerns summary</div><h2>Developmental concerns to discuss</h2></div>
-    <p><strong>Date completed:</strong> ${date} &nbsp; <strong>Completed by:</strong> parent or carer</p>
-    <p class="cs-print-notice">This is not a diagnosis or a validated screening result. It cannot confirm or rule out FASD. It records what a parent or carer has noticed, to support a conversation with a professional.</p>
+    <p><strong>Date completed:</strong> ${s.date} &nbsp; <strong>Completed by:</strong> ${escHTML(s.completedBy)}${s.ageRange ? ` &nbsp; <strong>Child’s age range:</strong> ${escHTML(s.ageRange)}` : ''}</p>
+    <p class="cs-print-notice">${s.disclaimer}</p>
     <table class="tracker-table"><thead><tr><th>Area</th><th>What was reported</th><th>Parent or carer example</th></tr></thead><tbody>${rows}</tbody></table>
-    <p><strong>Information about alcohol in pregnancy:</strong> ${paeLine}</p>
-    <p><strong>Concerns to discuss:</strong> ${d.concerns.length ? d.concerns.map(a => escHTML(a.domain)).join(', ') : 'None reported in these areas, but the parent or carer would like to talk about their child’s development.'}</p>
-    <p><strong>Questions for the clinician</strong></p><ul>${qs.map(q => `<li>${escHTML(q)}</li>`).join('')}</ul>
-    <p class="plan-foot">From fasdcompass.co.uk, the FASD Developmental Concerns and Assessment Guide. Educational information only. Clinical lead: Dr Inyang Takon, Consultant Neurodevelopmental Paediatrician.</p>
+    <p><strong>Information about alcohol in pregnancy:</strong> ${s.pae}</p>
+    <p><strong>Concerns to discuss:</strong> ${escHTML(s.concerns)}</p>
+    ${s.strengths ? `<p><strong>Strengths and interests:</strong> ${escHTML(s.strengths)}</p>` : ''}
+    ${s.notes ? `<p><strong>Other notes:</strong> ${escHTML(s.notes)}</p>` : ''}
+    <p><strong>Questions for the clinician</strong></p><ul>${s.questions.map(q => `<li>${escHTML(q)}</li>`).join('')}</ul>
+    <p class="plan-foot">${s.footer}</p>
   </div>`;
   document.body.classList.add('printing-one');
   const done = () => { document.body.classList.remove('printing-one'); area.innerHTML = ''; window.removeEventListener('afterprint', done); };
