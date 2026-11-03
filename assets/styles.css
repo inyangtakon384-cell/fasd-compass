@@ -494,7 +494,7 @@ h1.hero-title, h1.chat-name { font-weight: 400; margin-top: 0; }
 h1.chat-name { margin: 0; }
 h2.section-title { margin-top: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.ic-body a, .evidence-note a { color: var(--teal); font-weight: 600; }
+.ic-body a, .sc-body a, .evidence-note a { color: var(--teal); font-weight: 600; }
 .site-footer { margin: 8px 14px 0; padding: 20px 16px 22px; background: var(--navy); color: rgba(255,255,255,.78); border-radius: var(--radius); font-size: 12px; line-height: 1.6; }
 .site-footer .sf-title { font-family: 'DM Serif Display', serif; color: #fff; font-size: 17px; margin-bottom: 4px; }
 .site-footer .sf-links { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin: 14px 0; padding: 0; list-style: none; }
