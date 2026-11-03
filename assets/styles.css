@@ -704,3 +704,4 @@ h3.pc-title { margin: 0; }
 @media print { .tab-panel[hidden] { display: block !important; } }
 .ic-body a.print-btn { color: #fff; }
 .ic-body a.print-btn.alt { color: var(--teal); }
+@media print { #page-adoptive-foster-kinship.compact-print { zoom: 0.66; } }
