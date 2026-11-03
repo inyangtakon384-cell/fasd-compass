@@ -928,3 +928,4 @@ h3.pc-title { margin: 0; }
 
 .print-btn.ghost#tracker-clear { color: #a8321f; }
 .evidence-note a { color: #1f5446; }
+.tracker-table.gov-table { min-width: 0; }
