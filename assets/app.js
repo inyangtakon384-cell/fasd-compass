@@ -479,6 +479,13 @@ function appendMsg(role, text) {
     .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
     .replace(/^• /gm,'• ')
     .replace(/\n/g,'<br>');
+  if (!isUser) {
+    // Make known safe addresses clickable. Text is already escaped above.
+    html = html
+      .replace(/\bfasdcompass\.co\.uk\/([a-z0-9-]+)\/?/g, '<a href="/$1/">fasdcompass.co.uk/$1/</a>')
+      .replace(/\bgov\.uk\/report-child-abuse-to-local-council\b/g, '<a href="https://www.gov.uk/report-child-abuse-to-local-council" target="_blank" rel="noopener">gov.uk/report-child-abuse-to-local-council</a>')
+      .replace(/\bhelp@nspcc\.org\.uk\b/g, '<a href="mailto:help@nspcc.org.uk">help@nspcc.org.uk</a>');
+  }
   div.innerHTML = `
     <div class="msg-avatar">${isUser?'👤':'🤖'}</div>
     <div>
