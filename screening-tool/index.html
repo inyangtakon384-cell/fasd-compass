@@ -2,15 +2,17 @@
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>FASD Screening Questionnaire | FASD Compass</title>
-<meta name="description" content="A free 10-question checklist to help you decide whether a child might benefit from an FASD assessment. Educational only, not a diagnosis."/>
+<title>FASD Developmental Concerns and Assessment Guide | FASD Compass</title>
+<meta name="description" content="An evidence-informed checklist to help families recognise developmental concerns and prepare for a conversation with a healthcare professional. Not a diagnosis or screening result."/>
 <link rel="canonical" href="https://fasdcompass.co.uk/screening-tool/"/>
 <meta name="author" content="Dr Inyang Takon"/>
 <meta name="theme-color" content="#0d2340"/>
 <meta property="og:site_name" content="FASD Compass"/>
-<meta property="og:title" content="FASD Screening Questionnaire | FASD Compass"/>
-<meta property="og:description" content="A free 10-question checklist to help you decide whether a child might benefit from an FASD assessment. Educational only, not a diagnosis."/>
+<meta property="og:title" content="FASD Developmental Concerns and Assessment Guide | FASD Compass"/>
+<meta property="og:description" content="An evidence-informed checklist to help families recognise developmental concerns and prepare for a conversation with a healthcare professional. Not a diagnosis or screening result."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://fasdcompass.co.uk/screening-tool/"/>
 <meta property="og:image" content="https://fasdcompass.co.uk/icon-512.png"/>
@@ -22,10 +24,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/styles.css?v=1.2.2"/>
+<link rel="stylesheet" href="/assets/styles.css?v=1.2.3"/>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -34,8 +33,8 @@
    "@type": "MedicalWebPage",
    "@id": "https://fasdcompass.co.uk/screening-tool/",
    "url": "https://fasdcompass.co.uk/screening-tool/",
-   "name": "FASD Screening Questionnaire | FASD Compass",
-   "description": "A free 10-question checklist to help you decide whether a child might benefit from an FASD assessment. Educational only, not a diagnosis.",
+   "name": "FASD Developmental Concerns and Assessment Guide | FASD Compass",
+   "description": "An evidence-informed checklist to help families recognise developmental concerns and prepare for a conversation with a healthcare professional. Not a diagnosis or screening result.",
    "inLanguage": "en-GB",
    "isPartOf": {
     "@id": "https://fasdcompass.co.uk/#website"
@@ -64,7 +63,7 @@
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Screening tool",
+     "name": "Concerns guide",
      "item": "https://fasdcompass.co.uk/screening-tool/"
     }
    ]
@@ -78,7 +77,7 @@
 <!-- ─── HEADER ─── -->
 <header class="app-header">
   <div class="header-top">
-    <a class="app-logo" href="/" aria-label="FASD Compass home">
+    <a class="app-logo" href="/">
       <div class="logo-mark" aria-hidden="true">🧭</div>
       <div>
         <div class="app-name">FASD Compass</div>
@@ -102,9 +101,10 @@
 
 <div class="page active" id="page-quiz">
   <div class="quiz-hero">
-    <div class="hero-eyebrow">FASD Screening Tool</div>
-    <h1 class="hero-title">Early Detection Questionnaire</h1>
-    <div class="hero-body">A brief evidence-informed checklist to help identify children who may benefit from further FASD assessment.</div>
+    <div class="hero-eyebrow">For parents and carers</div>
+    <h1 class="hero-title">FASD Developmental Concerns and Assessment Guide</h1>
+    <div class="hero-body">An evidence-informed checklist to help families recognise developmental concerns and prepare for a conversation with a healthcare professional.</div>
+    <div class="cs-notice" role="note"><strong>This is not a diagnosis or a validated FASD screening tool.</strong> It cannot confirm or rule out FASD, and it does not give a score. It takes about 5 minutes. You do not need to enter your child’s name, and nothing you enter is saved or sent.</div>
   </div>
   <div id="quiz-body">
     <div class="quiz-progress-wrap">
@@ -136,7 +136,7 @@
       <li><a href="/teachers/">Teachers and schools</a></li>
       <li><a href="/clinicians/">Clinicians</a></li>
       <li><a href="/for-children/">For children</a></li>
-      <li><a href="/screening-tool/">Screening tool</a></li>
+      <li><a href="/screening-tool/">Concerns guide</a></li>
       <li><a href="/ask-fasd-ai/">Ask FASD AI</a></li>
       <li><a href="/podcast/">Podcast</a></li>
       <li><a href="/resources/">Resources</a></li>
@@ -144,6 +144,7 @@
     </ul>
   </nav>
   <div>Watch <a href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer">Early Intervention Matters on YouTube</a> · Contact <a href="mailto:eim@drtakon.com">eim@drtakon.com</a></div>
+  <div class="sf-help"><a class="sf-urgent" href="/urgent-help/">Need help now?</a> · <a href="mailto:eim@drtakon.com?subject=Report%20an%20error%20on%20FASD%20Compass">Report an error</a> · <a href="/privacy/">Privacy</a> · <a href="/accessibility/">Accessibility</a> · <a href="/evidence/">Evidence and sources</a> · <a href="/editorial-policy/">Editorial policy</a></div>
   <div class="sf-small" style="margin-top:10px;">For education only. FASD Compass does not diagnose FASD or replace advice from a qualified professional. © 2026 FASD Compass.</div>
 </footer>
 <div class="spacer"></div>
@@ -164,7 +165,7 @@
   </a>
   <a class="nav-item active" href="/screening-tool/" aria-current="page">
     <div class="nav-icon" aria-hidden="true">📋</div>
-    <div class="nav-label">Screen</div>
+    <div class="nav-label">Checklist</div>
     <div class="nav-dot"></div>
   </a>
   <a class="nav-item" href="/ask-fasd-ai/">
@@ -184,12 +185,12 @@
   <span style="font-size:22px;">🧭</span>
   <div style="flex:1;">
     <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
-    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add FASD Compass to your home screen</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen. Pages you have opened work offline.</div>
   </div>
   <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
 </div>
 
-<script src="/assets/app.js?v=1.2.2"></script>
+<script src="/assets/app.js?v=1.2.3"></script>
 </body>
 </html>

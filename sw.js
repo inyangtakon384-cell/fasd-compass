@@ -1,7 +1,7 @@
 // FASD Compass Service Worker
 // Strategies: Cache-first for app shell, network-first for external resources
 
-const APP_VERSION = 'fasd-compass-gh-v1.2.2';
+const APP_VERSION = 'fasd-compass-gh-v1.2.3';
 const STATIC_CACHE = `${APP_VERSION}-static`;
 const DYNAMIC_CACHE = `${APP_VERSION}-dynamic`;
 const FONT_CACHE = `${APP_VERSION}-fonts`;
@@ -9,15 +9,18 @@ const FONT_CACHE = `${APP_VERSION}-fonts`;
 // Files to cache on install (app shell)
 const STATIC_ASSETS = [
   '/',
-  '/assets/styles.css?v=1.2.2',
-  '/assets/app.js?v=1.2.2',
+  '/assets/styles.css?v=1.2.3',
+  '/assets/app.js?v=1.2.3',
+  '/ask-fasd-ai/',
+  '/screening-tool/',
+  '/urgent-help/',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
 ];
 
 // External resources to cache when fetched
-const FONT_ORIGINS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
+const FONT_ORIGINS = []; // fonts are self-hosted from v1.2.3
 
 // ── INSTALL ──────────────────────────────────────────────────────────
 self.addEventListener('install', event => {

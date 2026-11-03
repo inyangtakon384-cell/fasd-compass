@@ -2,6 +2,8 @@
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Ask FASD Compass AI: Your FASD Questions Answered</title>
 <meta name="description" content="Ask questions about FASD and get general answers based on SIGN 156 and NICE QS204. Educational information only."/>
@@ -22,10 +24,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/styles.css?v=1.2.2"/>
+<link rel="stylesheet" href="/assets/styles.css?v=1.2.3"/>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -78,7 +77,7 @@
 <!-- ─── HEADER ─── -->
 <header class="app-header">
   <div class="header-top">
-    <a class="app-logo" href="/" aria-label="FASD Compass home">
+    <a class="app-logo" href="/">
       <div class="logo-mark" aria-hidden="true">🧭</div>
       <div>
         <div class="app-name">FASD Compass</div>
@@ -107,29 +106,31 @@
         <div class="chat-avatar">🤖</div>
         <div>
           <h1 class="chat-name">FASD Compass AI</h1>
-          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204</div>
+          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204 · Works offline after your first visit</div>
         </div>
       </div>
     </div>
-    <div class="chat-messages" id="chatMessages">
+    <div class="chat-messages" id="chatMessages" tabindex="0" role="log" aria-live="polite" aria-label="Conversation">
       <div class="msg">
         <div class="msg-avatar">🤖</div>
         <div>
-          <div class="msg-bubble">Hi! I'm the FASD Compass AI, here to answer your questions about Fetal Alcohol Spectrum Disorder. I can help parents, teachers, clinicians, or anyone wanting to learn more. What would you like to know?</div>
+          <div class="msg-bubble">Hello. I can answer general questions about Fetal Alcohol Spectrum Disorder (FASD) for parents, carers, teachers and professionals. I can't diagnose or give advice about an individual child. Please don't share names or other personal details. What would you like to know?</div>
           <div class="msg-time">Now</div>
         </div>
       </div>
     </div>
     <div style="padding:0 14px;">
-      <div class="disclaimer-chip">⚕️ This assistant provides general educational information based on SIGN 156 and NICE QS204. Always consult a qualified healthcare professional for decisions about individual children.</div>
+      <div class="disclaimer-chip">⚕️ General information only, based on SIGN 156 and NICE QS204. It uses answers written in advance and reviewed by our clinical lead, not a live AI model. Nothing you type is stored or sent anywhere. Always ask a qualified professional about an individual child.</div>
+      <div class="disclaimer-chip urgent-chip" role="note">🚨 <strong>Need help now?</strong> In an emergency call 999. For urgent advice call NHS 111. Samaritans: 116 123. <a href="/urgent-help/">More urgent help</a></div>
     </div>
     <div class="chat-input-area">
-      <div class="chat-suggestions" id="chatSuggestions">
-        <div class="chat-sug" onclick="sendSuggestion(this)">What is FASD?</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">Signs in toddlers</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">School strategies</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">Helping meltdowns</div>
+      <div class="chat-suggestions" id="chatSuggestions" aria-label="Suggested questions">
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">Why does my child forget instructions?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">How can I help with meltdowns?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">What support can I request from school?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">Can FASD occur without facial features?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">What should I discuss with my GP?</button>
       </div>
       <div class="chat-input-row">
         <textarea class="chat-input" id="chatInput" placeholder="Ask anything about FASD…" rows="1"
@@ -151,7 +152,7 @@
       <li><a href="/teachers/">Teachers and schools</a></li>
       <li><a href="/clinicians/">Clinicians</a></li>
       <li><a href="/for-children/">For children</a></li>
-      <li><a href="/screening-tool/">Screening tool</a></li>
+      <li><a href="/screening-tool/">Concerns guide</a></li>
       <li><a href="/ask-fasd-ai/">Ask FASD AI</a></li>
       <li><a href="/podcast/">Podcast</a></li>
       <li><a href="/resources/">Resources</a></li>
@@ -159,6 +160,7 @@
     </ul>
   </nav>
   <div>Watch <a href="https://www.youtube.com/@earlyinterventionmatters" target="_blank" rel="noopener noreferrer">Early Intervention Matters on YouTube</a> · Contact <a href="mailto:eim@drtakon.com">eim@drtakon.com</a></div>
+  <div class="sf-help"><a class="sf-urgent" href="/urgent-help/">Need help now?</a> · <a href="mailto:eim@drtakon.com?subject=Report%20an%20error%20on%20FASD%20Compass">Report an error</a> · <a href="/privacy/">Privacy</a> · <a href="/accessibility/">Accessibility</a> · <a href="/evidence/">Evidence and sources</a> · <a href="/editorial-policy/">Editorial policy</a></div>
   <div class="sf-small" style="margin-top:10px;">For education only. FASD Compass does not diagnose FASD or replace advice from a qualified professional. © 2026 FASD Compass.</div>
 </footer>
 <div class="spacer"></div>
@@ -179,7 +181,7 @@
   </a>
   <a class="nav-item" href="/screening-tool/">
     <div class="nav-icon" aria-hidden="true">📋</div>
-    <div class="nav-label">Screen</div>
+    <div class="nav-label">Checklist</div>
     <div class="nav-dot"></div>
   </a>
   <a class="nav-item active" href="/ask-fasd-ai/" aria-current="page">
@@ -199,12 +201,12 @@
   <span style="font-size:22px;">🧭</span>
   <div style="flex:1;">
     <div style="font-weight:700;font-size:13.5px;">Install FASD Compass</div>
-    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add FASD Compass to your home screen</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,0.7);">Add to your home screen. Pages you have opened work offline.</div>
   </div>
   <button id="installBtn" style="background:var(--teal-light);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Install</button>
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
 </div>
 
-<script src="/assets/app.js?v=1.2.2"></script>
+<script src="/assets/app.js?v=1.2.3"></script>
 </body>
 </html>

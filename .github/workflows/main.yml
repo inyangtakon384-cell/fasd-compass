@@ -24,6 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Run safety tests
+        run: |
+          node tests/ai-safety.test.js
+          node tests/questionnaire.test.js
+
+      - name: Remove files not needed on the live site
+        run: rm -rf tests .github README.md
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
