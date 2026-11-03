@@ -1061,7 +1061,7 @@ details.mod > summary:focus-visible { outline: 3px solid var(--teal); outline-of
 .ask-aud-btn:focus-visible, .chat-live-btn:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; }
 .ask-aud-note { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .chat-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.chat-options .chat-sug { white-space: normal; text-align: left; }
+.chat-options .chat-sug { white-space: normal; text-align: left; max-width: 100%; flex: 0 1 auto; overflow-wrap: anywhere; }
 .chat-live-btn {
   display: block; margin-top: 10px; background: #fff; color: var(--navy); border: 1.5px solid var(--navy);
   border-radius: 8px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; cursor: pointer;
