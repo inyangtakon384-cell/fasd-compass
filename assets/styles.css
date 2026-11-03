@@ -929,3 +929,11 @@ h3.pc-title { margin: 0; }
 .print-btn.ghost#tracker-clear { color: #a8321f; }
 .evidence-note a { color: #1f5446; }
 .tracker-table.gov-table { min-width: 0; }
+.cs-extras { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 16px; margin: 10px 0 4px; }
+.cs-field { display: flex; flex-direction: column; gap: 4px; }
+.cs-field.cs-wide { grid-column: 1 / -1; }
+.cs-field label { font-weight: 600; font-size: 14px; color: var(--navy); }
+.cs-field select, .cs-field textarea { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid #8a96a3; border-radius: 8px; background: #fff; color: #1d2733; }
+.cs-field select:focus-visible, .cs-field textarea:focus-visible { outline: 3px solid var(--teal, #1a7f7a); outline-offset: 2px; }
+#qText:focus, .cs-title:focus { outline: none; }
+#qText:focus-visible, .cs-title:focus-visible { outline: 3px solid var(--teal, #1a7f7a); outline-offset: 4px; border-radius: 4px; }
