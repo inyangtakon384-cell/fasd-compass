@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/styles.css?v=1.1.1"/>
+<link rel="stylesheet" href="/assets/styles.css?v=1.1.2"/>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -127,8 +127,8 @@
         <strong>Requires all three sentinel facial features:</strong><br>
         • Smooth philtrum — rank 4–5, University of Washington Lip-Philtrum Guide<br>
         • Thin vermillion border — rank 4–5, Lip-Philtrum Guide<br>
-        • Short palpebral fissures — ≤3rd centile for age<br><br>
-        <strong>Plus:</strong> Evidence of PAE (or unknown — all 3 SFF may suffice as proxy for PAE) <strong>and</strong> pervasive brain dysfunction (≥3 SIGN 156 domains severely impaired). In infants, microcephaly (OFC ≤3rd centile) may substitute for neurodevelopmental domain criteria.
+        • Short palpebral fissures — length ≥2 SD below the mean (SIGN 156 removed the percentile threshold because there are no UK norms)<br><br>
+        <strong>Plus:</strong> PAE confirmed or unknown (not confirmed absent) <strong>and</strong> severe impairment in ≥3 of the 10 areas of assessment. In infants and young children, microcephaly (OFC &lt;3rd centile) with all three sentinel features meets the CNS criterion.
       </div>
     </div>
 
@@ -136,9 +136,9 @@
       <div class="ic-header"><span class="ic-icon">🔬</span><span class="ic-title">FASD without Sentinel Facial Features</span></div>
       <div class="ic-body">
         <span style="font-size:11px;background:rgba(232,160,32,0.12);color:#8a6000;border-radius:5px;padding:2px 7px;font-weight:700;">SNOMED CT: 1894461000000101</span><br><br>
-        <strong>Previously termed:</strong> pFAS, ARND, ARBD, ND-PAE — all now superseded under SIGN 156/NICE QS204.<br><br>
+        <strong>Older terms</strong> such as pFAS, ARND and ARBD are no longer used in UK guidance. There is no equivalent category in ICD-10 or DSM-5.<br><br>
         <strong>Requires:</strong><br>
-        • <strong>Confirmed or probable PAE</strong> — reliable evidence is essential where facial features are absent (self-report, clinical records, alcohol treatment history, collateral history)<br>
+        • <strong>Confirmed PAE</strong> — documented evidence of alcohol use in the index pregnancy (see Step 1 of the assessment pathway below)<br>
         • <strong>Pervasive brain dysfunction</strong> — severe impairment in ≥3 of the 10 SIGN 156 neurodevelopmental domains<br><br>
         Fewer than 3 sentinel facial features are present. <strong>This is not a milder diagnosis.</strong>
       </div>
@@ -154,7 +154,7 @@
   </div>
 
   <div class="section">
-    <h2 class="section-title">SIGN 156 — 10 Areas of Assessment</h2>
+    <h2 class="section-title" id="sign156-areas">SIGN 156 — 10 Areas of Assessment</h2>
     <div class="evidence-note">📚 Extracted directly from SIGN 156 Section 3.4. Severe impairment = global score or major subdomain score ≥2 SDs below the mean on a standardised measure. Impairment in ≥3 areas = pervasive brain dysfunction. "Domain" is used in SIGN 156 as an area of assessment.</div>
 
     <div class="expand-item" onclick="toggleExpand(this)">
@@ -164,16 +164,17 @@
         <ul class="bullet-list">
           <li>Occipitofrontal head circumference (OFC) is &lt;3rd centile (<strong>microcephaly</strong>)</li>
           <li>A seizure disorder has been diagnosed not due to known postnatal influences</li>
-          <li>Brain imaging shows convincing evidence of structural abnormalities associated with PAE (e.g. partial/complete agenesis of the corpus callosum, cerebellar hypoplasia) after other aetiologies excluded</li>
+          <li>Brain imaging shows convincing evidence of structural abnormalities associated with PAE (e.g. reduced overall brain size, agenesis or hypoplasia of the corpus callosum, reduced cerebellar, hippocampal or caudate volume) after other aetiologies excluded</li>
+          <li>Significant neurological diagnoses otherwise unexplained, e.g. cerebral palsy, visual impairment or sensorineural hearing loss, when other causes have been excluded</li>
         </ul>
-        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">MRI is not required as standard. In infants and young children, microcephaly alone may be sufficient for diagnosis without full neurodevelopmental assessment.</p>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">Exclude other causes of microcephaly (familial, chromosomal, infection, other teratogens) and measure parental head circumference where possible. MRI is not required for diagnosis, but is recommended when clinically indicated. In infants and young children with all three sentinel facial features, microcephaly meets the CNS criterion for FASD with sentinel facial features.</p>
       </div>
     </div>
 
     <div class="expand-item" onclick="toggleExpand(this)">
       <div class="expand-trigger"><div class="et-left"><div class="et-dot amber"></div><div class="et-label">2. Motor Skills</div></div><div class="et-arrow">▼</div></div>
       <div class="expand-body">
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when a composite score below clinical cut-off is obtained on:</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is present when a composite score, or one or more major subdomain scores, is below the clinical cut-off on a validated test (e.g. Movement ABC-2, BOT-2, Beery VMI) for:</p>
         <ul class="bullet-list">
           <li>Fine motor skills</li>
           <li>Gross motor skills</li>
@@ -236,6 +237,7 @@
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">In SIGN 156, attention is defined as <strong>sustained or selective attention and resistance to distractions</strong>. Inhibition, impulse control, and hyperactivity are assessed under Executive Function.</p>
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;"><strong>Direct assessment:</strong> Multiple subtest scores below cut-off on continuous processing tests or neuropsychological attention measures.</p>
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;"><strong>Indirect assessment:</strong> Converging evidence from clinical interview, questionnaire, file review, and direct clinical observation during testing.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">A DSM-5 diagnosis of ADHD, inattentive or combined presentation, fulfils the criteria for severe impairment in attention. The hyperactive-impulsive presentation counts towards executive function instead.</p>
         <p style="font-size:11.5px;color:var(--coral);margin-top:9px;font-style:italic;">FASD is frequently misdiagnosed as ADHD alone. Many children receive ADHD diagnoses and medication without recognition of the underlying PAE. Both conditions can coexist.</p>
       </div>
     </div>
@@ -251,19 +253,22 @@
           <li>Planning and problem solving</li>
           <li>Shifting and cognitive flexibility</li>
         </ul>
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;"><strong>Direct:</strong> Multiple neuropsychological subtest scores below cut-off. <strong>Indirect:</strong> Converging evidence from rating scales, clinical interview, file review, and direct observation.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;"><strong>Direct:</strong> Two or more subtest scores below cut-off on neuropsychological measures of executive function (e.g. BADS-C, NEPSY-II, D-KEFS). <strong>Indirect:</strong> Converging evidence from rating scales (e.g. BRIEF-2), clinical interview, file review, and direct observation.</p>
+        <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">If indirect measures show impairment but direct tests are normal, SIGN 156 gives significant weight to the indirect measures. Two or more standardised rating scales below cut-off (e.g. two observers) count as severe impairment.</p>
       </div>
     </div>
 
     <div class="expand-item" onclick="toggleExpand(this)">
       <div class="expand-trigger"><div class="et-left"><div class="et-dot sage"></div><div class="et-label">9. Affect Regulation</div></div><div class="et-arrow">▼</div></div>
       <div class="expand-body">
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">Impairment is manifested by high levels of emotional expression causing significant clinical impairment, in the form of:</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:8px;">There is no direct test. Severe impairment is present when the individual meets ICD-10 criteria for:</p>
         <ul class="bullet-list">
-          <li>Anxiety disorders (panic, phobic, separation anxiety, generalised anxiety)</li>
-          <li>Depressive disorders</li>
-          <li>Oppositional defiant disorder or conduct disorder (frequent loss of temper, negativistic or vindictive behaviours)</li>
+          <li>Recurrent depressive disorder</li>
+          <li>Separation anxiety disorder, elective mutism, social phobia, panic disorder, agoraphobia or generalised anxiety disorder</li>
+          <li>Mixed anxiety disorders, or mixed anxiety and depressive disorder</li>
+          <li>Conduct disorder or oppositional defiant disorder</li>
         </ul>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">Clinicians should formally confirm the criteria are met, not rely on clinical impression or rating scales alone.</p>
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;font-weight:600;">Important SIGN 156 qualifier:</p>
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;">Affect dysregulation should only be attributed to PAE if it is <strong>long-standing</strong>. It should NOT be attributed to PAE if it is clearly a response to adverse life events (e.g. multiple foster placements) or is situationally specific.</p>
       </div>
@@ -278,6 +283,7 @@
           <li><strong>Indirect (adaptive behaviour/social skills):</strong> Score below cut-off on global composite or major subdomain of a standardised caregiver rating scale or informant interview</li>
         </ul>
         <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">For children and most adolescents, standardised caregiver ratings should be used. Observations and ratings should be gathered across environments — parents report on home behaviour; teachers on school behaviour.</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin-top:8px;">Meeting DSM-5 criteria for <strong>autism spectrum disorder</strong> or <strong>social (pragmatic) communication disorder</strong> on formal testing counts as severe impairment in this area. Conduct disorder or severe ODD provides supporting evidence only.</p>
         <p style="font-size:11.5px;color:var(--sage);margin-top:9px;font-style:italic;">For adults without a consistent caregiver in the last 2 years, historical records and alternative interview methods may be used as a proxy.</p>
       </div>
     </div>
@@ -309,13 +315,36 @@
 
     <div class="strategy-card"><div class="sc-num sage">4</div><div><div class="sc-title">Neurodevelopmental Assessment (MDT)</div><div class="sc-body">SIGN 156 MDT must include: <strong>neonatologist / paediatrician / physician</strong> with FASD competency; <strong>child development specialist</strong> with skill set for physical and functional assessments (e.g. speech and language therapist, occupational therapist, clinical or educational psychologist). Additional input may include clinical geneticist, physiotherapist, neuropsychologist, CAMHS, nurses, social workers, and family therapists. Assess across all 10 areas of assessment. Direct standardised measures should be used whenever possible.</div></div></div>
 
-    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Apply the Diagnostic Algorithm</div><div class="sc-body">Use the SIGN 156 Annex 2 diagnostic algorithm. For <strong>infants &lt;6 years</strong>: if all 3 SFF + microcephaly → FASD with SFF; if all 3 SFF without microcephaly → refer to clinical geneticist + 'At Risk' designation; if PAE confirmed but criteria not met → 'At Risk'. For <strong>older children</strong>: apply the full 10-domain assessment. Record SNOMED CT codes. Note: the diagnostic/descriptive criteria for FASD are the same for adults as for younger individuals (SIGN 156 Rec. 8.1).</div></div></div>
+    <div class="strategy-card"><div class="sc-num navy">5</div><div><div class="sc-title">Apply the Diagnostic Algorithm</div><div class="sc-body">Use the SIGN 156 Annex 2 diagnostic algorithm. For <strong>infants &lt;6 years</strong>: if all 3 SFF + microcephaly → FASD with SFF; if all 3 SFF without microcephaly → refer to clinical geneticist + 'At Risk' designation; if PAE confirmed but criteria not met → 'At Risk'. If PAE is confirmed absent, FASD and 'At Risk' are not used. For <strong>older children</strong>: apply the full 10-domain assessment. Record SNOMED CT codes. Note: the diagnostic/descriptive criteria for FASD are the same for adults as for younger individuals (SIGN 156 Rec. 8.1).</div></div></div>
 
     <div class="strategy-card"><div class="sc-num">6</div><div><div class="sc-title">Communicate and Develop Management Plan</div><div class="sc-body">Per NICE QS5 and SIGN 156 Section 4: Present findings to the family in writing and verbally. Use plain language appropriate to the child's age. The individualised management plan must address: basic and immediate needs, therapy services (SLT, OT, psychology), school adjustments, family support and psychoeducation, signposting to resources, and scheduled review. Reassessment at all transition points throughout the child's life.</div></div></div>
 
     <div class="info-card amber"><div class="ic-header"><span class="ic-icon">🔗</span><span class="ic-title">Comorbidities — Over 400 Associated Conditions</span></div><div class="ic-body">FASD is associated with over 400 co-occurring conditions across 18 ICD-10 chapters. Common comorbidities explicitly listed in SIGN 156 include ADHD, ASD features, and mood disorders. Also frequently seen: anxiety disorders, conduct disorder, attachment disorders, sleep disorders, substance misuse in adolescence/adulthood, and involvement in the judicial system. Treat the whole child and coordinate care across agencies.</div></div>
 
     <div class="info-card navy"><div class="ic-header"><span class="ic-icon">📊</span><span class="ic-title">Screening Tools for PAE in Pregnancy</span></div><div class="ic-body">Per SIGN 156 Recommendations 2.3 and 2.4: use validated tools — <strong>T-ACE, TWEAK, or AUDIT-C</strong> — to screen all pregnant women for alcohol consumption. Consider associated biomarkers (CDT, PEth) alongside questionnaires. Document dose, pattern, and frequency of alcohol use. PAE information (confirmed / confirmed absent / unknown) must remain accessible in the child's health records throughout childhood.</div></div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">Official SIGN 156 Downloads</h2>
+    <div class="evidence-note">📚 Free from the <a href="https://www.sign.ac.uk/our-guidelines/children-and-young-people-exposed-prenatally-to-alcohol/" target="_blank" rel="noopener">SIGN website</a>. Use these alongside the summaries above.</div>
+    <div class="info-card"><div class="ic-header"><span class="ic-icon">📄</span><span class="ic-title">Guideline and diagnostic tools</span></div><div class="ic-body">
+      • <a href="https://www.sign.ac.uk/media/1092/sign156.pdf" target="_blank" rel="noopener">SIGN 156 full guideline (PDF)</a><br>
+      • <a href="https://www.sign.ac.uk/media/1437/diagnostic_algorithm_for_fasd.pdf" target="_blank" rel="noopener">Diagnostic algorithm for FASD (PDF)</a><br>
+      • <a href="https://www.sign.ac.uk/media/1444/neurodevelopmental_areas_of_assessment_criteria.pdf" target="_blank" rel="noopener">Neurodevelopmental areas of assessment: criteria for severe impairment (PDF)</a>, with example standardised tests for each area<br>
+      • <a href="https://www.sign.ac.uk/media/1441/information_for_clinicians.pdf" target="_blank" rel="noopener">Information for clinicians (PDF)</a> and <a href="https://www.sign.ac.uk/media/1442/information_for_clinicians_after_diagnosis.pdf" target="_blank" rel="noopener">after diagnosis (PDF)</a>
+    </div></div>
+    <div class="info-card sage"><div class="ic-header"><span class="ic-icon">📝</span><span class="ic-title">Templates and growth charts</span></div><div class="ic-body">
+      • <a href="https://www.sign.ac.uk/media/1431/sample-fasd-assessment-form.docx" target="_blank" rel="noopener">Sample FASD assessment form (Word)</a><br>
+      • <a href="https://www.sign.ac.uk/media/1432/sample-fasd-diagnostic-assessment-summary.docx" target="_blank" rel="noopener">Sample diagnostic assessment summary (Word)</a><br>
+      • <a href="https://www.sign.ac.uk/media/1433/sample-fasd-management-plan.docx" target="_blank" rel="noopener">Sample FASD management plan (Word)</a><br>
+      • UK growth charts: <a href="https://www.sign.ac.uk/media/1435/boys_0-4_years_growth_chart.pdf" target="_blank" rel="noopener">boys 0–4</a>, <a href="https://www.sign.ac.uk/media/1436/boys_2-18_years_growth_chart.pdf" target="_blank" rel="noopener">boys 2–18</a>, <a href="https://www.sign.ac.uk/media/1438/girls_0-4_years_growth_chart.pdf" target="_blank" rel="noopener">girls 0–4</a>, <a href="https://www.sign.ac.uk/media/1439/girls_2-18_years_growth_chart.pdf" target="_blank" rel="noopener">girls 2–18</a>
+    </div></div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">Training and Resources from National FASD</h2>
+    <div class="evidence-note">🤝 <a href="https://nationalfasd.org.uk/" target="_blank" rel="noopener">National FASD</a> provides free resources and training for health professionals.</div>
+    <div class="info-card navy"><div class="ic-header"><span class="ic-icon">🩺</span><span class="ic-title">GPs and healthcare professionals</span></div><div class="ic-body">Guidance on prevention, recognition, referral, diagnosis, support and SNOMED coding, with the "Recognising FASD" pamphlet and "FASD in Focus: Diagnosis &amp; Assessments". <a href="https://nationalfasd.org.uk/learn-more/practitioners/gps-and-healthcare-professionals/" target="_blank" rel="noopener">Visit the GP and healthcare page</a>.</div></div>
+    <div class="info-card amber"><div class="ic-header"><span class="ic-icon">🤰</span><span class="ic-title">Midwives and maternity teams</span></div><div class="ic-body">The <a href="https://nationalfasd.org.uk/alcohol-and-pregnancy-toolkit/" target="_blank" rel="noopener">Alcohol and Pregnancy Toolkit</a> includes a free, CPD-accredited e-course for maternity teams, leaflets, posters and a tabletop guide to support conversations about alcohol in pregnancy. The <a href="https://nationalfasd.org.uk/learn-more/practitioners/maternity-teams/" target="_blank" rel="noopener">maternity teams page</a> covers recording alcohol use and the ASSIST framework.</div></div>
+    <div class="info-card sage"><div class="ic-header"><span class="ic-icon">🎓</span><span class="ic-title">Courses and expert talks</span></div><div class="ic-body">The National FASD eSchool offers "Introduction to FASD", "Alcohol and Pregnancy for Maternity Teams" and "Talking About Alcohol and Pregnancy for Practitioners". <a href="https://nationalfasd.org.uk/learn-more/training/" target="_blank" rel="noopener">See training options</a>.<br><br><a href="https://nationalfasd.org.uk/learn-more/resources/raja-and-neils-fasd-book-club/" target="_blank" rel="noopener">Raja and Neil's FASD Book Club</a> has free video talks from UK experts, including standardising FASD diagnosis, psychometric assessment, and assessment at birth and in infancy.<br><br>For bespoke training, email <a href="mailto:training@nationalfasd.org.uk">training@nationalfasd.org.uk</a>.</div></div>
   </div>
   <div class="spacer"></div>
 </div>
@@ -384,6 +413,6 @@
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
 </div>
 
-<script src="/assets/app.js?v=1.1.1"></script>
+<script src="/assets/app.js?v=1.1.2"></script>
 </body>
 </html>
