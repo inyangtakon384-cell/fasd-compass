@@ -705,3 +705,33 @@ h3.pc-title { margin: 0; }
 .ic-body a.print-btn { color: #fff; }
 .ic-body a.print-btn.alt { color: var(--teal); }
 @media print { #page-adoptive-foster-kinship.compact-print { zoom: 0.66; } }
+
+/* ---------- Template letters ---------- */
+.lt-jump { grid-column: 1 / -1; display: grid; gap: 10px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .lt-jump { grid-template-columns: 1fr 1fr 1fr; } }
+.lt-jump a { display: flex; gap: 10px; align-items: center; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 16px; color: var(--navy); font-weight: 600; text-decoration: none; border-left: 4px solid var(--teal); }
+.lt-jump a:hover { background: var(--teal-pale, #eef7f6); }
+.lt-jump a span { font-size: 20px; }
+.lt-section > * { grid-column: 1 / -1; }
+.lt-meta { display: flex; flex-wrap: wrap; gap: 4px 24px; font-size: 15px; color: var(--navy); }
+.lt-meta p { margin: 0; }
+.lt-paper { background: #fff; border: 1px solid #dfe5ea; border-radius: 10px; box-shadow: var(--shadow); padding: 28px 32px; font-size: 16px; line-height: 1.6; color: #1d2733; max-width: 820px; }
+.lt-paper:focus { outline: 2px solid var(--teal-light); }
+.lt-paper p { margin: 0 0 12px; }
+.lt-paper ul { margin: 0 0 12px; padding-left: 22px; }
+.lt-paper li { margin-bottom: 4px; }
+.lt-block { margin-bottom: 16px; }
+.lt-edit { background: #fff1dc; color: #8a4b00; border-radius: 3px; padding: 0 2px; }
+.lt-fill { background: #e3f2f0; color: #0d5c55; border-radius: 3px; padding: 0 2px; }
+.lt-fill.done { background: none; color: inherit; padding: 0; }
+.lt-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+.lt-msg { font-size: 14px; color: var(--teal); font-weight: 600; }
+.lt-note { font-size: 14px; color: #4a5866; margin-top: 10px; max-width: 820px; }
+@media (max-width: 600px) { .lt-paper { padding: 18px 16px; font-size: 15px; } }
+@media print {
+  .page:not(.printing) .lt-paper { box-shadow: none; }
+  #print-area .lt-paper { border: none; box-shadow: none; padding: 0; max-width: none; font-size: 12pt; }
+  #print-area .lt-edit, #print-area .lt-fill { background: none; color: inherit; padding: 0; }
+  .lt-form, .lt-jump { display: none !important; }
+}
+.lt-note a, .lt-paper a { color: var(--teal); font-weight: 600; }

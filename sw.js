@@ -1,7 +1,7 @@
 // FASD Compass Service Worker
 // Strategies: Cache-first for app shell, network-first for external resources
 
-const APP_VERSION = 'fasd-compass-gh-v1.1.9';
+const APP_VERSION = 'fasd-compass-gh-v1.2.0';
 const STATIC_CACHE = `${APP_VERSION}-static`;
 const DYNAMIC_CACHE = `${APP_VERSION}-dynamic`;
 const FONT_CACHE = `${APP_VERSION}-fonts`;
@@ -9,8 +9,8 @@ const FONT_CACHE = `${APP_VERSION}-fonts`;
 // Files to cache on install (app shell)
 const STATIC_ASSETS = [
   '/',
-  '/assets/styles.css?v=1.1.9',
-  '/assets/app.js?v=1.1.9',
+  '/assets/styles.css?v=1.2.0',
+  '/assets/app.js?v=1.2.0',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
