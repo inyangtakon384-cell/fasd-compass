@@ -1,4 +1,4 @@
-/* FASD Compass family tools (v1.2.5)
+/* FASD Compass family tools (v1.2.6)
    Everything stays on this device. Nothing is sent to a server. */
 (function () {
   'use strict';
@@ -66,6 +66,8 @@
     });
   }
   window.fasdPlanBlocks = planBlocks;
+  window.fasdWireExport = wireExport;
+  window.fasdPrintOnly = printOnly;
 
   /* ---------- Tabs ---------- */
   $$('.tabs').forEach(function (tabs) {
