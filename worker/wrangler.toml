@@ -1,0 +1,31 @@
+# FASD Compass live AI service. Switched off: LIVE_AI_ENABLED is "false".
+# Deploy only after DPIA sign-off and clinical review. See README.md.
+name = "fasd-compass-ai"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[ai]
+binding = "AI"
+
+[vars]
+LIVE_AI_ENABLED = "false"
+MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+DAILY_CAP = "300"
+
+# 10 questions per minute from one connection.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+# Optional daily cap. Create a KV namespace and add its id to switch this on.
+# [[kv_namespaces]]
+# binding = "USAGE"
+# id = ""
+
+# Do not log request content.
+[observability]
+enabled = false

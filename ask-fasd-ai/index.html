@@ -24,7 +24,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
 <link rel="apple-touch-icon" href="/icon-192.png"/>
 <link rel="manifest" href="/manifest.json"/>
-<link rel="stylesheet" href="/assets/styles.css?v=1.2.7"/>
+<link rel="stylesheet" href="/assets/styles.css?v=1.2.8"/>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -108,6 +108,15 @@
           <h1 class="chat-name">FASD Compass AI</h1>
           <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204 · Works offline after your first visit</div>
         </div>
+      </div>
+      <div class="ask-aud" role="group" aria-labelledby="audLegend">
+        <div class="ask-aud-legend" id="audLegend">I am asking as:</div>
+        <div class="ask-aud-btns">
+          <button type="button" class="ask-aud-btn" data-aud="parent" aria-pressed="true" onclick="setAudience(this)">A parent or carer</button>
+          <button type="button" class="ask-aud-btn" data-aud="teacher" aria-pressed="false" onclick="setAudience(this)">A teacher or SENCO</button>
+          <button type="button" class="ask-aud-btn" data-aud="clinician" aria-pressed="false" onclick="setAudience(this)">A clinician</button>
+        </div>
+        <div class="ask-aud-note" id="audNote" aria-live="polite"></div>
       </div>
     </div>
     <div class="chat-messages" id="chatMessages" tabindex="0" role="log" aria-live="polite" aria-label="Conversation">
@@ -210,6 +219,9 @@
   <button id="installDismiss" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;line-height:1;">✕</button>
 </div>
 
-<script src="/assets/app.js?v=1.2.7"></script>
+<script src="/assets/ai-kb.js?v=1.2.8"></script>
+<script src="/assets/ai-engine.js?v=1.2.8"></script>
+<script src="/assets/ai-live.js?v=1.2.8"></script>
+<script src="/assets/app.js?v=1.2.8"></script>
 </body>
 </html>

@@ -27,13 +27,14 @@ jobs:
       - name: Run safety tests
         run: |
           node tests/ai-safety.test.js
+          node tests/live-ai.test.js
           node tests/questionnaire.test.js
           node tests/tools.test.js
           node tests/schools.test.js
           node tests/clinical.test.js
 
       - name: Remove files not needed on the live site
-        run: rm -rf tests .github README.md
+        run: rm -rf tests .github README.md worker
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
