@@ -40,7 +40,10 @@ const ck = main(read('clinical-assessment-checklist/index.html'));
 ok('checklist: exposure not inferred from care history', ck.includes('Not inferred from lifestyle, other drug use, care history or exposure in a previous pregnancy alone'));
 ok('checklist: confirmed / absent / unknown', ck.includes('confirmed, confirmed absent, or unknown'));
 ok('checklist: 10 areas', ['Motor skills', 'Cognition', 'Language', 'Academic achievement', 'Memory', 'Attention', 'Affect regulation'].every(a => ck.includes(a)));
-ok('checklist: genetics in line with local guidance', ck.includes('in line with local genetics guidance'));
+ok('checklist: genetics in line with local guidance', ck.includes('Genetic testing considered, in line with local genetics guidance'));
+ok('checklist: genetic factors in all cases', ck.includes('Genetic factors, which should be considered in all cases'));
+ok('no named genetic syndromes', !/22q|Noonan|Williams|Cornelia|fragile X/i.test(ck));
+ok('checklist microcephaly below 3rd centile', ck.includes('Microcephaly is OFC below the 3rd centile'));
 
 // Quick reference: 6 questions and key safety lines
 const qr = main(read('clinical-quick-reference/index.html'));
@@ -50,6 +53,7 @@ ok('quick ref: QS204 S3 verbatim', qr.includes('Children and young people with p
 ok('quick ref: unknown not absent', qr.includes('Record the exposure as unknown, not as absent'));
 ok('quick ref: no guessing from care history', qr.includes('Do not guess about exposure from care history or social circumstances'));
 ok('quick ref: looked-after is not evidence', qr.includes('Being in one of these groups is not evidence of exposure.'));
+ok('quick ref microcephaly below 3rd centile', qr.includes('Microcephaly is OFC below the 3rd centile'));
 ok('quick ref: needs-led support', qr.includes('Support should be based on needs, not on a diagnosis'));
 
 // Learning: 6 modules
