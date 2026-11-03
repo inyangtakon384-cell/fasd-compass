@@ -537,3 +537,58 @@ h3.pc-title { margin: 0; }
   .section > .info-card, .section > .strategy-card, .section > .child-card { grid-column: auto; }
   .section:not(:has(> :is(.info-card,.strategy-card,.child-card) ~ :is(.info-card,.strategy-card,.child-card))) > * { grid-column: 1 / -1; }
 }
+
+/* ── PRINTABLE CHECKLISTS (v1.1.5) ── */
+.checklist { list-style: none; padding: 0; margin: 4px 0 0; }
+.checklist li { margin: 0 0 8px; }
+.checklist label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: 13px; line-height: 1.6; color: var(--text-muted, #4a5568); }
+.checklist input[type=checkbox] { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--teal); cursor: pointer; }
+.checklist input:checked + span { color: var(--sage, #5a8a74); }
+.print-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 999px; border: 0; background: var(--teal); color: #fff; font: 600 13px 'DM Sans', sans-serif; text-decoration: none; cursor: pointer; }
+.print-btn.alt { background: #fff; color: var(--teal); border: 2px solid var(--teal); }
+.print-btn:hover { filter: brightness(1.08); }
+.page-reviewed { font-size: 11.5px; color: var(--text-muted, #4a5568); margin: 8px 0 0; padding: 0 2px; }
+.tool-links { display: grid; gap: 12px; }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  .app-header, .bottom-nav, .site-footer, .no-print, .spacer { display: none !important; }
+  html, body { background: #fff !important; max-width: none !important; box-shadow: none !important; }
+  .app-header, .main, .site-footer { zoom: 1 !important; }
+  .main { padding: 0 !important; }
+  .main > .page { max-width: none !important; }
+  .page { opacity: 1 !important; animation: none !important; transform: none !important; }
+  .hero { background: #fff !important; color: var(--navy) !important; border: 2px solid var(--navy); box-shadow: none !important; padding: 14px 18px !important; }
+  .hero::after, .hero::before { display: none !important; }
+  .hero-title, .hero-body, .hero-eyebrow { color: var(--navy) !important; }
+  .section { display: block !important; break-inside: auto; }
+  .info-card, .evidence-note { box-shadow: none !important; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; break-inside: avoid; }
+  .checklist input[type=checkbox] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: var(--navy) !important; }
+}
+.print-only { display: none; }
+.evidence-note > span { display: block; }
+@media print {
+  .print-only { display: block !important; }
+  .print-url { font-size: 11px; margin-top: 6px; color: var(--navy) !important; font-weight: 600; }
+  .section-title { break-after: avoid; page-break-after: avoid; }
+  .notes-box { border: 1px solid #ccc; border-radius: 12px; padding: 10px 16px 6px; margin-top: 8px; break-inside: avoid; }
+  .notes-title { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 4px; }
+  .notes-line { border-bottom: 1px solid #bbb; height: 26px; }
+  .print-sources { font-size: 9.5px; color: #333; margin-top: 10px; line-height: 1.5; word-break: break-word; }
+  .compact-print { zoom: 0.74; }
+  .compact-print .section { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+  .compact-print .section > * { grid-column: 1 / -1; }
+  .compact-print .section > .info-card { grid-column: auto; }
+  .compact-print .section:not(:has(> .info-card ~ .info-card)) > * { grid-column: 1 / -1; }
+  .compact-print .info-card { margin-bottom: 8px; }
+  .compact-print .section { margin-bottom: 6px; }
+}
+@media print {
+  .compact-print .section.no-print { display: none !important; }
+  .compact-print .section.three-col { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media print {
+  html, body, .main, .page { min-height: 0 !important; height: auto !important; padding-bottom: 0 !important; margin-bottom: 0 !important; }
+  .page-reviewed { margin-bottom: 0 !important; }
+}
