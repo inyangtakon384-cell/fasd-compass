@@ -535,4 +535,5 @@ h3.pc-title { margin: 0; }
   .section { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; align-items: start; }
   .section > * { grid-column: 1 / -1; }
   .section > .info-card, .section > .strategy-card, .section > .child-card { grid-column: auto; }
+  .section:not(:has(> :is(.info-card,.strategy-card,.child-card) ~ :is(.info-card,.strategy-card,.child-card))) > * { grid-column: 1 / -1; }
 }
