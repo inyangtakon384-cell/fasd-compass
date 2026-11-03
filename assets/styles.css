@@ -780,3 +780,9 @@ h3.pc-title { margin: 0; }
 @media print { #print-area .jr-table td { vertical-align: top; font-size: 10.5px; } }
 @media (max-width: 600px) { .jr-ico { display: none; } .jr-card summary { flex-wrap: nowrap; gap: 6px; } .jr-title { flex: 1 1 auto; min-width: 0; } .jr-status { font-size: 11px; padding: 2px 8px; } }
 @media (max-width: 600px) { .jr-title { overflow-wrap: anywhere; } }
+
+/* ---------- Phase 1: AI safety notice ---------- */
+.disclaimer-chip { font-size: 12.5px; color: #33504a; }
+.disclaimer-chip.urgent-chip { background: #fdecea; color: #6b1f1a; border: 1px solid #f3c4bf; }
+.disclaimer-chip.urgent-chip a { color: #8a1c14; font-weight: 700; }
+.chat-sug { font-size: 13px; color: #0d5c55; }

@@ -107,7 +107,7 @@
         <div class="chat-avatar">🤖</div>
         <div>
           <h1 class="chat-name">FASD Compass AI</h1>
-          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204</div>
+          <div class="chat-status"><span class="chat-online"></span>SIGN 156 · NICE QS204 · Works offline after your first visit</div>
         </div>
       </div>
     </div>
@@ -115,21 +115,23 @@
       <div class="msg">
         <div class="msg-avatar">🤖</div>
         <div>
-          <div class="msg-bubble">Hi! I'm the FASD Compass AI, here to answer your questions about Fetal Alcohol Spectrum Disorder. I can help parents, teachers, clinicians, or anyone wanting to learn more. What would you like to know?</div>
+          <div class="msg-bubble">Hello. I can answer general questions about Fetal Alcohol Spectrum Disorder (FASD) for parents, carers, teachers and professionals. I can't diagnose or give advice about an individual child. Please don't share names or other personal details. What would you like to know?</div>
           <div class="msg-time">Now</div>
         </div>
       </div>
     </div>
     <div style="padding:0 14px;">
-      <div class="disclaimer-chip">⚕️ This assistant provides general educational information based on SIGN 156 and NICE QS204. Always consult a qualified healthcare professional for decisions about individual children.</div>
+      <div class="disclaimer-chip">⚕️ General information only, based on SIGN 156 and NICE QS204. It uses answers written in advance and reviewed by our clinical lead, not a live AI model. Nothing you type is stored or sent anywhere. Always ask a qualified professional about an individual child.</div>
+      <div class="disclaimer-chip urgent-chip" role="note">🚨 <strong>Need help now?</strong> In an emergency call 999. For urgent advice call NHS 111. Samaritans: 116 123. <a href="/urgent-help/">More urgent help</a></div>
     </div>
     <div class="chat-input-area">
-      <div class="chat-suggestions" id="chatSuggestions">
-        <div class="chat-sug" onclick="sendSuggestion(this)">What is FASD?</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">Signs in toddlers</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">School strategies</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</div>
-        <div class="chat-sug" onclick="sendSuggestion(this)">Helping meltdowns</div>
+      <div class="chat-suggestions" id="chatSuggestions" aria-label="Suggested questions">
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">Why does my child forget instructions?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">How can I help with meltdowns?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">What support can I request from school?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">How is FASD diagnosed?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">Can FASD occur without facial features?</button>
+        <button type="button" class="chat-sug" onclick="sendSuggestion(this)">What should I discuss with my GP?</button>
       </div>
       <div class="chat-input-row">
         <textarea class="chat-input" id="chatInput" placeholder="Ask anything about FASD…" rows="1"

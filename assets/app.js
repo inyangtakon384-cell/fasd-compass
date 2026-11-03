@@ -350,12 +350,28 @@ COMMUNICATION STYLE
 // Comprehensive knowledge base drawn from SIGN 156 and NICE QS204
 
 const FAQ_KB = [
+  {
+    tags:["toddler","toddlers","baby","babies","preschool","nursery","early signs","signs in","young child","under 5","under five"],
+    answer:"**Possible signs in babies and young children**\n\nSigns of FASD in young children are often not specific, and many have other causes. Families and professionals sometimes notice:\n\n• feeding or sleeping difficulties, and being very unsettled\n• slow growth, or a small head size\n• delays in talking, walking or other milestones\n• being very active, easily overwhelmed or hard to settle\n• difficulty following simple routines as they get older\n\nNone of these on its own means a child has FASD. If you are worried about your child's development, talk to your health visitor or GP, and tell them anything you know about alcohol in the pregnancy. Our Age-Based Support Pathways page has ideas for ages 0 to 5."
+  },
+  {
+    tags:["forget","forgets","forgetting","forgot","remember","memory","instructions","told them","told him","told her"],
+    answer:"**Why might a child forget instructions?**\n\nMany children with FASD, and children with other conditions such as ADHD or language difficulties, find it hard to hold several steps in their head. They may understand an instruction when they hear it and lose it a minute later. This is not laziness or defiance.\n\n• **Give one step at a time,** and wait until it is done before giving the next.\n• **Show as well as tell.** Use pictures, checklists or a demonstration.\n• **Ask them to show you** what to do, rather than asking \"Do you understand?\"\n• **Keep routines the same** so they rely less on memory.\n\nForgetting can have several causes. If it is affecting school or daily life, talk to the school SENCO or your GP. Our Everyday Parenting Solutions page has more ideas."
+  },
+  {
+    tags:["support from school","ask the school","request from school","ask school","sen support","school support","ehcp","ehc plan","senco","reasonable adjustment","without a diagnosis"],
+    answer:"**What support can I ask the school for?**\n\nYour child does not need a diagnosis to get support at school. Support should be based on their needs.\n\n• **SEN support:** ask the SENCO whether your child should be recorded as needing SEN support, with a plan that is reviewed regularly.\n• **Reasonable adjustments:** for example, instructions broken into steps, visual timetables, a named adult and a quiet space.\n• **Advice from other professionals:** such as an educational psychologist or speech and language therapist.\n• **An EHC needs assessment (England):** if SEN support is not enough, you can ask the local authority yourself.\n\nWales, Scotland and Northern Ireland have different systems. Our School Advocacy Toolkit and Template Letters pages can help you prepare."
+  },
+  {
+    tags:["don't know if","do not know if","unknown exposure","exposure is unknown","no records","no information about the pregnancy","not sure if she drank","not sure if the birth mother","don't know whether","birth mother drank","birth history"],
+    answer:"**When alcohol exposure in pregnancy is unknown**\n\nMany families, including adoptive, foster and kinship families, do not know whether a child was exposed to alcohol before birth. Unknown does not mean there was exposure, and it does not mean there was none.\n\n• **Your child can still be assessed** for their developmental needs, and support should be based on those needs.\n• **For an FASD diagnosis,** SIGN 156 usually needs confirmed alcohol exposure. The exception is when all three sentinel facial features are present.\n• **Ask for records.** A social worker or adoption agency may hold birth, medical or court records that mention alcohol.\n• **Tell the GP or paediatrician what you know and what you don't know.** Don't guess.\n\nOur guide for adoptive, foster and kinship families explains which records to ask for."
+  },
   // WHAT IS FASD
-  { tags:['what','fasd','is','fetal','alcohol','spectrum','disorder','define','mean'],
+  { tags:['what is fasd','what does fasd','fasd mean','about fasd','fetal alcohol spectrum','define','meaning of fasd'],
     answer:"**What is FASD?**\n\nFetal Alcohol Spectrum Disorder (FASD) is a lifelong neurodevelopmental condition caused by exposure to alcohol before birth. It affects brain structure and function, leading to challenges across cognition, memory, attention, language, behaviour, and daily living.\n\nFASD is categorised into two presentations (SIGN 156, NICE QS204):\n• **FASD with sentinel facial features** — all three characteristic facial features present\n• **FASD without sentinel facial features** — the majority of cases; no visible facial features but significant brain impairment\n\nFASD is the leading preventable cause of neurodevelopmental disability. It is estimated to affect approximately 3.2% of babies born in the UK." },
 
   // PREVALENCE
-  { tags:['common','prevalence','how many','rate','uk','scotland'],
+  { tags:['how common','prevalence','how many','scotland','affected by fasd'],
     answer:"**How common is FASD?**\n\nFASD affects approximately 3.2% of babies born in the UK, making it more common than autism spectrum disorder. In Scotland alone, up to 172,000 people may be affected.\n\nDespite this, FASD remains significantly underdiagnosed. Between 2010–2015, only 41 cases of FAS were identified in Scotland in children under six — far below what population data would predict.\n\nUnder-diagnosis occurs because:\n• PAE is frequently not considered as a cause of neurodevelopmental difficulties\n• Most children with FASD have no visible facial features\n• Healthcare professionals may lack confidence in making the diagnosis\n• FASD is often misdiagnosed as ADHD, ASD, or conduct disorder\n\n*(SIGN 156, 2019)*" },
 
   // SENTINEL FACIAL FEATURES
@@ -379,7 +395,7 @@ const FAQ_KB = [
     answer:"**NICE QS204 — The Five Quality Statements**\n\nNICE Quality Standard QS204 (March 2022) applies in England and Wales and sets out what high-quality FASD care looks like:\n\n**QS1** — Pregnant women are advised throughout pregnancy not to drink alcohol (UK CMO guidance)\n\n**QS2** — Alcohol use is asked about and recorded throughout pregnancy\n\n**QS3** — Children with probable prenatal alcohol exposure and significant physical, developmental, or behavioural difficulties are **referred for assessment**\n\n**QS4** — Children with confirmed PAE or all 3 sentinel facial features have a **neurodevelopmental assessment** if there are clinical concerns\n\n**QS5** — Children with a diagnosis of FASD have an **individualised management plan**\n\nImportant: NICE QS204 is based on and adopts the SIGN 156 diagnostic framework. Support should not wait for a formal diagnosis." },
 
   // PARENTS CONCERNED
-  { tags:['parent','carer','worried','concerned','suspect','think my child','what do i','help','refer','gp'],
+  { tags:['parent','carer','worried','concerned','suspect','think my child','refer','gp','my gp','doctor','discuss','referral'],
     answer:"**What should parents do if they are concerned?**\n\n**Step 1 — Talk to your GP or health visitor.** Share your concerns clearly. You do not need confirmed alcohol exposure — probable PAE with significant difficulties is enough to request a referral (NICE QS3).\n\n**Step 2 — Ask for a referral to a paediatrician.** Request specifically that prenatal alcohol exposure is considered as a possible cause of your child's difficulties.\n\n**Step 3 — Request an FASD-informed MDT assessment.** This involves a paediatrician, psychologist, speech and language therapist, and occupational therapist.\n\n**Step 4 — Don't wait for diagnosis to ask for support.** Schools can put interim strategies in place while assessment is pending. NICE QS204 is clear: support must not wait for a formal diagnosis.\n\n**Step 5 — Contact National FASD** (nationalfasd.org.uk) for peer support, guidance, and signposting to local services.\n\nYou are not alone. An early diagnosis is one of the most protective factors for long-term outcomes." },
 
   // TEACHERS CONCERNED
@@ -411,7 +427,7 @@ const FAQ_KB = [
     answer:"**Preventing FASD**\n\nThe UK Chief Medical Officers' guidance is clear:\n\n*'If you are pregnant or think you could become pregnant, the safest approach is not to drink alcohol at all, to keep risks to your baby to a minimum.'*\n\nThere is **no known safe level, safe type, or safe time** during pregnancy to drink alcohol. The developing brain is vulnerable throughout all trimesters.\n\nIf you find out you are pregnant after drinking during early pregnancy:\n• Stop drinking now\n• In most cases, the risk to the baby is likely to be low from small amounts\n• Talk to your GP or midwife if you are worried\n\nFor clinicians: SIGN 156 recommends screening all pregnant women using **T-ACE, TWEAK, or AUDIT-C** tools. Women drinking above the low-risk guideline should be offered brief interventions.\n\n*(UK CMO Low Risk Drinking Guidelines; SIGN 156)*" },
 
   // AT RISK
-  { tags:['at risk','not sure','young baby','infant','too young','incomplete'],
+  { tags:['at risk','young baby','infant','too young','incomplete'],
     answer:"**'At risk for neurodevelopmental disorder and FASD' — what does this mean?**\n\nThis designation (SNOMED CT: 2078801000000102) is used for children who:\n• Have confirmed prenatal alcohol exposure\n• Do not yet meet the full CNS criteria for an FASD diagnosis (e.g. too young for complete assessment)\n• Show some indication of neurodevelopmental concern\n\nIt is **not a diagnosis** — it is a formal designation ensuring the child is monitored and supported while awaiting a more comprehensive assessment as they grow.\n\nPer SIGN 156, this designation:\n• Should never be used when PAE is confirmed absent\n• Should be recorded and available to all professionals involved in developmental surveillance\n• Should prompt referral to a clinical geneticist if all 3 sentinel features are present but no microcephaly\n• Should lead to re-assessment when the child is older\n\nNICE QS204 is explicit: **support must not wait for a formal diagnosis.** Children designated 'at risk' should receive early intervention and monitoring." },
 
   // FOSTER / ADOPTION
@@ -419,17 +435,86 @@ const FAQ_KB = [
     answer:"**FASD in children in foster care, kinship care, or adoption**\n\nChildren in care are at significantly higher risk of FASD:\n• Birth history and PAE history may be unknown\n• SIGN 156 specifically lists 'child in foster/kinship/adoptive care with unknown birth history' as a key screening trigger\n• Multiple placement breakdowns and school exclusions are common secondary consequences of undiagnosed FASD\n\n**What to do:**\n• Unknown birth history alone is sufficient reason to consider FASD in a child with developmental or behavioural difficulties\n• Request a referral for FASD assessment — you do not need a confirmed alcohol history\n• All 3 sentinel facial features present = PAE confirmation not required\n• Significant difficulties + probable PAE = sufficient for NICE QS3 referral\n\n**Carers:** Many foster and adoptive carers carry the family history of the birth mother and are uniquely placed to provide PAE information. Your input is invaluable to the MDT assessment.\n\nContact **National FASD** (nationalfasd.org.uk) for carer-specific resources and support groups." },
 ];
 
+
+// ─── SAFETY LAYER (runs before the knowledge base) ───
+// Clinically reviewed wording. Keep crisis replies short and actionable.
+const CRISIS_PATTERNS = [
+  /suicid/, /kill (?:my|him|her|them|your)sel(?:f|ves)/, /\bkill myself\b/, /want(?:s|ed)? to die/, /end (?:my|his|her|their) li(?:fe|ves)/,
+  /self[ -]?harm/, /\bcutting (?:my|him|her|them)sel/, /(?:has|have|is|been|started|keeps?) cutting/, /hurt(?:ing)? (?:my|him|her|them)sel(?:f|ves)/,
+  /harm(?:ing)? (?:my|him|her|them)sel(?:f|ves)/, /overdos/, /took (?:too many|a lot of) (?:pills|tablets)/, /can'?t go on/, /no reason to live/,
+  /can'?t cope any ?more/, /not safe (?:with|from) (?:my|him|her)sel/
+];
+const SAFEGUARDING_PATTERNS = [
+  /\babuse/, /being (?:hurt|hit|beaten|harmed) at home/, /hurt at home/, /scared to go home/, /afraid to go home/, /\bneglect/,
+  /domestic (?:violence|abuse)/, /sexual(?:ly)? (?:abuse|touch|assault)/, /touched (?:him|her|them|me) inappropriately/, /bruis(?:e|es|ing) (?:on|all over)/,
+  /(?:hits|hitting|beats|beating) (?:him|her|them|my child|my son|my daughter)/, /unsafe at home/, /safeguarding/, /being groomed|grooming/, /exploit/
+];
+const EMERGENCY_PATTERNS = [/not breathing/, /unconscious/, /won'?t wake/, /seizure (?:now|right now|happening)/, /swallowed/, /choking/, /collapsed/];
+
+const URGENT_HELP_LINK = 'More help: fasdcompass.co.uk/urgent-help/';
+const REPLY_CRISIS = "**I'm sorry you are dealing with this. Please get help from a person now.**\n\n• **If someone is in immediate danger or has seriously hurt themselves, call 999** or go to A&E.\n• **For urgent advice, call NHS 111.** In Northern Ireland, contact your GP or the GP out-of-hours service.\n• **Samaritans:** call 116 123, free, any time of day or night.\n• **Shout:** text SHOUT to 85258, free and 24 hours.\n• **Childline (for children and young people):** call 0800 1111.\n\nIf your child is already known to a mental health team (CAMHS), contact them too.\n\nI'm an information tool and can't help in an emergency. You don't have to manage this on your own.\n\n" + URGENT_HELP_LINK;
+const REPLY_SAFEGUARDING = "**If you are worried a child is being harmed, please tell someone who can act.**\n\n• **If a child is in immediate danger, call 999.**\n• **If you work in a school or service,** tell your Designated Safeguarding Lead today and follow your safeguarding procedures.\n• **Contact the local council's children's services** where the child lives. You can find them at gov.uk/report-child-abuse-to-local-council.\n• **NSPCC Helpline (adults worried about a child):** call 0808 800 5000, Monday to Friday 10am to 4pm, or email help@nspcc.org.uk.\n• **Childline (for children and young people):** call 0800 1111.\n\nPlease don't share names or details here. I'm an information tool, and I can't pass on concerns or act on them.\n\n" + URGENT_HELP_LINK;
+const REPLY_EMERGENCY = "**This sounds like an emergency. Call 999 now.**\n\nIf it is less urgent, call NHS 111 for advice. I'm an information tool and can't give emergency medical help.\n\n" + URGENT_HELP_LINK;
+
+const PII_PATTERNS = [
+  { re: /\b\d{3}[ -]?\d{3}[ -]?\d{4}\b/g, label: 'NHS number' },
+  { re: /\b(?:0|\+44 ?)7\d{3}[ -]?\d{3}[ -]?\d{3}\b/g, label: 'phone number' },
+  { re: /\b0\d{2,4}[ -]?\d{3,4}[ -]?\d{3,4}\b/g, label: 'phone number' },
+  { re: /\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, label: 'email address' },
+  { re: /\b(?:0?[1-9]|[12]\d|3[01])[\/.-](?:0?[1-9]|1[0-2])[\/.-](?:19|20)?\d{2}\b/g, label: 'date of birth' },
+  { re: /\b(?:dob|d\.o\.b\.?|date of birth|born on)\b[:\s]*\d{1,2}(?:st|nd|rd|th)?[\s\/.-]+[a-z0-9]+[\s\/.-]+\d{2,4}/gi, label: 'date of birth' },
+  { re: /\b[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}\b/gi, label: 'postcode' },
+  { re: /\b(?:my (?:son|daughter|child|grandson|granddaughter|pupil|patient)(?:'s name)? is|(?:he|she) is called|named|called) ([A-Z][a-z]+(?: [A-Z][a-z]+)?)/g, label: 'name', group: 1 }
+];
+function redactPII(text) {
+  const found = new Set(); let out = text;
+  PII_PATTERNS.forEach(p => {
+    out = out.replace(p.re, (m, g1) => {
+      found.add(p.label);
+      if (p.group && g1) return m.replace(g1, '[name removed]');
+      return '[' + p.label + ' removed]';
+    });
+  });
+  return { text: out, found: [...found] };
+}
+const PII_NOTICE = "**Please don't share personal details here,** such as names, dates of birth, NHS numbers, addresses or phone numbers. I've hidden what I spotted. Nothing you type is stored or sent anywhere, but it is safer to keep questions general.\n\n";
+
+const QUIZ_PATTERNS = [/(?:questionnaire|quiz|screening tool|checklist|guide|test|result)s?.{0,40}(?:mean|confirm|show|prove|tell|diagnos|rule out|say)/, /(?:does|do|can|will) (?:the |my |this )?(?:questionnaire|quiz|screening|checklist|result|score).{0,40}(?:have|has|got) fasd/, /(?:high|low|moderate) (?:concern|score|risk)/];
+const REPLY_QUIZ = "**No. The questionnaire cannot confirm or rule out FASD.**\n\nIt is a checklist to help you notice developmental concerns and get ready to talk to a professional. It has not been validated as a screening or diagnostic tool, and it does not give a risk score.\n\nOnly a full multidisciplinary assessment can diagnose FASD, following SIGN 156. Many things can cause similar difficulties, and some children have more than one condition.\n\nIf you have concerns, take the summary from the questionnaire to your GP or health visitor. The **Before You See the GP** checklist can help you prepare.";
+
+function safetyReply(q) {
+  if (EMERGENCY_PATTERNS.some(r => r.test(q))) return REPLY_EMERGENCY;
+  if (CRISIS_PATTERNS.some(r => r.test(q))) return REPLY_CRISIS;
+  if (SAFEGUARDING_PATTERNS.some(r => r.test(q))) return REPLY_SAFEGUARDING;
+  return null;
+}
+function respond(raw) {
+  const q = raw.toLowerCase().replace(/[’‘]/g, "'");
+  const safe = safetyReply(q);
+  if (safe) return safe;
+  const pii = redactPII(raw);
+  const prefix = pii.found.length ? PII_NOTICE : '';
+  if (QUIZ_PATTERNS.some(r => r.test(q))) return prefix + REPLY_QUIZ;
+  return prefix + findAnswer(pii.text);
+}
+function escHTML(t) { return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
 function findAnswer(query) {
   const q = query.toLowerCase();
   let best = null, bestScore = 0;
+  const STOP = ['what','is','how','mean','also','help','care','test','10','ten','uk','eye','lip','safe','together','condition','support','area','plan','rate','common','concern','home','tip','learn','manage','services','think my child','what do i','not sure','sitting','define'];
   FAQ_KB.forEach(item => {
     let score = 0;
-    item.tags.forEach(tag => { if(q.includes(tag)) score += tag.length; });
+    item.tags.forEach(tag => {
+      if (STOP.includes(tag)) return;
+      const re = new RegExp('(^|[^a-z])' + tag.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+      if (re.test(q)) score += Math.max(tag.length, 4);
+    });
     if(score > bestScore) { bestScore = score; best = item; }
   });
-  if(bestScore > 0) return best.answer;
+  if(bestScore >= 4) return best.answer;
   // Fallback
-  return "That's a great question. I don't have a specific answer for that in my knowledge base, but here's where to find help:\n\n• **For general FASD information:** The content throughout this app covers most topics in depth — browse the Overview, Clinicians, Parents, and Teachers tabs\n• **For personal support:** Contact **National FASD** at nationalfasd.org.uk or call their helpline\n• **For clinical questions:** Your GP, paediatrician, or neurodevelopmental service can provide advice specific to your child\n• **For diagnosis:** A referral to a specialist FASD MDT is the most important step\n\nIs there something more specific I can try to help with?";
+  return "I don't have an answer to that in my FASD information yet. I can only answer general questions about FASD, and I can't give advice about an individual child.\n\n• **For your child's health:** speak to your GP, health visitor or school nurse.\n• **For FASD support:** National FASD runs a helpline and has information at nationalfasd.org.uk.\n• **For school support:** talk to the school SENCO.\n\nTry asking in a different way, for example \"How can I help with meltdowns?\" or \"What should I tell my GP?\"";
 }
 
 let chatHistory = [];
@@ -455,13 +540,13 @@ function sendMessage() {
   input.style.height='auto';
   chatLoading=true;
 
-  appendMsg('user', text);
+  appendMsg('user', redactPII(text).text);
   showTyping();
 
   // Simulate brief thinking delay for natural feel
   setTimeout(() => {
     removeTyping();
-    const reply = findAnswer(text);
+    const reply = respond(text);
     appendMsg('bot', reply);
     chatLoading=false;
   }, 600 + Math.random()*400);
@@ -475,7 +560,7 @@ function appendMsg(role, text) {
   div.className = 'msg'+(isUser?' user':'');
   const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
   // Convert markdown-style bold and bullets to HTML
-  let html = text
+  let html = escHTML(text)
     .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
     .replace(/^• /gm,'• ')
     .replace(/\n/g,'<br>');
