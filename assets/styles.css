@@ -735,3 +735,48 @@ h3.pc-title { margin: 0; }
   .lt-form, .lt-jump { display: none !important; }
 }
 .lt-note a, .lt-paper a { color: var(--teal); font-weight: 600; }
+
+/* ---------- Journey tracker ---------- */
+.jr-progress { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
+.jr-progress-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--navy); font-size: 17px; }
+.jr-saved { font-size: 14px; color: var(--teal); font-weight: 600; }
+.jr-bar { height: 12px; background: #e6ecef; border-radius: 99px; overflow: hidden; margin: 10px 0 8px; }
+.jr-bar span { display: block; height: 100%; width: 0; background: var(--teal); border-radius: 99px; transition: width .3s; }
+.jr-map { list-style: none; margin: 0; padding: 0; position: relative; }
+.jr-step { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding-bottom: 14px; }
+.jr-step::before { content: ''; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: #d3dde2; }
+.jr-step:last-child::before { display: none; }
+.jr-marker { width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2px solid #c6d2d8; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy); position: relative; z-index: 1; }
+.jr-tick { display: none; }
+.jr-step.current .jr-marker { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(26,140,130,.15); }
+.jr-step.done .jr-marker { background: var(--teal); border-color: var(--teal); color: #fff; }
+.jr-step.done .jr-num { display: none; }
+.jr-step.done .jr-tick { display: inline; }
+.jr-step.done::before { background: var(--teal); }
+.jr-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid #c6d2d8; min-width: 0; }
+.jr-step.current .jr-card { border-left-color: var(--teal); }
+.jr-step.done .jr-card { border-left-color: var(--teal); }
+.jr-card summary { cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 12px 16px; list-style: none; }
+.jr-card summary::-webkit-details-marker { display: none; }
+.jr-card summary::after { content: '▾'; margin-left: 4px; color: #6b7a86; transition: transform .2s; }
+.jr-card[open] summary::after { transform: rotate(180deg); }
+.jr-ico { font-size: 20px; }
+.jr-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); flex: 1; }
+.jr-status { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; background: #eef2f4; color: #4a5866; white-space: nowrap; }
+.jr-status.is-progress { background: #fff1dc; color: #8a4b00; }
+.jr-status.is-done { background: #dff2ef; color: #0d5c55; }
+.jr-step.current .jr-status:not(.is-progress):not(.is-done) { background: var(--teal); color: #fff; }
+.jr-body { padding: 0 16px 16px; }
+.jr-cols { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .jr-cols { grid-template-columns: 1fr 1fr 1fr; } }
+.jr-col h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--teal); margin: 6px 0 6px; }
+.jr-col.leave { background: #f4f9f8; border-radius: 10px; padding: 4px 12px 8px; }
+.jr-log { border-top: 1px solid #e6ecef; margin-top: 12px; padding-top: 10px; }
+.jr-done { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; color: var(--navy); cursor: pointer; }
+.jr-done input { width: 20px; height: 20px; accent-color: var(--teal); }
+.jr-links { font-size: 14px; margin: 6px 0 0; }
+.jr-links a { color: var(--teal); font-weight: 600; }
+@media (max-width: 600px) { .jr-step { grid-template-columns: 32px 1fr; gap: 8px; } .jr-marker { width: 32px; height: 32px; font-size: 14px; } .jr-step::before { left: 15px; top: 32px; } .jr-title { font-size: 17px; } .jr-card summary { padding: 10px 12px; flex-wrap: wrap; } .jr-body { padding: 0 12px 12px; } }
+@media print { #print-area .jr-table td { vertical-align: top; font-size: 10.5px; } }
+@media (max-width: 600px) { .jr-ico { display: none; } .jr-card summary { flex-wrap: nowrap; gap: 6px; } .jr-title { flex: 1 1 auto; min-width: 0; } .jr-status { font-size: 11px; padding: 2px 8px; } }
+@media (max-width: 600px) { .jr-title { overflow-wrap: anywhere; } }
