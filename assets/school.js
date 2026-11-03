@@ -1,4 +1,4 @@
-/* FASD Compass school tools (v1.2.6)
+/* FASD Compass school tools (v1.2.7)
    Everything stays on this device. Nothing is sent to a server. */
 (function () {
   'use strict';
