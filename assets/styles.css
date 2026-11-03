@@ -786,3 +786,28 @@ h3.pc-title { margin: 0; }
 .disclaimer-chip.urgent-chip { background: #fdecea; color: #6b1f1a; border: 1px solid #f3c4bf; }
 .disclaimer-chip.urgent-chip a { color: #8a1c14; font-weight: 700; }
 .chat-sug { font-size: 13px; color: #0d5c55; }
+
+/* ─── Developmental concerns guide (v1.2.3) ─── */
+.quiz-hero .cs-notice { margin-top: 14px; }
+.cs-notice { background: #fff8e6; border: 1.5px solid #c98a00; border-radius: 12px; padding: 12px 14px; font-size: 14px; line-height: 1.55; color: #3b2a00; }
+.cs-wrap { background: #fff; border-radius: 16px; padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.cs-title { font-family: 'DM Serif Display', serif; color: var(--navy); font-size: 26px; line-height: 1.2; margin: 16px 0 8px; }
+.cs-h { color: var(--navy); font-size: 17px; margin: 18px 0 6px; }
+.cs-wrap p { font-size: 15px; line-height: 1.6; margin: 0 0 10px; color: #2b3440; }
+.cs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.cs-row { display: grid; grid-template-columns: 22px 1fr auto; gap: 4px 10px; align-items: baseline; padding: 9px 12px; border: 1px solid #dfe5ea; border-radius: 10px; font-size: 14.5px; background: #fafbfc; }
+.cs-ico { color: var(--navy); font-weight: 700; text-align: center; }
+.cs-area { font-weight: 600; color: #1f2a36; }
+.cs-status { font-size: 13px; color: #3c4855; text-align: right; }
+.cs-concern { border-color: var(--navy); background: #f1f4f9; }
+.cs-concern .cs-status { font-weight: 700; color: var(--navy); }
+.cs-note { grid-column: 2 / -1; font-size: 13.5px; color: #3c4855; }
+.cs-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 10px; }
+.cs-actions .quiz-btn { flex: 1 1 220px; }
+.cs-small { font-size: 13px !important; color: #4a5562 !important; }
+.quiz-note { margin-top: 14px; }
+.quiz-note label { display: block; font-size: 13.5px; font-weight: 600; color: #2b3440; margin-bottom: 5px; }
+.quiz-note textarea { width: 100%; box-sizing: border-box; border: 1.5px solid #cfd8df; border-radius: 10px; padding: 9px 11px; font: inherit; font-size: 14.5px; resize: vertical; }
+.quiz-note textarea:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+@media (max-width: 480px) { .cs-row { grid-template-columns: 22px 1fr; } .cs-status { grid-column: 2; text-align: left; } }
+@media print { #print-area .cs-print { font-size: 11.5pt; } #print-area .cs-print-notice { border: 1px solid #000; padding: 6px 8px; } #print-area .cs-print table { margin-bottom: 12px; } #print-area .cs-print ul { margin: 4px 0 8px 18px; } }

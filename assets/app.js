@@ -59,178 +59,203 @@ function cycleSpeed(id) {
   document.getElementById('speed'+id).textContent = next + '×';
 }
 
-// ─── QUIZ ───
-const quizQuestions = [
-  {
-    num:1, domain:"Background History",
-    text:"Is there known or suspected prenatal alcohol exposure for this child?",
-    sub:"This includes any alcohol use during pregnancy, even in the first trimester.",
-    opts:[{t:"Yes — confirmed",w:3},{t:"Possibly / uncertain",w:2},{t:"No known exposure",w:0},{t:"Unknown (e.g. adopted/foster)",w:2}]
-  },
-  {
-    num:2, domain:"Learning & Memory",
-    text:"Does the child have significant difficulty remembering instructions or information, even when recently taught?",
-    sub:"For example, forgetting a rule they were told 10 minutes ago.",
-    opts:[{t:"Yes, consistently",w:3},{t:"Sometimes",w:1},{t:"Rarely or never",w:0}]
-  },
-  {
-    num:3, domain:"Behaviour",
-    text:"Does the child struggle with impulse control — acting before thinking, or not learning from consequences?",
-    sub:"This is different from typical childhood impulsivity.",
-    opts:[{t:"Yes, significantly",w:3},{t:"Somewhat",w:1},{t:"Not particularly",w:0}]
-  },
-  {
-    num:4, domain:"Attention",
-    text:"Does the child have marked difficulties with sustained attention, even for activities they enjoy?",
-    opts:[{t:"Yes, major difficulty",w:3},{t:"Mild to moderate",w:1},{t:"Age-appropriate attention",w:0}]
-  },
-  {
-    num:5, domain:"Communication",
-    text:"Does the child have language or communication difficulties — including understanding spoken language?",
-    sub:"May include seeming to understand but not following through, or taking things very literally.",
-    opts:[{t:"Yes, notable difficulties",w:3},{t:"Mild concerns",w:1},{t:"Communication is on track",w:0}]
-  },
-  {
-    num:6, domain:"Social Skills",
-    text:"Does the child struggle with age-appropriate social understanding — e.g. being overly friendly with strangers, or not reading social cues?",
-    opts:[{t:"Yes, significantly",w:3},{t:"Some difficulty",w:1},{t:"Socially on track",w:0}]
-  },
-  {
-    num:7, domain:"Emotion Regulation",
-    text:"Does the child have significant emotional outbursts or meltdowns that seem disproportionate to the situation?",
-    opts:[{t:"Yes, frequently",w:3},{t:"Occasionally",w:1},{t:"Rarely",w:0}]
-  },
-  {
-    num:8, domain:"Motor Development",
-    text:"Has the child shown any difficulties with coordination, fine motor tasks (e.g. writing, cutting), or gross motor skills?",
-    opts:[{t:"Yes, significant delay",w:3},{t:"Mild difficulties",w:1},{t:"No concerns",w:0}]
-  },
-  {
-    num:9, domain:"School & Daily Living",
-    text:"Is the child significantly below academic expectations, or struggling with age-appropriate daily living skills (e.g. dressing, organisation)?",
-    opts:[{t:"Yes, significant gap",w:3},{t:"Mild gap",w:1},{t:"On track",w:0}]
-  },
-  {
-    num:10, domain:"Physical Features",
-    text:"Has anyone noted any of the following: growth restriction, small head size, or any unusual facial features?",
-    sub:"Facial features are only present in a subset of FASD presentations.",
-    opts:[{t:"Yes — one or more noted",w:3},{t:"Uncertain",w:1},{t:"None identified",w:0}]
-  }
+// ─── DEVELOPMENTAL CONCERNS GUIDE (formerly the screening quiz) ───
+// Not a validated screening tool. No scores, weights, thresholds or risk levels.
+// Each area is reported as: concern reported / no concern reported / not sure.
+// Nothing is stored or sent. The summary is printed or saved as PDF in the browser.
+const PAE_OPTS = [
+  { t: 'Confirmed prenatal alcohol exposure', k: 'confirmed' },
+  { t: 'Possible exposure, not confirmed', k: 'possible' },
+  { t: 'Reliable information indicating no alcohol exposure', k: 'none' },
+  { t: 'Unknown or unavailable information', k: 'unknown' },
+  { t: 'Prefer not to answer', k: 'declined' }
 ];
+const AREA_OPTS = [
+  { t: 'Yes, often', s: 'concern' },
+  { t: 'Sometimes', s: 'concern' },
+  { t: 'No, not usually', s: 'none' },
+  { t: 'Not sure', s: 'unsure' }
+];
+const quizQuestions = [
+  { num: 1, domain: 'Pregnancy information', pae: true,
+    text: 'Do you have any information about alcohol use during the pregnancy?',
+    sub: 'Many families do not know. Choose the answer that fits what you know. There is no right or wrong answer.', opts: PAE_OPTS },
+  { num: 2, domain: 'Memory and learning', text: 'Does your child find it hard to remember instructions or things they have recently learned?',
+    sub: 'For example, forgetting a rule they were told a few minutes ago.', tip: 'Give one instruction at a time, and use pictures or a checklist.', link: ['/everyday-solutions/', 'Everyday Parenting Solutions'] },
+  { num: 3, domain: 'Impulse control and behaviour', text: 'Does your child often act before thinking, or find it hard to learn from what happened last time?',
+    tip: 'Keep routines predictable, plan ahead for tricky situations, and expect to supervise more than for other children of the same age.', link: ['/everyday-solutions/', 'Everyday Parenting Solutions'] },
+  { num: 4, domain: 'Attention', text: 'Compared with children of the same age, does your child find it hard to concentrate, even on things they enjoy?',
+    tip: 'Break tasks into short chunks with movement breaks in between.', link: ['/everyday-solutions/', 'Everyday Parenting Solutions'] },
+  { num: 5, domain: 'Language and communication', text: 'Does your child have difficulties with language or with understanding what is said to them?',
+    sub: 'For example, seeming to understand but not following through, or taking things very literally.', tip: 'Use short sentences, add visuals, and ask your child to show you what to do rather than asking if they understand.', link: ['/everyday-solutions/', 'Everyday Parenting Solutions'] },
+  { num: 6, domain: 'Social skills', text: 'Does your child find friendships or social situations hard?',
+    sub: 'For example, being overly friendly with strangers or missing social cues.', tip: 'Practise social situations in advance and explain unwritten rules simply.', link: ['/everyday-solutions/', 'Everyday Parenting Solutions'] },
+  { num: 7, domain: 'Emotions and regulation', text: 'Does your child have big emotional reactions or meltdowns that are hard to recover from?',
+    tip: 'Notice early signs, reduce demands and stay calm. Look for patterns over several weeks, as causes can differ each time.', link: ['/regulation-toolkit/', 'Meltdowns and Big Feelings'] },
+  { num: 8, domain: 'Movement and coordination', text: 'Does your child have difficulties with coordination, handwriting, cutting or sport?',
+    tip: 'Allow extra time, and ask school about alternatives to a lot of handwriting.', link: ['/school-toolkit/', 'School Advocacy Toolkit'] },
+  { num: 9, domain: 'School and daily living', text: 'Is your child finding school work, or everyday skills such as dressing and getting organised, harder than expected for their age?',
+    tip: 'Ask the school SENCO about SEN support. A diagnosis is not needed for support.', link: ['/school-toolkit/', 'School Advocacy Toolkit'] },
+  { num: 10, domain: 'Growth and physical features', text: 'Has a health professional mentioned concerns about your child’s growth, head size or facial features?',
+    sub: 'Only some children with FASD have the facial features linked with alcohol exposure.',
+    opts: [{ t: 'Yes, this has been mentioned', s: 'concern' }, { t: 'No', s: 'none' }, { t: 'Not sure', s: 'unsure' }],
+    tip: 'Ask your GP or health visitor to check and record growth and head size.', link: ['/gp-checklist/', 'Before You See the GP checklist'] }
+];
+quizQuestions.forEach(q => { if (!q.opts) q.opts = AREA_OPTS; });
 
 let quizAnswers = [];
+let quizNotes = [];
 let currentQ = 0;
 
 function initQuiz() {
   quizAnswers = new Array(quizQuestions.length).fill(null);
+  quizNotes = new Array(quizQuestions.length).fill('');
   currentQ = 0;
-  document.getElementById('quiz-body').style.display='block';
-  document.getElementById('quiz-result').style.display='none';
+  document.getElementById('quiz-body').style.display = 'block';
+  document.getElementById('quiz-result').style.display = 'none';
   renderQuestion();
 }
 
 function renderQuestion() {
   const q = quizQuestions[currentQ];
-  const pct = (currentQ/quizQuestions.length)*100;
-  document.getElementById('quizProgressFill').style.width = pct+'%';
-  document.getElementById('quizStepLabel').textContent = `Question ${currentQ+1} of ${quizQuestions.length}`;
+  const pct = (currentQ / quizQuestions.length) * 100;
+  document.getElementById('quizProgressFill').style.width = pct + '%';
+  document.getElementById('quizStepLabel').textContent = `Question ${currentQ + 1} of ${quizQuestions.length}`;
   document.getElementById('qNum').textContent = `QUESTION ${q.num} OF ${quizQuestions.length} · ${q.domain.toUpperCase()}`;
   document.getElementById('qText').textContent = q.text;
   document.getElementById('qSub').textContent = q.sub || '';
   document.getElementById('qSub').style.display = q.sub ? 'block' : 'none';
   const optEl = document.getElementById('qOptions');
   optEl.innerHTML = '';
+  optEl.setAttribute('role', 'group');
+  optEl.setAttribute('aria-label', q.text);
   q.opts.forEach((opt, i) => {
     const btn = document.createElement('button');
-    btn.className = 'quiz-opt' + (quizAnswers[currentQ]===i?' selected':'');
-    btn.innerHTML = `<div class="opt-check">${quizAnswers[currentQ]===i?'✓':''}</div>${opt.t}`;
+    btn.type = 'button';
+    btn.className = 'quiz-opt' + (quizAnswers[currentQ] === i ? ' selected' : '');
+    btn.setAttribute('aria-pressed', quizAnswers[currentQ] === i ? 'true' : 'false');
+    btn.innerHTML = `<span class="opt-check" aria-hidden="true">${quizAnswers[currentQ] === i ? '✓' : ''}</span><span>${escHTML(opt.t)}</span>`;
     btn.onclick = () => selectOpt(i);
     optEl.appendChild(btn);
   });
-  document.getElementById('quizNext').disabled = quizAnswers[currentQ]===null;
-  document.getElementById('quizBack').style.visibility = currentQ===0?'hidden':'visible';
+  let note = document.getElementById('qNoteWrap');
+  if (!note) {
+    note = document.createElement('div'); note.id = 'qNoteWrap'; note.className = 'quiz-note';
+    note.innerHTML = '<label for="qNote">Add an example (optional)</label><textarea id="qNote" rows="2" placeholder="For example, what happens and how often. Please do not include names."></textarea>';
+    document.getElementById('quizCard').appendChild(note);
+    document.getElementById('qNote').addEventListener('input', e => { quizNotes[currentQ] = e.target.value; });
+  }
+  note.style.display = q.pae ? 'none' : 'block';
+  document.getElementById('qNote').value = quizNotes[currentQ] || '';
+  document.getElementById('quizNext').disabled = quizAnswers[currentQ] === null;
+  document.getElementById('quizNext').textContent = currentQ === quizQuestions.length - 1 ? 'See summary →' : 'Next →';
+  document.getElementById('quizBack').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
 }
 
 function selectOpt(i) {
   quizAnswers[currentQ] = i;
-  document.querySelectorAll('.quiz-opt').forEach((b,idx)=>{
-    b.classList.toggle('selected', idx===i);
-    b.querySelector('.opt-check').textContent = idx===i?'✓':'';
+  document.querySelectorAll('.quiz-opt').forEach((b, idx) => {
+    b.classList.toggle('selected', idx === i);
+    b.setAttribute('aria-pressed', idx === i ? 'true' : 'false');
+    b.querySelector('.opt-check').textContent = idx === i ? '✓' : '';
   });
   document.getElementById('quizNext').disabled = false;
 }
 
 function quizNext() {
-  if(quizAnswers[currentQ]===null) return;
-  if(currentQ < quizQuestions.length-1) {
-    currentQ++;
-    renderQuestion();
-  } else {
-    showQuizResults();
-  }
+  if (quizAnswers[currentQ] === null) return;
+  if (currentQ < quizQuestions.length - 1) { currentQ++; renderQuestion(); }
+  else showQuizResults();
+  const card = document.getElementById('quizCard'); if (card) card.scrollIntoView({ block: 'nearest' });
 }
 
-function quizBack() {
-  if(currentQ>0){ currentQ--; renderQuestion(); }
+function quizBack() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+
+const STATUS_LABEL = { concern: 'Concern reported', none: 'No concern reported', unsure: 'Not sure or insufficient information' };
+const PAE_TEXT = {
+  confirmed: 'You told us there was confirmed alcohol exposure in pregnancy. Please tell the professional you see. NICE Quality Standard QS204 says children with probable prenatal alcohol exposure and significant difficulties should be referred for assessment.',
+  possible: 'You told us alcohol exposure in pregnancy is possible but not confirmed. Tell the professional what you know and where the information comes from. Records held by a GP, midwife or social worker may help.',
+  none: 'You told us there is reliable information that there was no alcohol exposure. The difficulties you have described still matter and deserve attention, as they can have many causes.',
+  unknown: 'You told us information about alcohol in the pregnancy is unknown or unavailable. This is common, particularly for adopted, fostered and kinship children. Unknown does not mean there was exposure, and it does not mean there was none. Your child’s needs can still be assessed.',
+  declined: 'You chose not to answer the question about pregnancy. That is fine. You can decide later what to share with a professional.'
+};
+
+function quizSummaryData() {
+  const pae = PAE_OPTS[quizAnswers[0]] ? PAE_OPTS[quizAnswers[0]].k : 'declined';
+  const areas = quizQuestions.slice(1).map((q, idx) => {
+    const i = idx + 1, opt = q.opts[quizAnswers[i]];
+    return { q, domain: q.domain, answer: opt ? opt.t : 'Not answered', status: opt ? opt.s : 'unsure', note: (quizNotes[i] || '').trim() };
+  });
+  return { pae, areas, concerns: areas.filter(a => a.status === 'concern'), unsure: areas.filter(a => a.status === 'unsure') };
 }
 
 function showQuizResults() {
-  let totalScore = 0;
-  const domainScores = [];
-  quizQuestions.forEach((q,i) => {
-    const ans = quizAnswers[i];
-    const weight = ans !== null ? q.opts[ans].w : 0;
-    totalScore += weight;
-    domainScores.push({domain: q.domain, weight});
-  });
-  const maxScore = 30;
-  const pct = (totalScore/maxScore)*100;
-
-  let level, emoji, label, title, body, colorClass;
-  if(pct < 30) {
-    level='low'; emoji='🟢'; label='Low Concern'; colorClass='low';
-    title='Low Indicators at This Time';
-    body='Responses suggest limited indicators of FASD at this time. Continue monitoring development. If concerns arise, consider reassessment.';
-  } else if(pct < 60) {
-    level='mid'; emoji='🟡'; label='Moderate Concern'; colorClass='mid';
-    title='Some Indicators Present';
-    body='Responses indicate some areas of concern that warrant further monitoring. Consider discussing with a GP, paediatrician, or early intervention service, particularly if prenatal alcohol exposure is known or suspected.';
-  } else {
-    level='high'; emoji='🔴'; label='High Concern'; colorClass='high';
-    title='Significant Indicators — Seek Assessment';
-    body='Responses suggest significant indicators across multiple domains associated with FASD. A multidisciplinary assessment is strongly recommended. Please discuss with a paediatrician or specialist FASD diagnostic service as soon as possible.';
-  }
-
-  document.getElementById('quiz-body').style.display='none';
+  const d = quizSummaryData();
+  document.getElementById('quiz-body').style.display = 'none';
   const resultEl = document.getElementById('quiz-result');
-  resultEl.style.display='block';
-
-  const domainHTML = domainScores.map(d => {
-    const pctD = (d.weight/3)*100;
-    const color = pctD<34?'green':pctD<67?'amber':'red';
-    return `<div class="rb-domain">
-      <div class="rbd-label">${d.domain}</div>
-      <div class="rbd-bar-wrap"><div class="rbd-bar ${color}" style="width:${pctD}%"></div></div>
-    </div>`;
-  }).join('');
-
+  resultEl.style.display = 'block';
+  const icon = { concern: '●', none: '○', unsure: '?' };
+  const rows = d.areas.map(a => `<li class="cs-row cs-${a.status}"><span class="cs-ico" aria-hidden="true">${icon[a.status]}</span><span class="cs-area">${escHTML(a.domain)}</span><span class="cs-status">${STATUS_LABEL[a.status]}</span>${a.note ? `<span class="cs-note">Your example: ${escHTML(a.note)}</span>` : ''}</li>`).join('');
+  let meaning;
+  if (d.concerns.length) {
+    meaning = `<p>You reported concerns in <strong>${d.concerns.length} of ${d.areas.length}</strong> areas. This is a record of what you have noticed. It is not a score, and it does not measure how likely FASD is.</p><p>Difficulties like these can have many causes. These include FASD, ADHD, autism, language disorder, learning difficulties, hearing or vision problems, sleep problems and the effects of early experiences. Some children have more than one. Only a professional assessment can find out what is behind them.</p>`;
+  } else {
+    meaning = `<p>You did not report concerns in these areas. This does not rule out FASD or any other condition. Needs can change as children grow.</p><p>If you are still worried, trust your instincts and talk to your GP, health visitor or school.</p>`;
+  }
+  if (d.unsure.length) meaning += `<p>You were not sure about ${d.unsure.length} area${d.unsure.length > 1 ? 's' : ''}. It can help to ask school or nursery what they notice.</p>`;
+  const tips = d.concerns.map(a => `<li><strong>${escHTML(a.domain)}:</strong> ${escHTML(a.q.tip)} <a href="${a.q.link[0]}">${escHTML(a.q.link[1])}</a></li>`).join('');
   resultEl.innerHTML = `
-    <div class="result-score-card ${colorClass}">
-      <div class="rs-emoji">${emoji}</div>
-      <div class="rs-label ${colorClass}">${label}</div>
-      <div class="rs-title">${title}</div>
-      <div class="rs-body">${body}</div>
-    </div>
-    <div class="result-breakdown">
-      <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:12px;">Domain Breakdown</div>
-      ${domainHTML}
-    </div>
-    <div class="quiz-disclaimer">⚕️ This screening tool is not a diagnostic instrument. It is designed to help identify children who may benefit from a comprehensive FASD assessment. A formal diagnosis requires a multidisciplinary team evaluation. Results should be discussed with a qualified healthcare professional.</div>
-    <div style="display:flex;gap:10px;margin-bottom:14px;">
-      <button class="quiz-btn primary" onclick="initQuiz()" style="flex:1;">Retake Quiz</button>
-      <button class="quiz-btn primary" style="background:var(--navy);flex:1;" onclick="window.location.href='/ask-fasd-ai/'">Ask the AI →</button>
-    </div>
-  `;
+    <div class="cs-wrap">
+      <div class="cs-notice" role="note"><strong>This is not a diagnosis or a validated FASD screening result.</strong> It cannot confirm or rule out FASD. It is a summary of what you have noticed, to help you talk to a professional.</div>
+      <h2 class="cs-title">Your Child’s Developmental Concerns Summary</h2>
+      <h3 class="cs-h">Areas you told us about</h3>
+      <ul class="cs-list">${rows}</ul>
+      <h3 class="cs-h">What your answers mean</h3>
+      ${meaning}
+      <h3 class="cs-h">Pregnancy information</h3>
+      <p>${PAE_TEXT[d.pae]}</p>
+      <h3 class="cs-h">Talking to a professional</h3>
+      <p>${d.concerns.length ? 'Because you have noticed difficulties, it would be reasonable to talk to your GP or health visitor. They can decide whether a referral to a paediatrician or neurodevelopmental team is needed.' : 'If concerns come up later, your GP or health visitor is a good place to start.'} Take the summary below with you.</p>
+      <ul class="bullet-list"><li><a href="/gp-checklist/">Before You See the GP</a>: a checklist of what to bring</li><li><a href="/journey-tracker/">Your FASD Journey Tracker</a>: what happens at each step</li><li><a href="/template-letters/#letter-gp">Template letter for your GP</a></li></ul>
+      ${tips ? `<h3 class="cs-h">Things you can try now</h3><ul class="bullet-list">${tips}</ul>` : ''}
+      <h3 class="cs-h">Support at school</h3>
+      <p>Your child does not need a diagnosis to get support at school. Support should be based on their needs. Talk to the class teacher or SENCO, and use the <a href="/school-toolkit/">School Advocacy Toolkit</a>.</p>
+      <div class="cs-actions">
+        <button type="button" class="quiz-btn primary" onclick="printQuizSummary()">🖨️ Print or save summary for your GP (PDF)</button>
+        <button type="button" class="quiz-btn secondary" onclick="initQuiz()">Start again</button>
+      </div>
+      <p class="cs-small">Nothing you entered is saved or sent anywhere. It is cleared when you leave this page. If you need help urgently, see <a href="/urgent-help/">urgent help</a>.</p>
+    </div>`;
+  resultEl.scrollIntoView({ block: 'start' });
+}
+
+function printQuizSummary() {
+  const d = quizSummaryData();
+  const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  const rows = d.areas.map(a => `<tr><td>${escHTML(a.domain)}</td><td>${STATUS_LABEL[a.status]}</td><td>${escHTML(a.note)}</td></tr>`).join('');
+  const qs = [
+    'Could these difficulties be assessed by a paediatrician or neurodevelopmental team?',
+    'What could explain these difficulties, and should other causes such as hearing, vision or sleep be checked?'
+  ];
+  if (d.pae === 'confirmed' || d.pae === 'possible') qs.push('Can the information about alcohol in the pregnancy be recorded in my child’s notes, and should FASD be considered?');
+  qs.push('What support can we get while we wait?', 'Could you share information with my child’s school or nursery?');
+  const paeLine = { confirmed: 'Confirmed prenatal alcohol exposure', possible: 'Possible exposure, not confirmed', none: 'Reliable information indicating no alcohol exposure', unknown: 'Unknown or unavailable information', declined: 'Not shared' }[d.pae];
+  let area = document.getElementById('print-area');
+  if (!area) { area = document.createElement('div'); area.id = 'print-area'; document.body.appendChild(area); }
+  area.innerHTML = `<div class="plan-doc cs-print">
+    <div class="plan-head"><div class="plan-eyebrow">FASD Compass · Developmental concerns summary</div><h2>Developmental concerns to discuss</h2></div>
+    <p><strong>Date completed:</strong> ${date} &nbsp; <strong>Completed by:</strong> parent or carer</p>
+    <p class="cs-print-notice">This is not a diagnosis or a validated screening result. It cannot confirm or rule out FASD. It records what a parent or carer has noticed, to support a conversation with a professional.</p>
+    <table class="tracker-table"><thead><tr><th>Area</th><th>What was reported</th><th>Parent or carer example</th></tr></thead><tbody>${rows}</tbody></table>
+    <p><strong>Information about alcohol in pregnancy:</strong> ${paeLine}</p>
+    <p><strong>Concerns to discuss:</strong> ${d.concerns.length ? d.concerns.map(a => escHTML(a.domain)).join(', ') : 'None reported in these areas, but the parent or carer would like to talk about their child’s development.'}</p>
+    <p><strong>Questions for the clinician</strong></p><ul>${qs.map(q => `<li>${escHTML(q)}</li>`).join('')}</ul>
+    <p class="plan-foot">From fasdcompass.co.uk, the FASD Developmental Concerns and Assessment Guide. Educational information only. Clinical lead: Dr Inyang Takon, Consultant Neurodevelopmental Paediatrician.</p>
+  </div>`;
+  document.body.classList.add('printing-one');
+  const done = () => { document.body.classList.remove('printing-one'); area.innerHTML = ''; window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  setTimeout(() => { window.print(); setTimeout(done, 1500); }, 50);
 }
 
 // ─── CHATBOT ───

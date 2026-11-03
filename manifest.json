@@ -31,10 +31,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Screening Tool",
-      "short_name": "Screen",
-      "description": "Run the FASD early detection questionnaire",
-      "url": "/index.html#quiz",
+      "name": "Developmental Concerns Guide",
+      "short_name": "Checklist",
+      "description": "Record developmental concerns before talking to a professional",
+      "url": "/screening-tool/",
       "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
     },
     {

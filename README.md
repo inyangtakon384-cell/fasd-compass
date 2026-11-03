@@ -18,7 +18,7 @@ FASD Compass is a free, open-access Progressive Web App providing:
 - 🩺 **Clinical assessment pathway** for GPs, nurses and paediatricians
 - ⭐ **Child-friendly section** explaining FASD in accessible language
 - 🎙️ **Podcast section** — Early Intervention Matters
-- 📋 **10-question FASD screening tool**
+- 📋 **FASD Developmental Concerns and Assessment Guide (not a screening tool, no scores)**
 - 🤖 **Offline AI knowledge assistant** (no API key, works without internet)
 - 📚 **Full evidence base** — SIGN 156, NICE QS204, SNOMED CT codes
 
