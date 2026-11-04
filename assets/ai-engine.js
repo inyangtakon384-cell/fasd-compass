@@ -107,7 +107,7 @@ function scoreAll(query, audience) {
       if (tagRe(tag).test(q)) { hits++; score += tag.includes(' ') ? Math.round(tag.length * 1.5) : Math.max(tag.length, 4); }
     });
     // Asking the example question itself always finds its answer.
-    if (normalise(item.q).replace(/[?."]/g, '') === q.trim().replace(/[?."]/g, '')) score += 100;
+    if (normalise(item.q).replace(/[?."]/g, '') === q.trim().replace(/[?."]/g, '')) score += (audience && item.aud && !item.aud.includes(audience)) ? 10 : 100;
     if (score > 0 && audience && item.aud) score = item.aud.includes(audience) ? score + 6 : Math.round(score * 0.7);
     return { item, score, hits };
   }).sort((a, b) => b.score - a.score);
