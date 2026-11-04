@@ -1,4 +1,4 @@
-// FASD Compass AI knowledge base. v1.2.8
+// FASD Compass AI knowledge base. v1.2.9
 // Every answer here is written in advance and needs clinical review before release.
 // Fields: id, q (example question, also used for suggestion buttons), aud (audiences the
 // answer is written for: parent, teacher, clinician), tags (words and phrases to match),
@@ -326,7 +326,7 @@ Assessments often take more than one appointment. Our GP evidence checklist help
     src: 'SIGN 156 (2019), section 3', page: 'gp-checklist' },
 
   { id: 'diagnosis', q: 'What are the diagnostic criteria for FASD?', aud: ['clinician'],
-    tags: ['diagnos', 'criteria', 'diagnostic criteria', 'meets criteria', 'sign 156 criteria', 'with sentinel', 'without sentinel', 'severe impairment', 'standard deviations'],
+    tags: ['diagnos', 'diagnosed', 'diagnosis', 'how is fasd', 'criteria', 'diagnostic criteria', 'meets criteria', 'sign 156 criteria', 'with sentinel', 'without sentinel', 'severe impairment', 'standard deviations'],
     answer: `**SIGN 156 diagnostic criteria**
 
 Diagnosis needs a multidisciplinary assessment.

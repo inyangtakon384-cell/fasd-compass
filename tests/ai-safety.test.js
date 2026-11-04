@@ -87,6 +87,7 @@ for (const a of ai.AUDIENCES) {
   for (const q of ai.SUGGESTIONS[a]) { const r = ai.respondFull(q, a); ok('Example question answered (' + a + '): ' + q, r.kind === 'answer' && ai.KB.find(e => e.id === r.id).q === q, r.id); }
 }
 ok('Parent and clinician get different diagnosis answers', ai.respondFull('How do you diagnose FASD', 'parent').id === 'diagnosis-plain' && ai.respondFull('How do you diagnose FASD', 'clinician').id === 'diagnosis');
+ok('Exact parent question in clinician mode still gets the clinician answer', ai.respondFull('How is FASD diagnosed?', 'clinician').id === 'diagnosis' && ai.respondFull('How is FASD diagnosed?', 'parent').id === 'diagnosis-plain');
 ok('Audience changes the closing line', has(ai.respond('What are the sentinel facial features?', 'clinician'), 'individual patient') && has(ai.respond('How can I help with meltdowns?', 'parent'), 'not advice about your child'));
 const near = ai.respondFull('genetic', 'parent');
 ok('Low confidence offers topics, or answers', near.kind === 'answer' || (near.kind === 'near' && near.options.every(q => ai.KB.some(e => e.q === q))), near.kind);
