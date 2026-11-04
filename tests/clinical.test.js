@@ -18,7 +18,7 @@ for (const p of PAGES) {
   ok(p + ' exists', exists(p + '/index.html'));
   const h = read(p + '/index.html'), t = main(h);
   const tb = t.replace(/do not score, diagnose or rule out FASD/g, '').replace(/It does not score, diagnose or rule out FASD/g, '');
-  ok(p + ' version 1.2.8 assets', h.includes('v=1.2.8') && !/v=1\.2\.[0-7]\b/.test(h));
+  ok(p + ' version 1.2.9 assets', h.includes('v=1.2.9') && !/v=1\.2\.[0-8]\b/.test(h));
   ok(p + ' footer links clinical toolkit', h.includes('<li><a href="/clinical-toolkit/">Clinical Toolkit</a></li>'));
   ok(p + ' clinicians tab active', h.includes('<a class="aud-btn active" href="/clinicians/">'));
   ok(p + ' canonical', h.includes('https://fasdcompass.co.uk/' + p + '/'));
