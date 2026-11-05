@@ -1,4 +1,4 @@
-// FASD Compass AI knowledge base. v1.2.9
+// FASD Compass AI knowledge base. v1.2.10
 // Every answer here is written in advance and needs clinical review before release.
 // Fields: id, q (example question, also used for suggestion buttons), aud (audiences the
 // answer is written for: parent, teacher, clinician), tags (words and phrases to match),
@@ -25,7 +25,9 @@ FASD is often missed. Many children with FASD also have strengths, and the right
     tags: ['how common', 'prevalence', 'how many people', 'how many children', 'affected by fasd', 'statistics'],
     answer: `**How common is FASD?**
 
-Estimates suggest around 3.2% of people in the UK may have FASD. In Scotland, up to 172,000 people may be affected.
+SIGN estimates that about 3.2% of babies born in the UK are affected by FASD, and that up to 172,000 people in Scotland may be affected.
+
+In a small study of three primary schools in Greater Manchester, 1.8% of children had FASD, or 3.6% when possible cases were included. None of them had been diagnosed before.
 
 FASD is underdiagnosed. Between 2010 and 2015, only 41 cases of fetal alcohol syndrome were identified in Scotland in children under six. This is far fewer than population estimates would predict.
 
@@ -34,8 +36,8 @@ Reasons it is missed include:
 • most children with FASD have no visible facial features
 • some professionals are not confident about making the diagnosis
 • FASD can be mistaken for ADHD, autism or conduct difficulties`,
-    unc: 'These figures are estimates. They come from a small number of studies, and results vary with the method used, so the true number is uncertain.',
-    src: 'SIGN 156 (2019)', page: 'evidence' },
+    unc: 'These figures are estimates. The UK has not yet had a large national study, and results vary with the method used, so the true number is uncertain.',
+    src: 'SIGN 156 (2019) and McCarthy et al. (2021)', page: 'evidence' },
 
   { id: 'fas-vs-fasd', q: 'What is the difference between FAS and FASD?', aud: ['parent', 'teacher', 'clinician'],
     tags: ['fas and fasd', 'fas or fasd', 'fas vs', 'fetal alcohol syndrome', 'difference between fas', 'fae', 'arnd', 'pfas'],
