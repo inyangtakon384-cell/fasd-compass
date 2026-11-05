@@ -17,7 +17,7 @@ const BANNED = [/\bconfirms? (that )?(the (child|pupil) has )?FASD\b/i, /\brules
 for (const p of PAGES) {
   ok(p + ' exists', exists(p + '/index.html'));
   const h = read(p + '/index.html'), t = main(h), tb = t.replace(/does not (identify, confirm or )?(diagnose or )?rule out FASD/g, '').replace(/No behaviour is diagnostic of FASD/g, '');
-  ok(p + ' version 1.2.9 assets', h.includes('v=1.2.9') && !/v=1\.2\.[0-8]\b/.test(h));
+  ok(p + ' version 1.2.10 assets', h.includes('v=1.2.10') && !/v=1\.2\.([0-9])\b/.test(h));
   ok(p + ' footer links toolkit', h.includes('<li><a href="/school-support-toolkit/">School Support Toolkit</a></li>'));
   ok(p + ' teachers tab active', h.includes('<a class="aud-btn active" href="/teachers/">Teachers</a>'));
   ok(p + ' canonical', h.includes('https://fasdcompass.co.uk/' + p + '/'));
@@ -40,7 +40,7 @@ ok('csp no date of birth field', !/name="(dob|birth|surname|fullname|nhs)/i.test
 ok('csp initials only', /name="initials"[^>]*maxlength="6"/.test(csp));
 ok('csp privacy note', cspT.includes('No identifiable information is needed'));
 ok('csp not diagnostic', cspT.includes('does not diagnose or rule out FASD'));
-ok('csp loads exports', ['tools.js', 'summary-pdf.js', 'docx-lite.js', 'school.js'].every(s => csp.includes('/assets/' + s + '?v=1.2.9')));
+ok('csp loads exports', ['tools.js', 'summary-pdf.js', 'docx-lite.js', 'school.js'].every(s => csp.includes('/assets/' + s + '?v=1.2.10')));
 ok('csp needs extra time wording', cspT.includes('Needs extra time to process and answer'));
 const js = read('assets/school.js');
 ok('school.js no network', !/fetch\(|XMLHttpRequest|sendBeacon|WebSocket|navigator\.sendBeacon/.test(js));

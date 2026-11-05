@@ -1,4 +1,4 @@
-// FASD Compass optional live AI layer. v1.2.9
+// FASD Compass optional live AI layer. v1.2.10
 // SWITCHED OFF. Nothing in this file sends data unless LIVE_AI_ENABLED is true AND an
 // endpoint is set AND the device is online. Turning it on also needs the page's
 // Content-Security-Policy connect-src to allow the endpoint, the privacy page update

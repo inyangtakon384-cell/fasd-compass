@@ -1,6 +1,6 @@
 /* FASD Compass: builds editable Word (.docx) files in the browser.
    No libraries, nothing sent anywhere. Takes the same simple blocks as the PDF writer:
-   eyebrow, title, meta, notice, h2, h3, p, li, foot. v1.2.9 */
+   eyebrow, title, meta, notice, h2, h3, p, li, foot. v1.2.10 */
 (function () {
   'use strict';
   var CRC = (function () { var t = [], c, n, k; for (n = 0; n < 256; n++) { c = n; for (k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();

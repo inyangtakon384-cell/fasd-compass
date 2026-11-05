@@ -1048,7 +1048,7 @@ details.mod > summary:focus-visible { outline: 3px solid var(--teal); outline-of
 @media (max-width: 600px) { .mod-body { padding-left: 16px; } }
 @media print { details.mod { box-shadow: none; border: 1px solid #ccd; break-inside: avoid; } details.mod > summary::after { display: none; } }
 
-/* ── Ask FASD AI: audience choice, topic options, live AI (v1.2.9) ── */
+/* ── Ask FASD AI: audience choice, topic options, live AI (v1.2.10) ── */
 .ask-aud { margin-top: 12px; }
 .ask-aud-legend { font-size: 12px; color: rgba(255,255,255,.85); margin-bottom: 6px; font-weight: 600; }
 .ask-aud-btns { display: flex; flex-wrap: wrap; gap: 6px; }
