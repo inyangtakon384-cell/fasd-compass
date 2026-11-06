@@ -1,4 +1,4 @@
-// FASD Compass AI engine. v1.2.10
+// FASD Compass AI engine. v1.2.11
 // Runs entirely in the browser. No network requests, no storage.
 // Needs assets/ai-kb.js loaded first. The same file is used by the tests and by the
 // optional live AI worker, so the safety checks are identical everywhere.

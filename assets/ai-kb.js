@@ -1,4 +1,4 @@
-// FASD Compass AI knowledge base. v1.2.10
+// FASD Compass AI knowledge base. v1.2.11
 // Every answer here is written in advance and needs clinical review before release.
 // Fields: id, q (example question, also used for suggestion buttons), aud (audiences the
 // answer is written for: parent, teacher, clinician), tags (words and phrases to match),
@@ -488,6 +488,8 @@ An adult who thinks they may have FASD can talk to their GP. Many areas do not h
 
 Yes. A child can have FASD and other conditions at the same time. A large review found more than 400 conditions that can occur alongside FASD.
 
+Other diagnoses are very common. Researchers estimate that 90% or more of people with FASD also have a mental health or neurodevelopmental diagnosis, such as anxiety, depression or ADHD. Most of the studies behind this figure were done in specialist clinics and other groups with high needs, so the figure for everyone with FASD may be lower.
+
 Conditions that are often seen alongside FASD include:
 • **ADHD:** often the first diagnosis given. Response to medication may be different from what is expected.
 • **Autism** or autistic features
@@ -498,8 +500,8 @@ Conditions that are often seen alongside FASD include:
 A child's difficulties should not all be put down to one condition. Early experiences, trauma, and other health needs can also play a part, and each needs its own assessment and support.
 
 If a child with ADHD is not responding to treatment as expected, or their difficulties are wider than ADHD alone, it may be worth asking whether FASD has been considered.`,
-    unc: 'The figure of more than 400 conditions comes from one large review of studies. The studies varied, and many were in clinical groups, so it does not tell you how likely any one condition is.',
-    src: 'Popova and colleagues, The Lancet (2016), and SIGN 156 (2019)', page: 'clinicians' },
+    unc: 'The figure of more than 400 conditions comes from one large review of studies. The 90% figure comes mainly from studies in specialist clinics, foster care and justice settings. Both are useful as a guide, but neither tells you how likely any one condition is for a particular child.',
+    src: 'Popova and colleagues, The Lancet (2016), Flannigan and colleagues, Frontiers in Psychology (2022), and SIGN 156 (2019)', page: 'clinicians' },
 
   // ── GETTING HELP ────────────────────────────────────────────────────
   { id: 'gp', q: 'What should I discuss with my GP?', aud: ['parent'],
