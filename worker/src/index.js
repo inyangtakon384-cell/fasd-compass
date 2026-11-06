@@ -1,4 +1,4 @@
-// FASD Compass live AI service (Cloudflare Worker). v1.2.10
+// FASD Compass live AI service (Cloudflare Worker). v1.2.11
 // SWITCHED OFF by default: LIVE_AI_ENABLED must be "true" in the Worker settings.
 // This service:
 //  - accepts requests only from fasdcompass.co.uk
